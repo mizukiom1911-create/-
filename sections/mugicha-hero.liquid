@@ -118,7 +118,8 @@
                             data-variant-available="{{ variant.available }}"
                             {% unless variant.available %}disabled{% endunless %}>
                       <div class="vopt-name">{{ variant.title }}</div>
-                      {%- assign vdesc = section.settings['variant_desc_' | append: forloop.index] -%}
+                      {%- assign vdesc_key = 'variant_desc_' | append: forloop.index -%}
+                      {%- assign vdesc = section.settings[vdesc_key] -%}
                       {%- if vdesc != blank -%}
                         <div class="vopt-desc">{{ vdesc }}</div>
                       {%- endif -%}
