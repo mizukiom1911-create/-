@@ -4,10 +4,23 @@
     "announcement": {
       "type": "announcement-bar",
       "blocks": {
-        "m1": { "type": "message", "settings": { "text": "8,000円以上で全国送料無料" } },
-        "m2": { "type": "message", "settings": { "text": "明治十二年、上野原の隣町の一杯" } }
+        "m1": {
+          "type": "message",
+          "settings": {
+            "text": "8,000円以上で全国送料無料"
+          }
+        },
+        "m2": {
+          "type": "message",
+          "settings": {
+            "text": "明治十二年、上野原の隣町の一杯"
+          }
+        }
       },
-      "block_order": ["m1", "m2"]
+      "block_order": [
+        "m1",
+        "m2"
+      ]
     },
     "header": {
       "type": "header-nagaoka",
@@ -29,32 +42,136 @@
         "variant_desc_2": "約10回分。まずは試したい方に。",
         "variant_desc_3": "7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。",
         "variant_desc_4": "7.5g × 5包。初めての方・手土産の添えものに。",
-        "variant_desc_5": "7.5g × 1包。イベント配布・ギフトボックス同梱に。"
+        "variant_desc_5": "7.5g × 1包。イベント配布・ギフトボックス同梱に。",
+        "product": "純手炒り-むぎ茶-上州屋設楽彦吉商店"
       },
       "blocks": {
-        "s1": { "type": "stamp", "settings": { "text": "明治12年創業",       "variant": "shubun" } },
-        "s2": { "type": "stamp", "settings": { "text": "ノンカフェイン",     "variant": "navy" } },
-        "s3": { "type": "stamp", "settings": { "text": "上野原の隣町から",   "variant": "gold" } },
-        "f1": { "type": "fact",  "settings": { "text": "直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法" } },
-        "f2": { "type": "fact",  "settings": { "text": "国産六条大麦を、2年寝かせてから炒り上げるため出せる深み" } },
-        "f3": { "type": "fact",  "settings": { "text": "ノンカフェイン。お子様・妊婦さん・就寝前にも安心" } },
-        "f4": { "type": "fact",  "settings": { "text": "本家推奨の楽しみ方は、砂糖・牛乳を加えるアレンジも" } },
-        "r1": { "type": "reassure", "settings": { "text": "8,000円以上のご注文で全国送料無料" } },
-        "r2": { "type": "reassure", "settings": { "text": "ご注文から2〜4営業日で発送" } },
-        "r3": { "type": "reassure", "settings": { "text": "のし・ギフト包装対応可（ご注文時にお選びください）" } },
-        "r4": { "type": "reassure", "settings": { "text": "ノンカフェインですので、時間を選ばずお楽しみいただけます" } }
+        "s1": {
+          "type": "stamp",
+          "settings": {
+            "text": "明治12年創業",
+            "variant": "shubun"
+          }
+        },
+        "s2": {
+          "type": "stamp",
+          "settings": {
+            "text": "ノンカフェイン",
+            "variant": "navy"
+          }
+        },
+        "s3": {
+          "type": "stamp",
+          "settings": {
+            "text": "上野原の隣町から",
+            "variant": "gold"
+          }
+        },
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "text": "直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "text": "国産六条大麦を、2年寝かせてから炒り上げるため出せる深み"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "text": "ノンカフェイン。お子様・妊婦さん・就寝前にも安心"
+          }
+        },
+        "f4": {
+          "type": "fact",
+          "settings": {
+            "text": "本家推奨の楽しみ方は、砂糖・牛乳を加えるアレンジも"
+          }
+        },
+        "r1": {
+          "type": "reassure",
+          "settings": {
+            "text": "8,000円以上のご注文で全国送料無料"
+          }
+        },
+        "r2": {
+          "type": "reassure",
+          "settings": {
+            "text": "ご注文から2〜4営業日で発送"
+          }
+        },
+        "r3": {
+          "type": "reassure",
+          "settings": {
+            "text": "のし・ギフト包装対応可（ご注文時にお選びください）"
+          }
+        },
+        "r4": {
+          "type": "reassure",
+          "settings": {
+            "text": "ノンカフェインですので、時間を選ばずお楽しみいただけます"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "f1", "f2", "f3", "f4", "r1", "r2", "r3", "r4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "f1",
+        "f2",
+        "f3",
+        "f4",
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
     },
     "mugicha_proof": {
       "type": "mugicha-proof",
       "blocks": {
-        "p1": { "type": "col", "settings": { "label_en": "Founded",    "number": "1879", "value": "明治十二年" } },
-        "p2": { "type": "col", "settings": { "label_en": "Method",     "number": "",     "value": "直径三尺\n平釜・竹箒" } },
-        "p3": { "type": "col", "settings": { "label_en": "Ingredient", "number": "",     "value": "国産六条大麦\n二年寝かせ" } },
-        "p4": { "type": "col", "settings": { "label_en": "Caffeine",   "number": "",     "value": "ゼロ\nノンカフェイン" } }
+        "p1": {
+          "type": "col",
+          "settings": {
+            "label_en": "Founded",
+            "number": "1879",
+            "value": "明治十二年"
+          }
+        },
+        "p2": {
+          "type": "col",
+          "settings": {
+            "label_en": "Method",
+            "number": "",
+            "value": "直径三尺\n平釜・竹箒"
+          }
+        },
+        "p3": {
+          "type": "col",
+          "settings": {
+            "label_en": "Ingredient",
+            "number": "",
+            "value": "国産六条大麦\n二年寝かせ"
+          }
+        },
+        "p4": {
+          "type": "col",
+          "settings": {
+            "label_en": "Caffeine",
+            "number": "",
+            "value": "ゼロ\nノンカフェイン"
+          }
+        }
       },
-      "block_order": ["p1", "p2", "p3", "p4"]
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4"
+      ]
     },
     "mugicha_benefit": {
       "type": "mugicha-benefit",
@@ -64,11 +181,36 @@
         "lead": "大量生産の麦茶では味わえない、三つの体験を持ち帰れます。"
       },
       "blocks": {
-        "b1": { "type": "card", "settings": { "number": "01", "title": "<p>朝の一杯が、<span class=\"kane\">深く</span>変わる。</p>",       "body": "コーヒーみたいに真っ黒。飲めば、苦みではなく、香ばしさと澄んだコクが広がる。ノンカフェインだから、目覚めの一杯にも、就寝前にも。" } },
-        "b2": { "type": "card", "settings": { "number": "02", "title": "<p>砂糖や牛乳と、<span class=\"kane\">こなれる</span>味。</p>",  "body": "本家が「砂糖・牛乳を加えるのもよい」と勧めるほどの濃さ。ミルクと合わせれば、香ばしいラテのような一杯に。日常のなかで、飲み方を発見できる麦茶です。" } },
-        "b3": { "type": "card", "settings": { "number": "03", "title": "<p>煮出す時間が、<span class=\"kane\">合図</span>になる。</p>",   "body": "やかんに麦を入れて火にかける。ふわりと立つ湯気と香ばしい香り。5分の煮出しが、忙しい一日を切り替えるスイッチになります。" } }
+        "b1": {
+          "type": "card",
+          "settings": {
+            "number": "01",
+            "title": "<p>朝の一杯が、<span class=\"kane\">深く</span>変わる。</p>",
+            "body": "コーヒーみたいに真っ黒。飲めば、苦みではなく、香ばしさと澄んだコクが広がる。ノンカフェインだから、目覚めの一杯にも、就寝前にも。"
+          }
+        },
+        "b2": {
+          "type": "card",
+          "settings": {
+            "number": "02",
+            "title": "<p>砂糖や牛乳と、<span class=\"kane\">こなれる</span>味。</p>",
+            "body": "本家が「砂糖・牛乳を加えるのもよい」と勧めるほどの濃さ。ミルクと合わせれば、香ばしいラテのような一杯に。日常のなかで、飲み方を発見できる麦茶です。"
+          }
+        },
+        "b3": {
+          "type": "card",
+          "settings": {
+            "number": "03",
+            "title": "<p>煮出す時間が、<span class=\"kane\">合図</span>になる。</p>",
+            "body": "やかんに麦を入れて火にかける。ふわりと立つ湯気と香ばしい香り。5分の煮出しが、忙しい一日を切り替えるスイッチになります。"
+          }
+        }
       },
-      "block_order": ["b1", "b2", "b3"]
+      "block_order": [
+        "b1",
+        "b2",
+        "b3"
+      ]
     },
     "mugicha_compare": {
       "type": "mugicha-compare",
@@ -81,18 +223,79 @@
         "right_name": "純手炒り むぎ茶（上州屋設楽彦吉商店）"
       },
       "blocks": {
-        "l1": { "type": "left_item",  "settings": { "text": "色は薄い茶色、透けて見える" } },
-        "l2": { "type": "left_item",  "settings": { "text": "のどごしは軽いが、香りは控えめ" } },
-        "l3": { "type": "left_item",  "settings": { "text": "冷やして飲むための味の設計" } },
-        "l4": { "type": "left_item",  "settings": { "text": "大量生産・機械焙煎・短時間抽出" } },
-        "l5": { "type": "left_item",  "settings": { "text": "牛乳や砂糖を合わせても味が負ける" } },
-        "r1": { "type": "right_item", "settings": { "text": "コーヒーのように黒く、グラスの向こうが見えない" } },
-        "r2": { "type": "right_item", "settings": { "text": "鼻を通る香ばしさ、追いかけてくる澄んだ深み" } },
-        "r3": { "type": "right_item", "settings": { "text": "煮出し・冷やし・ホット、通年で飲める" } },
-        "r4": { "type": "right_item", "settings": { "text": "明治12年から、直径三尺の平釜と竹箒による手炒り" } },
-        "r5": { "type": "right_item", "settings": { "text": "砂糖・牛乳と合わせても、しっかり主役の味" } }
+        "l1": {
+          "type": "left_item",
+          "settings": {
+            "text": "色は薄い茶色、透けて見える"
+          }
+        },
+        "l2": {
+          "type": "left_item",
+          "settings": {
+            "text": "のどごしは軽いが、香りは控えめ"
+          }
+        },
+        "l3": {
+          "type": "left_item",
+          "settings": {
+            "text": "冷やして飲むための味の設計"
+          }
+        },
+        "l4": {
+          "type": "left_item",
+          "settings": {
+            "text": "大量生産・機械焙煎・短時間抽出"
+          }
+        },
+        "l5": {
+          "type": "left_item",
+          "settings": {
+            "text": "牛乳や砂糖を合わせても味が負ける"
+          }
+        },
+        "r1": {
+          "type": "right_item",
+          "settings": {
+            "text": "コーヒーのように黒く、グラスの向こうが見えない"
+          }
+        },
+        "r2": {
+          "type": "right_item",
+          "settings": {
+            "text": "鼻を通る香ばしさ、追いかけてくる澄んだ深み"
+          }
+        },
+        "r3": {
+          "type": "right_item",
+          "settings": {
+            "text": "煮出し・冷やし・ホット、通年で飲める"
+          }
+        },
+        "r4": {
+          "type": "right_item",
+          "settings": {
+            "text": "明治12年から、直径三尺の平釜と竹箒による手炒り"
+          }
+        },
+        "r5": {
+          "type": "right_item",
+          "settings": {
+            "text": "砂糖・牛乳と合わせても、しっかり主役の味"
+          }
+        }
       },
-      "block_order": ["l1", "l2", "l3", "l4", "l5", "r1", "r2", "r3", "r4", "r5"]
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5",
+        "r1",
+        "r2",
+        "r3",
+        "r4",
+        "r5"
+      ]
     },
     "mugicha_howto": {
       "type": "mugicha-howto",
@@ -101,12 +304,45 @@
         "heading": "一日のなかに、|手炒りの一杯を<span class=\"kane\">溶かして</span>いく。"
       },
       "blocks": {
-        "s1": { "type": "scene", "settings": { "time_en": "Morning", "title": "起きぬけに、冷やし麦茶",   "body": "前夜に煮出して冷やしておいた一杯を、目覚めの水分補給に。ノンカフェインだから、コーヒーの前でも安心。" } },
-        "s2": { "type": "scene", "settings": { "time_en": "Noon",    "title": "食事に、氷を浮かべて",     "body": "大きな氷を入れたグラスにたっぷり注いで。揚げ物・油ものと特に相性のよい香ばしさです。" } },
-        "s3": { "type": "scene", "settings": { "time_en": "Evening", "title": "牛乳と合わせて、麦茶ラテ", "body": "濃く煮出した麦茶を、温めた牛乳に注ぐ。砂糖を少し。市販のラテにはない、香ばしいコクが広がります。" } },
-        "s4": { "type": "scene", "settings": { "time_en": "Night",   "title": "寝る前に、ホットで",       "body": "やかんで煮出し、湯気ごとカップに。カフェインを気にする時間帯も、心置きなく一杯。" } }
+        "s1": {
+          "type": "scene",
+          "settings": {
+            "time_en": "Morning",
+            "title": "起きぬけに、冷やし麦茶",
+            "body": "前夜に煮出して冷やしておいた一杯を、目覚めの水分補給に。ノンカフェインだから、コーヒーの前でも安心。"
+          }
+        },
+        "s2": {
+          "type": "scene",
+          "settings": {
+            "time_en": "Noon",
+            "title": "食事に、氷を浮かべて",
+            "body": "大きな氷を入れたグラスにたっぷり注いで。揚げ物・油ものと特に相性のよい香ばしさです。"
+          }
+        },
+        "s3": {
+          "type": "scene",
+          "settings": {
+            "time_en": "Evening",
+            "title": "牛乳と合わせて、麦茶ラテ",
+            "body": "濃く煮出した麦茶を、温めた牛乳に注ぐ。砂糖を少し。市販のラテにはない、香ばしいコクが広がります。"
+          }
+        },
+        "s4": {
+          "type": "scene",
+          "settings": {
+            "time_en": "Night",
+            "title": "寝る前に、ホットで",
+            "body": "やかんで煮出し、湯気ごとカップに。カフェインを気にする時間帯も、心置きなく一杯。"
+          }
+        }
       },
-      "block_order": ["s1", "s2", "s3", "s4"]
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4"
+      ]
     },
     "mugicha_recipe": {
       "type": "mugicha-recipe",
@@ -115,12 +351,45 @@
         "heading": "本家が伝える、おいしい淹れ方"
       },
       "blocks": {
-        "r1": { "type": "step", "settings": { "number": "01", "title": "水を沸かす",   "body": "やかんに水1.5〜1.8L、しっかり沸騰させます。" } },
-        "r2": { "type": "step", "settings": { "number": "02", "title": "麦を入れる",   "body": "沸騰した湯に、丸粒を大さじ1杯（約15g）投入。" } },
-        "r3": { "type": "step", "settings": { "number": "03", "title": "3〜5分煮出す", "body": "弱火で、蓋を外して。吹きこぼれに注意。" } },
-        "r4": { "type": "step", "settings": { "number": "04", "title": "5分蒸らす",   "body": "火を止めて、そのまま。麦粒を取り除いて完成。" } }
+        "r1": {
+          "type": "step",
+          "settings": {
+            "number": "01",
+            "title": "水を沸かす",
+            "body": "やかんに水1.5〜1.8L、しっかり沸騰させます。"
+          }
+        },
+        "r2": {
+          "type": "step",
+          "settings": {
+            "number": "02",
+            "title": "麦を入れる",
+            "body": "沸騰した湯に、丸粒を大さじ1杯（約15g）投入。"
+          }
+        },
+        "r3": {
+          "type": "step",
+          "settings": {
+            "number": "03",
+            "title": "3〜5分煮出す",
+            "body": "弱火で、蓋を外して。吹きこぼれに注意。"
+          }
+        },
+        "r4": {
+          "type": "step",
+          "settings": {
+            "number": "04",
+            "title": "5分蒸らす",
+            "body": "火を止めて、そのまま。麦粒を取り除いて完成。"
+          }
+        }
       },
-      "block_order": ["r1", "r2", "r3", "r4"]
+      "block_order": [
+        "r1",
+        "r2",
+        "r3",
+        "r4"
+      ]
     },
     "mugicha_maker": {
       "type": "mugicha-maker",
@@ -130,12 +399,41 @@
         "body": "<p>上州屋設楽彦吉商店は、<span class=\"kane\">山梨県上野原市野田尻</span>にある、明治12年（1879年）創業の老舗です。ながおか商店と同じ上野原の隣町、車で15分の場所にあります。</p><p>製造する麦茶は、いまも直径三尺（約90cm）の平釜に大麦を入れ、竹の箒でかき混ぜながら強火で炒り上げる手仕事。麦が炭になる寸前まで深く炒ることで、この色と香りが出せます。</p><p>収穫年度や天候で変わる大麦の個性に合わせて、仕上げのタイミングや箒のスピードを変える。<span class=\"kane\">機械には出せない味</span>が、この釜のなかで生まれています。</p>"
       },
       "blocks": {
-        "f1": { "type": "fact", "settings": { "label_en": "Origin", "value": "山梨県\n上野原市野田尻" } },
-        "f2": { "type": "fact", "settings": { "label_en": "Since",  "value": "明治12年\n（1879）" } },
-        "f3": { "type": "fact", "settings": { "label_en": "Rep",    "value": "設楽 徳子\n代表取締役" } },
-        "f4": { "type": "fact", "settings": { "label_en": "Craft",  "value": "平釜3基\n手炒り製法" } }
+        "f1": {
+          "type": "fact",
+          "settings": {
+            "label_en": "Origin",
+            "value": "山梨県\n上野原市野田尻"
+          }
+        },
+        "f2": {
+          "type": "fact",
+          "settings": {
+            "label_en": "Since",
+            "value": "明治12年\n（1879）"
+          }
+        },
+        "f3": {
+          "type": "fact",
+          "settings": {
+            "label_en": "Rep",
+            "value": "設楽 徳子\n代表取締役"
+          }
+        },
+        "f4": {
+          "type": "fact",
+          "settings": {
+            "label_en": "Craft",
+            "value": "平釜3基\n手炒り製法"
+          }
+        }
       },
-      "block_order": ["f1", "f2", "f3", "f4"]
+      "block_order": [
+        "f1",
+        "f2",
+        "f3",
+        "f4"
+      ]
     },
     "mugicha_limited": {
       "type": "mugicha-limited",
@@ -154,10 +452,27 @@
         "caption": "同じ上野原で、百年以上、手仕事を守りつづけてきた二軒が、この一杯をあなたへ。"
       },
       "blocks": {
-        "t1": { "type": "shop", "settings": { "year": "1879", "name": "上州屋設楽彦吉商店", "role": "明治12年 · 手炒り麦茶" } },
-        "t2": { "type": "shop", "settings": { "year": "1911", "name": "ながおか商店",       "role": "明治44年 · 近江屋ながおか" } }
+        "t1": {
+          "type": "shop",
+          "settings": {
+            "year": "1879",
+            "name": "上州屋設楽彦吉商店",
+            "role": "明治12年 · 手炒り麦茶"
+          }
+        },
+        "t2": {
+          "type": "shop",
+          "settings": {
+            "year": "1911",
+            "name": "ながおか商店",
+            "role": "明治44年 · 近江屋ながおか"
+          }
+        }
       },
-      "block_order": ["t1", "t2"]
+      "block_order": [
+        "t1",
+        "t2"
+      ]
     },
     "mugicha_lineup": {
       "type": "mugicha-lineup",
@@ -166,40 +481,184 @@
         "heading": "用途に合わせて、選べる5サイズ。"
       },
       "blocks": {
-        "l1": { "type": "size", "settings": { "tag_en": "Flagship · Loose",  "name": "丸粒 330g",         "body": "約22回分。毎日の食卓にたっぷり。煮出しで本格的な味わいを。", "price": "¥1,710", "featured": true } },
-        "l2": { "type": "size", "settings": { "tag_en": "Trial · Loose",     "name": "丸粒 150g",         "body": "約10回分。まずは味を試したい方、少人数のご家庭に。",       "price": "¥880〜" } },
-        "l3": { "type": "size", "settings": { "tag_en": "Gift · Tea Bag",    "name": "ティーパック 15包", "body": "7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。",   "price": "¥1,710" } },
-        "l4": { "type": "size", "settings": { "tag_en": "Try · Tea Bag",     "name": "ティーパック 5包",  "body": "7.5g × 5包。初めての方・手土産の添えものに。",             "price": "¥180〜" } },
-        "l5": { "type": "size", "settings": { "tag_en": "Single · Tea Bag",  "name": "ティーパック 1包",  "body": "7.5g × 1包。イベント配布・ギフトボックス同梱に。",          "price": "¥180" } }
+        "l1": {
+          "type": "size",
+          "settings": {
+            "tag_en": "Flagship · Loose",
+            "name": "丸粒 330g",
+            "body": "約22回分。毎日の食卓にたっぷり。煮出しで本格的な味わいを。",
+            "price": "¥1,710",
+            "featured": true
+          }
+        },
+        "l2": {
+          "type": "size",
+          "settings": {
+            "tag_en": "Trial · Loose",
+            "name": "丸粒 150g",
+            "body": "約10回分。まずは味を試したい方、少人数のご家庭に。",
+            "price": "¥880〜"
+          }
+        },
+        "l3": {
+          "type": "size",
+          "settings": {
+            "tag_en": "Gift · Tea Bag",
+            "name": "ティーパック 15包",
+            "body": "7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。",
+            "price": "¥1,710"
+          }
+        },
+        "l4": {
+          "type": "size",
+          "settings": {
+            "tag_en": "Try · Tea Bag",
+            "name": "ティーパック 5包",
+            "body": "7.5g × 5包。初めての方・手土産の添えものに。",
+            "price": "¥180〜"
+          }
+        },
+        "l5": {
+          "type": "size",
+          "settings": {
+            "tag_en": "Single · Tea Bag",
+            "name": "ティーパック 1包",
+            "body": "7.5g × 1包。イベント配布・ギフトボックス同梱に。",
+            "price": "¥180"
+          }
+        }
       },
-      "block_order": ["l1", "l2", "l3", "l4", "l5"]
+      "block_order": [
+        "l1",
+        "l2",
+        "l3",
+        "l4",
+        "l5"
+      ]
     },
     "mugicha_faq": {
       "type": "mugicha-faq",
-      "settings": { "heading": "よくあるご質問" },
-      "blocks": {
-        "q1": { "type": "qa", "settings": { "q": "カフェインは入っていますか？", "a": "入っていません。お子様や妊婦さん、就寝前でも安心してお召し上がりいただけます。" } },
-        "q2": { "type": "qa", "settings": { "q": "丸粒とティーパック、味に違いはありますか？", "a": "どちらも同じ手炒り製法の麦茶です。丸粒は煮出しで本格的に、ティーパックは手軽に楽しむための形。用途で選んでください。" } },
-        "q3": { "type": "qa", "settings": { "q": "初めて購入するなら、どれがおすすめですか？", "a": "まず味を試すなら 丸粒150g または ティーパック5包、ご家庭で本格的に楽しむなら 丸粒330g または ティーパック15包 が人気です。" } },
-        "q4": { "type": "qa", "settings": { "q": "贈答用に選ぶなら、どれが良いですか？", "a": "見栄えと内容量のバランスからティーパック15包が贈答に選ばれています。特別な方には丸粒330g、プチギフトにはティーパック5包が便利です。のし・包装のご希望はご注文時にお選びください。" } },
-        "q5": { "type": "qa", "settings": { "q": "どれくらい日持ちしますか？", "a": "未開封で製品表記の賞味期限を目安に。開封後は高温多湿を避け、常温保存でお早めにお召し上がりください。" } }
+      "settings": {
+        "heading": "よくあるご質問"
       },
-      "block_order": ["q1", "q2", "q3", "q4", "q5"]
+      "blocks": {
+        "q1": {
+          "type": "qa",
+          "settings": {
+            "q": "カフェインは入っていますか？",
+            "a": "入っていません。お子様や妊婦さん、就寝前でも安心してお召し上がりいただけます。"
+          }
+        },
+        "q2": {
+          "type": "qa",
+          "settings": {
+            "q": "丸粒とティーパック、味に違いはありますか？",
+            "a": "どちらも同じ手炒り製法の麦茶です。丸粒は煮出しで本格的に、ティーパックは手軽に楽しむための形。用途で選んでください。"
+          }
+        },
+        "q3": {
+          "type": "qa",
+          "settings": {
+            "q": "初めて購入するなら、どれがおすすめですか？",
+            "a": "まず味を試すなら 丸粒150g または ティーパック5包、ご家庭で本格的に楽しむなら 丸粒330g または ティーパック15包 が人気です。"
+          }
+        },
+        "q4": {
+          "type": "qa",
+          "settings": {
+            "q": "贈答用に選ぶなら、どれが良いですか？",
+            "a": "見栄えと内容量のバランスからティーパック15包が贈答に選ばれています。特別な方には丸粒330g、プチギフトにはティーパック5包が便利です。のし・包装のご希望はご注文時にお選びください。"
+          }
+        },
+        "q5": {
+          "type": "qa",
+          "settings": {
+            "q": "どれくらい日持ちしますか？",
+            "a": "未開封で製品表記の賞味期限を目安に。開封後は高温多湿を避け、常温保存でお早めにお召し上がりください。"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "q5"
+      ]
     },
     "mugicha_specs": {
       "type": "mugicha-specs",
-      "settings": { "heading": "商品情報" },
-      "blocks": {
-        "s1": { "type": "row", "settings": { "label": "商品名",     "value": "純手炒り むぎ茶（丸粒 330g）" } },
-        "s2": { "type": "row", "settings": { "label": "原材料",     "value": "大麦（国産・六条大麦）" } },
-        "s3": { "type": "row", "settings": { "label": "内容量",     "value": "330g（丸粒袋入り）／ 約22回分" } },
-        "s4": { "type": "row", "settings": { "label": "製法",       "value": "直径三尺の平釜による手炒り製法" } },
-        "s5": { "type": "row", "settings": { "label": "カフェイン", "value": "ノンカフェイン" } },
-        "s6": { "type": "row", "settings": { "label": "製造元",     "value": "株式会社 上州屋設楽彦吉商店\n山梨県上野原市野田尻1072番地 · 明治12年創業" } },
-        "s7": { "type": "row", "settings": { "label": "保存方法",   "value": "直射日光・高温多湿を避け、常温で保存" } },
-        "s8": { "type": "row", "settings": { "label": "販売者",     "value": "ながおか商店（近江屋ながおか）／ 山梨県上野原市上野原4691-2" } }
+      "settings": {
+        "heading": "商品情報"
       },
-      "block_order": ["s1", "s2", "s3", "s4", "s5", "s6", "s7", "s8"]
+      "blocks": {
+        "s1": {
+          "type": "row",
+          "settings": {
+            "label": "商品名",
+            "value": "純手炒り むぎ茶（丸粒 330g）"
+          }
+        },
+        "s2": {
+          "type": "row",
+          "settings": {
+            "label": "原材料",
+            "value": "大麦（国産・六条大麦）"
+          }
+        },
+        "s3": {
+          "type": "row",
+          "settings": {
+            "label": "内容量",
+            "value": "330g（丸粒袋入り）／ 約22回分"
+          }
+        },
+        "s4": {
+          "type": "row",
+          "settings": {
+            "label": "製法",
+            "value": "直径三尺の平釜による手炒り製法"
+          }
+        },
+        "s5": {
+          "type": "row",
+          "settings": {
+            "label": "カフェイン",
+            "value": "ノンカフェイン"
+          }
+        },
+        "s6": {
+          "type": "row",
+          "settings": {
+            "label": "製造元",
+            "value": "株式会社 上州屋設楽彦吉商店\n山梨県上野原市野田尻1072番地 · 明治12年創業"
+          }
+        },
+        "s7": {
+          "type": "row",
+          "settings": {
+            "label": "保存方法",
+            "value": "直射日光・高温多湿を避け、常温で保存"
+          }
+        },
+        "s8": {
+          "type": "row",
+          "settings": {
+            "label": "販売者",
+            "value": "ながおか商店（近江屋ながおか）／ 山梨県上野原市上野原4691-2"
+          }
+        }
+      },
+      "block_order": [
+        "s1",
+        "s2",
+        "s3",
+        "s4",
+        "s5",
+        "s6",
+        "s7",
+        "s8"
+      ]
     },
     "mugicha_final": {
       "type": "mugicha-final-cta",
@@ -212,7 +671,9 @@
     },
     "footer": {
       "type": "footer-nagaoka",
-      "settings": { "style": "simple" }
+      "settings": {
+        "style": "simple"
+      }
     }
   },
   "order": [
