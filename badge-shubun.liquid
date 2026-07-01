@@ -1,0 +1,14 @@
+{% comment %}
+  朱印スタンプ / バッジ
+  使い方:
+    {% render 'badge-shubun', text: '厳選' %}
+    {% render 'badge-shubun', text: '新入荷', variant: 'navy' %}
+    {% render 'badge-shubun', text: '限定', variant: 'gold' %}
+
+  variant 引数:
+    (省略) → 朱色（デフォルト）
+    'navy' → 紺塗り
+    'gold' → 透明・金枠
+{% endcomment %}
+
+<span class="stamp{% if variant == 'gold' %} gold{% elsif variant == 'navy' %} navy{% endif %}">{{ text }}</span>
