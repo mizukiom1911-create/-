@@ -1,0 +1,104 @@
+{% comment %}
+  ながおか商店 — Footer
+  シンプル版（テキスト1行）と、フル版（4カラム）を切り替え可能。
+{% endcomment %}
+
+{% if section.settings.style == 'full' %}
+  <footer class="footer footer-full">
+    <div class="container">
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+          <h3>{{ section.settings.brand_name | default: shop.name }}</h3>
+          {% if section.settings.brand_sub != blank %}
+            <div class="sub">{{ section.settings.brand_sub }}</div>
+          {% endif %}
+          <p>{{ section.settings.address | newline_to_br }}</p>
+        </div>
+
+        {%- for block in section.blocks -%}
+          <div class="footer-col">
+            <h5>{{ block.settings.heading }}</h5>
+            {%- if block.settings.menu != blank -%}
+              {%- for link in block.settings.menu.links -%}
+                <a href="{{ link.url }}">{{ link.title }}</a>
+              {%- endfor -%}
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+
+      </div>
+      <div class="footer-bottom">
+        <span>© {{ 'now' | date: '%Y' }} {{ shop.name }} · 近江屋ながおか</span>
+        <span>SPECIAL LICENSE · YAMANASHI</span>
+      </div>
+    </div>
+  </footer>
+
+{% else %}
+
+  <footer class="footer">
+    <span>◆</span>
+    © {{ 'now' | date: '%Y' }} {{ shop.name }} · 近江屋ながおか · 山梨県上野原市
+    <span>◆</span>
+  </footer>
+
+{% endif %}
+
+{% schema %}
+{
+  "name": "フッター（ながおか）",
+  "tag": "footer",
+  "class": "shopify-section-footer",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "スタイル",
+      "options": [
+        { "value": "simple", "label": "シンプル（1行）" },
+        { "value": "full",   "label": "フル（4カラム）" }
+      ],
+      "default": "full"
+    },
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "屋号",
+      "default": "ながおか商店"
+    },
+    {
+      "type": "text",
+      "id": "brand_sub",
+      "label": "サブ（英字）",
+      "default": "SINCE 1911 · UENOHARA"
+    },
+    {
+      "type": "textarea",
+      "id": "address",
+      "label": "住所・営業時間",
+      "default": "〒409-0112\n山梨県上野原市上野原4691-2\nTEL 0554-63-0140\n営業 8:30〜19:00 / 日曜定休"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_col",
+      "name": "メニュー列",
+      "settings": [
+        { "type": "text", "id": "heading", "label": "見出し", "default": "お買いもの" },
+        { "type": "link_list", "id": "menu", "label": "メニュー" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "フッター（ながおか）",
+      "blocks": [
+        { "type": "menu_col", "settings": { "heading": "お買いもの" } },
+        { "type": "menu_col", "settings": { "heading": "ご案内" } },
+        { "type": "menu_col", "settings": { "heading": "ながおか商店を知る" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

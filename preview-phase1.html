@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shopify統合プレビュー · フェーズ1 — 麦茶LP（ヒーローまで）</title>
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="icon" href="../assets/logo/nagaoka-mark.png">
+<style>
+  /* このHTMLはShopifyには不要。Liquidを疑似展開して、みずきさんが見た目確認するためのプレビュー用。 */
+  .preview-banner {
+    background: var(--kane-500);
+    color: var(--navy-900);
+    padding: 8px 16px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .preview-banner strong { font-family: var(--font-display); }
+</style>
+</head>
+<body>
+
+<!-- プレビュー用の告知（Shopifyには載らない） -->
+<div class="preview-banner">
+  <strong>プレビュー</strong> · Shopifyに実装した後の見た目です · カート追加は動作しません（本番Shopify環境でのみ動きます）
+</div>
+
+<!-- ===================================================
+     sections/announcement-bar.liquid
+     =================================================== -->
+<div class="announce">
+  <span>◆</span>
+  8,000円以上で全国送料無料
+  <span>◆</span>
+  明治十二年、上野原の隣町の一杯
+  <span>◆</span>
+</div>
+
+<!-- ===================================================
+     sections/header-nagaoka.liquid
+     =================================================== -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="utility">
+      <a href="/">トップへ戻る</a>
+      <a href="#">よみもの</a>
+    </div>
+    <div class="brand">
+      <a href="/" style="display:block;">
+        <div class="brand-name">ながおか商店</div>
+        <div class="brand-sub">SINCE 1911 · UENOHARA</div>
+      </a>
+    </div>
+    <div class="actions">
+      <a href="#" class="icon-btn">検索</a>
+      <a href="#" class="icon-btn">ログイン</a>
+      <a href="#" class="icon-btn">
+        カート <span class="cart-count" data-cart-count>1</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===================================================
+     sections/mugicha-hero.liquid（Ajaxカート追加はプレビューではデモ動作）
+     =================================================== -->
+<section class="phero" data-mugicha-hero>
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <div class="crumb">
+      <a href="/">トップ</a>
+      <span class="sep">›</span>
+      <a href="#">お茶・飲料</a>
+      <span class="sep">›</span>
+      <span>純手炒り むぎ茶（上州屋設楽彦吉商店）</span>
+    </div>
+
+    <div class="phero-grid">
+
+      <!-- Visual -->
+      <div class="phero-visual">
+        <div class="phero-main">
+          <img src="../assets/photos/mugicha/04_pouring_black.jpg"
+               alt="真っ黒な純手炒りむぎ茶をグラスに注ぐ"
+               data-main-image>
+        </div>
+        <div class="phero-thumbs">
+          <button class="phero-thumb active" data-thumb data-src="../assets/photos/mugicha/04_pouring_black.jpg" type="button">
+            <img src="../assets/photos/mugicha/04_pouring_black.jpg" alt="">
+          </button>
+          <button class="phero-thumb" data-thumb data-src="../assets/photos/mugicha/03_maker_package.jpg" type="button">
+            <img src="../assets/photos/mugicha/03_maker_package.jpg" alt="">
+          </button>
+          <button class="phero-thumb" data-thumb data-src="../assets/photos/mugicha/01_maker_stirring.jpg" type="button">
+            <img src="../assets/photos/mugicha/01_maker_stirring.jpg" alt="">
+          </button>
+          <button class="phero-thumb" data-thumb data-src="../assets/photos/mugicha/02_kiln_smoke.jpg" type="button">
+            <img src="../assets/photos/mugicha/02_kiln_smoke.jpg" alt="">
+          </button>
+        </div>
+      </div>
+
+      <!-- Copy + Buy -->
+      <div class="phero-copy">
+        <div class="stamp-row">
+          <span class="stamp">明治12年創業</span>
+          <span class="stamp navy">ノンカフェイン</span>
+          <span class="stamp gold">上野原の隣町から</span>
+        </div>
+
+        <div class="phero-eyebrow">Joushuya Shitara · Pure Hand-Roasted Mugicha</div>
+        <h1 class="phero-title">純手炒り<br>むぎ茶</h1>
+        <div class="phero-sub">上州屋設楽彦吉商店 · 山梨県上野原市野田尻／国産六条大麦・手炒り／330g</div>
+
+        <hr class="phero-line">
+
+        <div class="phero-pitch">
+          <strong>コーヒーくらい黒いのに、飲むと苦くない。</strong><br>
+          香ばしさが鼻を通って、<br>
+          澄んだ深みが追いかけてくる。
+        </div>
+
+        <ul class="phero-facts">
+          <li>直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法</li>
+          <li>国産六条大麦を、2年寝かせてから炒り上げるため出せる深み</li>
+          <li>ノンカフェイン。お子様・妊婦さん・就寝前にも安心</li>
+          <li>本家推奨の楽しみ方は、砂糖・牛乳を加えるアレンジも</li>
+        </ul>
+
+        <form data-mugicha-form>
+
+          <!-- Variant selector -->
+          <div class="variant-block">
+            <div class="variant-label">タイプを選ぶ</div>
+            <div class="variant-options">
+              <button type="button" class="vopt active"
+                      data-variant-id="demo-330"
+                      data-variant-price="¥1,710"
+                      data-variant-available="true">
+                <div class="vopt-name">丸粒 330g</div>
+                <div class="vopt-desc">たっぷり約22回分。煮出しで本格的に。</div>
+                <div class="vopt-price">¥1,710 <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span></div>
+              </button>
+              <button type="button" class="vopt"
+                      data-variant-id="demo-150"
+                      data-variant-price="¥880"
+                      data-variant-available="true">
+                <div class="vopt-name">丸粒 150g</div>
+                <div class="vopt-desc">約10回分。まずは試したい方に。</div>
+                <div class="vopt-price">¥880 <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span></div>
+              </button>
+            </div>
+          </div>
+
+          <!-- Buy box -->
+          <div class="buybox">
+            <div class="price-row">
+              <span class="price" data-buybox-price>¥1,710</span>
+              <span class="tax" data-buybox-tax>税込 / 丸粒 330g</span>
+              <span class="stock" data-buybox-stock>◆ 在庫あり</span>
+            </div>
+            <div class="qty-row">
+              <span class="qty-label">数量</span>
+              <div class="qty-input">
+                <button type="button" data-qty-minus>−</button>
+                <input type="text" name="quantity" value="1" data-qty-input inputmode="numeric">
+                <button type="button" data-qty-plus>＋</button>
+              </div>
+            </div>
+            <input type="hidden" name="id" value="demo-330" data-variant-input>
+            <button type="submit" class="cta-cart" data-cta-cart>カートに入れる</button>
+            <button type="button" class="cta-buynow" data-cta-buynow>今すぐ購入する　→</button>
+            <div class="reassure">
+              <div>8,000円以上のご注文で全国送料無料</div>
+              <div>ご注文から2〜4営業日で発送</div>
+              <div>のし・ギフト包装対応可（ご注文時にお選びください）</div>
+              <div>ノンカフェインですので、時間を選ばずお楽しみいただけます</div>
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================================================
+     フェーズ2の予告
+     =================================================== -->
+<section style="background:var(--kinari-50); padding:64px 0; text-align:center; border-top:1px solid var(--kinari-300);">
+  <div class="container-narrow">
+    <div class="phero-eyebrow">Coming in Phase 2</div>
+    <h2 style="font-family:var(--font-display); font-size:28px; color:var(--fg-brand); margin:12px 0;">
+      この下に、まだ12個のセクションが続きます
+    </h2>
+    <hr class="phero-line" style="margin:24px auto;">
+    <p style="color:var(--fg-secondary); line-height:1.9; font-size:14px;">
+      Proof strip ／ Why This Mugicha（3列）／ 比較 ／ 飲み方 ／ 淹れ方 ／<br>
+      作り手ストーリー ／ 量を限る誇り ／ 上野原の百年つながり ／<br>
+      5サイズラインナップ ／ FAQ ／ スペック ／ Final CTA
+    </p>
+    <p style="color:var(--fg-tertiary); font-size:12px; margin-top:24px; letter-spacing:0.1em;">
+      フェーズ1（土台・ヒーロー）で見た目OKが出たら、順番に作ります。
+    </p>
+  </div>
+</section>
+
+<!-- ===================================================
+     sections/footer-nagaoka.liquid (simple)
+     =================================================== -->
+<footer class="footer">
+  <span>◆</span>
+  © 2026 ながおか商店 · 近江屋ながおか · 山梨県上野原市
+  <span>◆</span>
+</footer>
+
+<!-- カートトースト -->
+<div class="cart-toast" data-cart-toast>
+  <span data-cart-toast-msg>カートに入れました</span>
+  <a href="#">カートを見る　→</a>
+</div>
+
+<script>
+// プレビュー用の疑似JS（本番の mugicha-hero.liquid に埋め込まれるのと同じロジック）
+(function() {
+  const root = document.querySelector('[data-mugicha-hero]');
+  if (!root) return;
+
+  const mainImg = root.querySelector('[data-main-image]');
+  root.querySelectorAll('[data-thumb]').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      root.querySelectorAll('[data-thumb]').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const src = thumb.getAttribute('data-src');
+      if (src && mainImg) mainImg.src = src;
+    });
+  });
+
+  const form = root.querySelector('[data-mugicha-form]');
+  if (!form) return;
+
+  const variantInput = form.querySelector('[data-variant-input]');
+  const priceEl = form.querySelector('[data-buybox-price]');
+  const taxEl = form.querySelector('[data-buybox-tax]');
+
+  root.querySelectorAll('[data-variant-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      root.querySelectorAll('[data-variant-id]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (variantInput) variantInput.value = btn.getAttribute('data-variant-id');
+      if (priceEl) priceEl.textContent = btn.getAttribute('data-variant-price');
+      const name = btn.querySelector('.vopt-name')?.textContent?.trim() || '';
+      if (taxEl && name) taxEl.textContent = '税込 / ' + name;
+    });
+  });
+
+  const qtyInput = form.querySelector('[data-qty-input]');
+  form.querySelector('[data-qty-minus]')?.addEventListener('click', () => {
+    qtyInput.value = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
+  });
+  form.querySelector('[data-qty-plus]')?.addEventListener('click', () => {
+    qtyInput.value = (parseInt(qtyInput.value, 10) || 1) + 1;
+  });
+
+  // カート追加はプレビューではトーストだけ
+  const toast = document.querySelector('[data-cart-toast]');
+  function showToast(msg) {
+    if (!toast) return;
+    toast.querySelector('[data-cart-toast-msg]').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('カートに入れました（プレビューではデモ動作）');
+    // カウントも仮で+1
+    const c = document.querySelector('[data-cart-count]');
+    if (c) c.textContent = (parseInt(c.textContent, 10) || 0) + 1;
+  });
+  form.querySelector('[data-cta-buynow]')?.addEventListener('click', () => {
+    showToast('チェックアウトへ（プレビューではデモ動作）');
+  });
+})();
+</script>
+
+</body>
+</html>

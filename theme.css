@@ -1,0 +1,1499 @@
+/* =========================================================
+   ながおか商店 — Shopify テーマ用 統合CSS
+   このファイル1枚に、デザインシステムのトークンと、
+   トップページ・麦茶LPで使う全スタイルが入っています。
+
+   Shopify管理画面 → assets/ にアップロードして、
+   layout/theme.liquid の </head> 直前に次の1行を追加：
+     {{ 'theme.css' | asset_url | stylesheet_tag }}
+   ========================================================= */
+
+
+/* ---------------------------------------------------------
+   0. WEBFONT
+   --------------------------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500;600;700&family=Shippori+Mincho:wght@400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&display=swap');
+
+
+/* ---------------------------------------------------------
+   1. デザイントークン
+   --------------------------------------------------------- */
+:root {
+  /* 紺 */
+  --navy-900: #0a1628;
+  --navy-800: #12233f;
+  --navy-700: #1e3358;
+  --navy-600: #2c476f;
+  --navy-500: #4a6485;
+  --navy-400: #7a8ea6;
+  --navy-300: #b0bcc9;
+  --navy-200: #d6dce4;
+  --navy-100: #ecf0f4;
+
+  /* 生成り〜墨 */
+  --kinari-50:  #fbf9f4;
+  --kinari-100: #f6f2ea;
+  --kinari-200: #ede7d9;
+  --kinari-300: #d9d1bf;
+  --kinari-400: #a89f8a;
+  --sumi-500:   #4a4a48;
+  --sumi-700:   #2b2b2a;
+  --sumi-900:   #1a1a1a;
+  --white:      #ffffff;
+
+  /* 金 */
+  --kane-900: #7a5f26;
+  --kane-700: #96742e;
+  --kane-500: #b08b3c;
+  --kane-400: #c9a55c;
+  --kane-300: #dcc088;
+  --kane-200: #ecdcb5;
+
+  /* セマンティック */
+  --success:    #4a7c59;
+  --success-bg: #e8efe9;
+  --warning:    #c2703a;
+  --warning-bg: #f6ebe1;
+  --danger:     #a63a3a;
+  --danger-bg:  #f4e4e4;
+  --info:       #3d6b8a;
+  --info-bg:    #e6edf2;
+  --shubun:     #b83a3a;
+
+  /* ロール */
+  --fg-primary:    var(--sumi-900);
+  --fg-secondary:  var(--sumi-500);
+  --fg-tertiary:   var(--navy-400);
+  --fg-brand:      var(--navy-800);
+  --fg-accent:     var(--kane-500);
+  --fg-on-dark:    var(--kinari-100);
+  --fg-on-brand:   var(--kinari-100);
+  --bg-page:       var(--kinari-100);
+  --bg-elevated:   var(--kinari-50);
+  --bg-card:       var(--white);
+  --bg-brand:      var(--navy-800);
+  --bg-brand-dark: var(--navy-900);
+  --bg-muted:      var(--kinari-200);
+  --border-hair:   var(--kinari-300);
+  --border-line:   var(--navy-800);
+  --border-accent: var(--kane-500);
+
+  /* タイポ */
+  --font-display:    'Shippori Mincho', 'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-body:       'Noto Serif JP', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --font-en-display: 'Cormorant Garamond', 'Shippori Mincho', serif;
+  --font-en-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-num:        'Cormorant Garamond', 'Inter', serif;
+}
+
+
+/* =========================================================
+   2. ベース
+   ========================================================= */
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  background: var(--kinari-100);
+  color: var(--fg-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.7;
+  font-feature-settings: "palt";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container       { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+.container-narrow{ max-width:  880px; margin: 0 auto; padding: 0 32px; }
+
+
+/* =========================================================
+   3. Announcement bar
+   ========================================================= */
+.announce {
+  background: var(--navy-900);
+  color: var(--kinari-100);
+  font-family: var(--font-body);
+  font-size: 12px;
+  text-align: center;
+  padding: 8px 16px;
+  letter-spacing: 0.05em;
+}
+.announce span { color: var(--kane-400); margin: 0 8px; }
+
+
+/* =========================================================
+   4. Header
+   ========================================================= */
+.header {
+  background: var(--kinari-50);
+  border-bottom: 1px solid var(--kinari-300);
+}
+.header-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 20px 0;
+  gap: 24px;
+}
+.utility {
+  display: flex;
+  gap: 20px;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--fg-secondary);
+}
+.utility a:hover { color: var(--fg-brand); }
+.brand { text-align: center; }
+.brand-name {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+.brand-sub {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--kane-700);
+  letter-spacing: 0.25em;
+  margin-top: 6px;
+}
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 20px;
+  align-items: center;
+}
+.icon-btn {
+  background: transparent;
+  border: 0;
+  padding: 8px;
+  cursor: pointer;
+  color: var(--fg-brand);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-body);
+  font-size: 13px;
+}
+.icon-btn:hover { color: var(--kane-700); }
+.cart-count {
+  background: var(--shubun);
+  color: var(--kinari-100);
+  font-family: var(--font-en-body);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 9999px;
+  margin-left: 2px;
+}
+.nav {
+  border-top: 1px solid var(--kinari-300);
+  border-bottom: 1px solid var(--kinari-300);
+  background: var(--kinari-50);
+}
+.nav-inner {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  padding: 14px 0;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+.nav-inner a {
+  color: var(--fg-brand);
+  padding: 4px 0;
+  border-bottom: 1px solid transparent;
+  transition: border 250ms;
+}
+.nav-inner a:hover,
+.nav-inner a.active { border-bottom-color: var(--kane-500); }
+.nav-inner a.season { color: var(--shubun); }
+
+
+/* =========================================================
+   5. Brand ribbon
+   ========================================================= */
+.brand-ribbon {
+  background: var(--navy-900);
+  color: var(--kinari-200);
+  text-align: center;
+  padding: 11px 0;
+  font-family: var(--font-display);
+  font-size: 12px;
+  letter-spacing: 0.2em;
+}
+.brand-ribbon .dot { color: var(--kane-500); margin: 0 14px; }
+
+
+/* =========================================================
+   6. Breadcrumb
+   ========================================================= */
+.crumb {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-secondary);
+  padding: 16px 0;
+  letter-spacing: 0.05em;
+}
+.crumb a:hover { color: var(--kane-700); }
+.crumb .sep { margin: 0 8px; color: var(--kinari-400); }
+
+
+/* =========================================================
+   7. 朱印スタンプ / バッジ
+   ========================================================= */
+.stamp {
+  display: inline-block;
+  background: var(--shubun);
+  color: var(--kinari-100);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  padding: 5px 12px;
+}
+.stamp.gold {
+  background: transparent;
+  color: var(--kane-700);
+  border: 1px solid var(--kane-500);
+}
+.stamp.navy {
+  background: var(--navy-800);
+  color: var(--kinari-100);
+}
+
+
+/* =========================================================
+   8. Product hero (麦茶LP)
+   ========================================================= */
+.phero { padding: 16px 0 96px; }
+.phero-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.phero-visual { position: sticky; top: 24px; }
+.phero-main {
+  aspect-ratio: 1 / 1;
+  background: var(--kinari-50);
+  border: 1px solid var(--kinari-300);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.phero-main img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+.phero-thumbs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-top: 12px;
+}
+.phero-thumb {
+  aspect-ratio: 1 / 1;
+  background: var(--kinari-50);
+  border: 1px solid var(--kinari-300);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.phero-thumb.active { border-color: var(--kane-500); }
+.phero-thumb img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+}
+
+.phero-copy .stamp-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+}
+.phero-eyebrow {
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--kane-700);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.phero-title {
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  line-height: 1.25;
+  margin: 0 0 8px;
+  letter-spacing: -0.005em;
+}
+.phero-sub {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-secondary);
+  letter-spacing: 0.05em;
+  margin-bottom: 24px;
+}
+.phero-line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 24px 0;
+  border: 0;
+}
+.phero-pitch {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--fg-primary);
+  line-height: 2;
+  margin-bottom: 32px;
+}
+.phero-pitch strong {
+  color: var(--fg-brand);
+  font-weight: 600;
+  background: linear-gradient(transparent 65%, var(--kane-200) 65%);
+  padding: 0 2px;
+}
+.phero-facts {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 32px;
+  display: grid;
+  gap: 12px;
+}
+.phero-facts li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-primary);
+  line-height: 1.7;
+  padding-left: 20px;
+  position: relative;
+}
+.phero-facts li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--kane-500);
+}
+
+
+/* =========================================================
+   9. Variant selector + Buy box
+   ========================================================= */
+.variant-block { margin-bottom: 20px; }
+.variant-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--fg-brand);
+  letter-spacing: 0.1em;
+  margin-bottom: 10px;
+}
+.variant-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+.vopt {
+  background: var(--white);
+  border: 1px solid var(--kinari-300);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border 200ms;
+  position: relative;
+  text-align: left;
+  font-family: inherit;
+}
+.vopt.active,
+.vopt[aria-pressed="true"] { border-color: var(--navy-800); }
+.vopt[disabled] {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+.vopt-name {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--fg-brand);
+  margin-bottom: 4px;
+}
+.vopt-desc {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--fg-secondary);
+  line-height: 1.5;
+}
+.vopt-price {
+  font-family: var(--font-num);
+  font-size: 15px;
+  color: var(--fg-brand);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.buybox {
+  background: var(--white);
+  border: 1px solid var(--kinari-300);
+  padding: 24px;
+  margin-top: 24px;
+}
+.price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+.price {
+  font-family: var(--font-num);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--fg-brand);
+}
+.tax {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-secondary);
+}
+.stock {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--success);
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  background: var(--success-bg);
+  border-radius: 2px;
+  margin-left: auto;
+}
+.stock.out {
+  color: var(--danger);
+  background: var(--danger-bg);
+}
+.qty-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.qty-label {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--fg-brand);
+  letter-spacing: 0.1em;
+}
+.qty-input {
+  display: flex;
+  border: 1px solid var(--kinari-300);
+}
+.qty-input button {
+  background: var(--kinari-50);
+  border: 0;
+  width: 36px;
+  height: 36px;
+  color: var(--fg-brand);
+  font-family: var(--font-num);
+  font-size: 16px;
+  cursor: pointer;
+}
+.qty-input button:hover { background: var(--kinari-200); }
+.qty-input input {
+  width: 48px;
+  height: 36px;
+  text-align: center;
+  border: 0;
+  border-left: 1px solid var(--kinari-300);
+  border-right: 1px solid var(--kinari-300);
+  font-family: var(--font-num);
+  font-size: 16px;
+  color: var(--fg-brand);
+  background: var(--white);
+}
+.qty-input input:focus { outline: 0; }
+
+.cta-cart,
+.cta-buynow {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  border: 0;
+  cursor: pointer;
+  transition: background 250ms;
+  text-align: center;
+}
+.cta-cart {
+  background: var(--navy-800);
+  color: var(--kinari-100);
+}
+.cta-cart:hover { background: var(--navy-700); }
+.cta-cart:disabled {
+  background: var(--kinari-400);
+  cursor: not-allowed;
+}
+.cta-buynow {
+  background: var(--kane-500);
+  color: var(--navy-900);
+  margin-top: 8px;
+}
+.cta-buynow:hover { background: var(--kane-400); }
+
+.reassure {
+  margin-top: 16px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-secondary);
+  line-height: 1.8;
+}
+.reassure div {
+  padding-left: 16px;
+  position: relative;
+}
+.reassure div::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: var(--kane-500);
+  font-size: 8px;
+  top: 6px;
+}
+
+
+/* =========================================================
+   10. Cart toast (Ajax追加時のフィードバック)
+   ========================================================= */
+.cart-toast {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  background: var(--navy-800);
+  color: var(--kinari-100);
+  padding: 16px 24px;
+  font-family: var(--font-display);
+  font-size: 14px;
+  letter-spacing: 0.1em;
+  border-left: 3px solid var(--kane-500);
+  transform: translateX(120%);
+  transition: transform 400ms cubic-bezier(0.16, 0.84, 0.44, 1);
+  z-index: 999;
+  max-width: 320px;
+  line-height: 1.6;
+}
+.cart-toast.show { transform: translateX(0); }
+.cart-toast a {
+  display: block;
+  margin-top: 8px;
+  color: var(--kane-400);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+
+/* =========================================================
+   11. Footer (共通・簡易版)
+   ========================================================= */
+.footer {
+  background: var(--sumi-900);
+  color: var(--navy-300);
+  padding: 32px 0;
+  font-family: var(--font-body);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+.footer span { color: var(--kane-400); margin: 0 8px; }
+.footer .footer-full {
+  background: var(--navy-900);
+  padding: 64px 0 24px;
+  text-align: left;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--navy-700);
+}
+.footer-brand h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--kinari-100);
+  letter-spacing: 0.15em;
+  margin: 0 0 8px;
+  font-weight: 600;
+}
+.footer-brand .sub {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 12px;
+  color: var(--kane-400);
+  letter-spacing: 0.2em;
+  margin-bottom: 20px;
+}
+.footer-brand p {
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--navy-300);
+  margin: 0;
+}
+.footer-col h5 {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--kane-400);
+  letter-spacing: 0.15em;
+  font-weight: 500;
+  margin: 0 0 16px;
+}
+.footer-col a {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--navy-300);
+  padding: 4px 0;
+}
+.footer-col a:hover { color: var(--kinari-100); }
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--navy-400);
+  letter-spacing: 0.1em;
+}
+
+
+/* =========================================================
+   12. 共通のセクション見出し（フェーズ2で共通利用）
+   ========================================================= */
+.sec-head { text-align: center; margin-bottom: 48px; }
+.sec-head .eyebrow-en {
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--kane-700);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+.sec-head h2 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  line-height: 1.35;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+.sec-head .kane { color: var(--kane-700); }
+.sec-head .line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 24px auto;
+  border: 0;
+}
+.sec-head p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--fg-secondary);
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.9;
+}
+
+
+/* =========================================================
+   13. Proof strip (4カラム)
+   ========================================================= */
+.proof {
+  background: var(--kinari-50);
+  border-top: 1px solid var(--kinari-300);
+  border-bottom: 1px solid var(--kinari-300);
+  padding: 32px 0;
+}
+.proof-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+.pcol .k {
+  font-family: var(--font-en-body);
+  font-size: 10px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--kane-700);
+  margin-bottom: 6px;
+}
+.pcol .v {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--fg-brand);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.pcol .v .n {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 26px;
+  color: var(--kane-500);
+}
+
+
+/* =========================================================
+   14. Benefit 3列
+   ========================================================= */
+.benefit { background: var(--kinari-100); padding: 96px 0; }
+.benefit-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.b-card {
+  background: var(--white);
+  padding: 40px 32px;
+  border: 1px solid var(--kinari-300);
+}
+.b-num {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--kane-500);
+  line-height: 1;
+  margin-bottom: 20px;
+}
+.b-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  line-height: 1.4;
+  margin: 0 0 16px;
+}
+.b-title .kane { color: var(--kane-700); }
+.b-body {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-primary);
+  line-height: 1.9;
+  margin: 0;
+}
+
+
+/* =========================================================
+   15. Compare 2列
+   ========================================================= */
+.compare { padding: 96px 0; background: var(--kinari-50); }
+.compare-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border: 1px solid var(--kinari-300);
+  background: var(--white);
+}
+.compare-col { padding: 40px 40px 48px; }
+.compare-col:first-child {
+  border-right: 1px solid var(--kinari-300);
+}
+.compare-tag {
+  font-family: var(--font-en-body);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--fg-tertiary);
+  margin-bottom: 8px;
+}
+.compare-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--fg-secondary);
+  margin-bottom: 24px;
+}
+.compare-col.hero .compare-name { color: var(--fg-brand); }
+.compare-col.hero .compare-tag { color: var(--kane-700); }
+.compare-list { list-style: none; padding: 0; margin: 0; }
+.compare-list li {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.9;
+  padding: 10px 0;
+  border-bottom: 1px dashed var(--kinari-300);
+  color: var(--fg-secondary);
+}
+.compare-col.hero .compare-list li { color: var(--fg-primary); }
+.compare-list li:last-child { border-bottom: 0; }
+
+
+/* =========================================================
+   16. How to drink (紺背景・4カード)
+   ========================================================= */
+.howto {
+  background: var(--navy-800);
+  color: var(--kinari-100);
+  padding: 96px 0;
+  position: relative;
+  overflow: hidden;
+}
+.howto .sec-head .eyebrow-en { color: var(--kane-400); }
+.howto .sec-head h2 { color: var(--kinari-100); }
+.howto .sec-head .kane { color: var(--kane-400); }
+.howto-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+.hcard {
+  background: transparent;
+  border: 1px solid var(--navy-600);
+  padding: 28px 24px;
+}
+.hcard .time {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--kane-400);
+  margin-bottom: 12px;
+  letter-spacing: 0.05em;
+}
+.hcard .htitle {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--kinari-100);
+  line-height: 1.4;
+  margin: 0 0 12px;
+}
+.hcard .hdesc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--navy-300);
+  line-height: 1.9;
+  margin: 0;
+}
+
+
+/* =========================================================
+   17. Recipe (金枠の淹れ方カード)
+   ========================================================= */
+.recipe { padding: 80px 0; background: var(--kinari-100); }
+.recipe-inner {
+  background: var(--white);
+  border: 1px solid var(--kinari-300);
+  padding: 56px 64px;
+  position: relative;
+}
+.recipe-inner::before {
+  content: "";
+  position: absolute;
+  top: 12px; left: 12px; right: 12px; bottom: 12px;
+  border: 1px solid var(--kane-500);
+  pointer-events: none;
+}
+.recipe-head {
+  text-align: center;
+  margin-bottom: 32px;
+  position: relative;
+}
+.recipe-head .eyebrow-en {
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--kane-700);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: block;
+}
+.recipe-head h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  letter-spacing: 0;
+  margin: 0;
+}
+.recipe-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  position: relative;
+}
+.step { text-align: center; }
+.step-n {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 24px;
+  color: var(--kane-500);
+  line-height: 1;
+  margin-bottom: 12px;
+}
+.step-t {
+  font-family: var(--font-display);
+  font-size: 15px;
+  color: var(--fg-brand);
+  font-weight: 600;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+.step-d {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-secondary);
+  line-height: 1.7;
+}
+
+
+/* =========================================================
+   18. Maker story
+   ========================================================= */
+.maker { padding: 96px 0; background: var(--kinari-50); }
+.maker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 64px;
+  align-items: center;
+}
+.maker-visual {
+  aspect-ratio: 4 / 5;
+  background: var(--kinari-200);
+  position: relative;
+  border: 1px solid var(--kinari-300);
+  overflow: hidden;
+}
+.maker-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.maker-copy .eyebrow-en {
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--kane-700);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.maker-copy h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  line-height: 1.4;
+  margin: 0 0 24px;
+}
+.maker-copy .line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 24px 0;
+  border: 0;
+}
+.maker-copy p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--fg-primary);
+  line-height: 2;
+  margin: 0 0 16px;
+}
+.maker-copy p .kane {
+  color: var(--kane-700);
+  font-weight: 500;
+}
+.maker-facts {
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--kinari-300);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.maker-fact .k {
+  font-family: var(--font-en-body);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--kane-700);
+  margin-bottom: 4px;
+}
+.maker-fact .v {
+  font-family: var(--font-display);
+  font-size: 14px;
+  color: var(--fg-brand);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+
+/* =========================================================
+   19. Limited (黒背景・量を限る誇り)
+   ========================================================= */
+.limited {
+  padding: 0;
+  background: var(--sumi-900);
+  color: var(--kinari-100);
+  position: relative;
+}
+.limited-inner {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  min-height: 520px;
+}
+.limited-photo {
+  position: relative;
+  overflow: hidden;
+  background: var(--sumi-900);
+}
+.limited-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.limited-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 60%, rgba(26,26,26,0.5) 100%);
+  pointer-events: none;
+}
+.limited-copy {
+  padding: 80px 64px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.limited-copy .eyebrow-en {
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--kane-400);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  display: block;
+}
+.limited-copy h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--kinari-100);
+  line-height: 1.5;
+  margin: 0 0 24px;
+  letter-spacing: 0.02em;
+}
+.limited-copy h2 .kane { color: var(--kane-400); }
+.limited-copy .line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 0 0 28px;
+  border: 0;
+}
+.limited-copy .quote {
+  font-family: var(--font-display);
+  font-size: 18px;
+  color: var(--kane-200);
+  line-height: 1.9;
+  font-weight: 500;
+  padding: 20px 24px;
+  border-left: 2px solid var(--kane-500);
+  background: rgba(176, 139, 60, 0.06);
+  margin-bottom: 24px;
+}
+.limited-copy p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--navy-300);
+  line-height: 2;
+  margin: 0 0 12px;
+}
+.limited-copy p strong {
+  color: var(--kinari-100);
+  font-weight: 500;
+  background: linear-gradient(transparent 65%, rgba(176,139,60,0.35) 65%);
+  padding: 0 2px;
+}
+
+
+/* =========================================================
+   20. Twins (上野原の百年つながり)
+   ========================================================= */
+.twins {
+  padding: 80px 0;
+  background: var(--kinari-100);
+  text-align: center;
+}
+.twins h3 {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  margin: 0 0 8px;
+  line-height: 1.4;
+}
+.twins h3 .kane { color: var(--kane-700); }
+.twins .line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 24px auto;
+  border: 0;
+}
+.twins-inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 24px;
+  align-items: center;
+  max-width: 800px;
+  margin: 32px auto 0;
+}
+.twin {
+  padding: 24px;
+  border: 1px solid var(--kinari-300);
+  background: var(--white);
+}
+.twin .year {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--kane-500);
+  letter-spacing: 0.1em;
+  margin-bottom: 6px;
+}
+.twin .name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  color: var(--fg-brand);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+.twin .role {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-secondary);
+  letter-spacing: 0.05em;
+}
+.twin-conn {
+  font-family: var(--font-en-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--kane-700);
+  letter-spacing: 0.2em;
+}
+.twins-caption {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-secondary);
+  margin-top: 24px;
+  letter-spacing: 0.03em;
+}
+
+
+/* =========================================================
+   21. Lineup (5サイズ)
+   ========================================================= */
+.lineup { padding: 96px 0; background: var(--kinari-50); }
+.lineup-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.lcard {
+  background: var(--white);
+  border: 1px solid var(--kinari-300);
+  padding: 24px;
+  transition: border 200ms;
+  cursor: pointer;
+  position: relative;
+}
+.lcard:hover { border-color: var(--kane-500); }
+.lcard .tag {
+  font-family: var(--font-en-body);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--kane-700);
+  margin-bottom: 6px;
+}
+.lcard .lname {
+  font-family: var(--font-display);
+  font-size: 17px;
+  color: var(--fg-brand);
+  font-weight: 600;
+  margin: 0 0 6px;
+  line-height: 1.4;
+}
+.lcard .ldesc {
+  font-family: var(--font-body);
+  font-size: 12px;
+  color: var(--fg-secondary);
+  line-height: 1.7;
+  margin: 0 0 14px;
+  min-height: 60px;
+}
+.lcard .lprice {
+  font-family: var(--font-num);
+  font-size: 20px;
+  color: var(--fg-brand);
+  font-weight: 600;
+}
+.lcard .ltax {
+  font-family: var(--font-body);
+  font-size: 11px;
+  color: var(--fg-secondary);
+  margin-left: 4px;
+}
+.lcard.featured { border-color: var(--navy-800); }
+.lcard.featured::before {
+  content: "おすすめ";
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  background: var(--navy-800);
+  color: var(--kinari-100);
+  font-family: var(--font-display);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  padding: 4px 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   22. FAQ
+   ========================================================= */
+.faq { padding: 96px 0; background: var(--kinari-100); }
+.faq h3 {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  text-align: center;
+  margin: 0 0 8px;
+}
+.faq .line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 24px auto 40px;
+  border: 0;
+}
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+.faq-item {
+  border-bottom: 1px solid var(--kinari-300);
+  padding: 20px 0;
+}
+.faq-q {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--fg-brand);
+  margin-bottom: 8px;
+  padding-left: 24px;
+  position: relative;
+  line-height: 1.5;
+}
+.faq-q::before {
+  content: "Q";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  color: var(--kane-500);
+  font-size: 16px;
+  font-weight: 600;
+}
+.faq-a {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--fg-primary);
+  line-height: 1.9;
+  padding-left: 24px;
+  position: relative;
+}
+.faq-a::before {
+  content: "A";
+  position: absolute;
+  left: 0;
+  top: 2px;
+  font-family: var(--font-en-display);
+  font-style: italic;
+  color: var(--fg-secondary);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   23. Specs (テーブル)
+   ========================================================= */
+.specs { padding: 80px 0; background: var(--kinari-50); }
+.specs h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--fg-brand);
+  margin: 0 0 24px;
+  letter-spacing: 0;
+}
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--white);
+  border: 1px solid var(--kinari-300);
+}
+.spec-table th,
+.spec-table td {
+  padding: 16px 20px;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 14px;
+  border-bottom: 1px solid var(--kinari-300);
+  vertical-align: top;
+}
+.spec-table th {
+  width: 220px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--fg-brand);
+  background: var(--kinari-50);
+  letter-spacing: 0.05em;
+}
+.spec-table tr:last-child th,
+.spec-table tr:last-child td { border-bottom: 0; }
+
+
+/* =========================================================
+   24. Final CTA (紺背景の最終背中押し)
+   ========================================================= */
+.final {
+  background: var(--navy-900);
+  color: var(--kinari-100);
+  padding: 96px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.final-inner { position: relative; }
+.final .eyebrow-en {
+  font-family: var(--font-en-body);
+  font-size: 11px;
+  color: var(--kane-400);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  display: block;
+}
+.final h2 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  color: var(--kinari-100);
+  line-height: 1.4;
+  margin: 0 0 16px;
+}
+.final .kane { color: var(--kane-400); }
+.final .line {
+  width: 60px;
+  height: 1px;
+  background: var(--kane-500);
+  margin: 24px auto;
+  border: 0;
+}
+.final p {
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--navy-300);
+  line-height: 1.9;
+  max-width: 520px;
+  margin: 0 auto 40px;
+}
+.final .final-price {
+  margin-bottom: 32px;
+}
+.final .final-price .price {
+  font-family: var(--font-num);
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--kinari-100);
+}
+.final .final-price .tax {
+  font-family: var(--font-body);
+  font-size: 13px;
+  color: var(--navy-300);
+  margin-left: 8px;
+}
+.final .cta {
+  display: inline-block;
+  background: var(--kane-500);
+  color: var(--navy-900);
+  padding: 18px 48px;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  transition: background 250ms;
+  border: 0;
+  cursor: pointer;
+}
+.final .cta:hover { background: var(--kane-400); }
+
+
+/* =========================================================
+   25. レスポンシブ
+   ========================================================= */
+@media (max-width: 900px) {
+  .phero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .phero-visual { position: static; }
+  .header-inner { grid-template-columns: auto 1fr auto; }
+  .utility { display: none; }
+  .brand { text-align: left; }
+  .brand-name { font-size: 22px; }
+  .phero-title { font-size: 30px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .nav-inner { flex-wrap: wrap; gap: 20px; }
+
+  .proof-inner,
+  .benefit-grid,
+  .howto-grid,
+  .recipe-steps,
+  .lineup-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .maker-grid,
+  .compare-inner,
+  .twins-inner,
+  .limited-inner { grid-template-columns: 1fr; gap: 0; }
+  .maker-facts { grid-template-columns: 1fr 1fr; }
+  .compare-col:first-child {
+    border-right: 0;
+    border-bottom: 1px solid var(--kinari-300);
+  }
+  .twin-conn { transform: rotate(90deg); }
+  .limited-photo { aspect-ratio: 4 / 3; }
+  .limited-copy { padding: 48px 32px; }
+  .limited-copy h2 { font-size: 26px; }
+  .recipe-inner { padding: 32px 24px; }
+  .sec-head h2 { font-size: 28px; }
+  .final h2 { font-size: 28px; }
+}

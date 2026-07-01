@@ -1,0 +1,53 @@
+{% comment %}
+  麦茶LP — Proof strip
+  4カラムの「証明」ストリップ。年号・製法・原材料・カフェインなど。
+{% endcomment %}
+
+<section class="proof">
+  <div class="container">
+    <div class="proof-inner">
+      {%- for block in section.blocks -%}
+        <div class="pcol">
+          <div class="k">{{ block.settings.label_en }}</div>
+          <div class="v">
+            {%- if block.settings.number != blank -%}
+              <span class="n">{{ block.settings.number }}</span><br>
+            {%- endif -%}
+            {{ block.settings.value | newline_to_br }}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 Proof",
+  "tag": "section",
+  "class": "shopify-section-mugicha-proof",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "col",
+      "name": "証明カラム",
+      "settings": [
+        { "type": "text", "id": "label_en", "label": "英字ラベル", "default": "Founded" },
+        { "type": "text", "id": "number", "label": "数字（斜体・金）", "default": "1879" },
+        { "type": "text", "id": "value", "label": "値（改行OK）", "default": "明治十二年" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 Proof",
+      "blocks": [
+        { "type": "col", "settings": { "label_en": "Founded",    "number": "1879", "value": "明治十二年" } },
+        { "type": "col", "settings": { "label_en": "Method",     "number": "",     "value": "直径三尺\n平釜・竹箒" } },
+        { "type": "col", "settings": { "label_en": "Ingredient", "number": "",     "value": "国産六条大麦\n二年寝かせ" } },
+        { "type": "col", "settings": { "label_en": "Caffeine",   "number": "",     "value": "ゼロ\nノンカフェイン" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,60 @@
+{% comment %}
+  麦茶LP — 飲み方 4シーン
+  紺背景で、朝・昼・夜・寝る前の楽しみ方を提示。
+{% endcomment %}
+
+<section class="howto">
+  <div class="container">
+    <div class="sec-head">
+      {%- if section.settings.eyebrow_en != blank -%}
+        <span class="eyebrow-en">{{ section.settings.eyebrow_en }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading | replace: '|', '<br>' }}</h2>
+      <hr class="line">
+    </div>
+    <div class="howto-grid">
+      {%- for block in section.blocks -%}
+        <div class="hcard">
+          <div class="time">{{ block.settings.time_en }}</div>
+          <h3 class="htitle">{{ block.settings.title }}</h3>
+          <p class="hdesc">{{ block.settings.body }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 飲み方",
+  "tag": "section",
+  "class": "shopify-section-mugicha-howto",
+  "settings": [
+    { "type": "text", "id": "eyebrow_en", "label": "英字リード", "default": "Ways to Enjoy" },
+    { "type": "text", "id": "heading", "label": "見出し（|で改行、<span class=\"kane\">〜</span>で金色）", "default": "一日のなかに、|手炒りの一杯を<span class=\"kane\">溶かして</span>いく。" }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "scene",
+      "name": "シーン",
+      "settings": [
+        { "type": "text", "id": "time_en", "label": "時間（英字・斜体）", "default": "Morning" },
+        { "type": "text", "id": "title", "label": "タイトル", "default": "起きぬけに、冷やし麦茶" },
+        { "type": "textarea", "id": "body", "label": "本文", "default": "前夜に煮出して冷やしておいた一杯を、目覚めの水分補給に。ノンカフェインだから、コーヒーの前でも安心。" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 飲み方",
+      "blocks": [
+        { "type": "scene", "settings": { "time_en": "Morning", "title": "起きぬけに、冷やし麦茶", "body": "前夜に煮出して冷やしておいた一杯を、目覚めの水分補給に。ノンカフェインだから、コーヒーの前でも安心。" } },
+        { "type": "scene", "settings": { "time_en": "Noon",    "title": "食事に、氷を浮かべて", "body": "大きな氷を入れたグラスにたっぷり注いで。揚げ物・油ものと特に相性のよい香ばしさです。" } },
+        { "type": "scene", "settings": { "time_en": "Evening", "title": "牛乳と合わせて、麦茶ラテ", "body": "濃く煮出した麦茶を、温めた牛乳に注ぐ。砂糖を少し。市販のラテにはない、香ばしいコクが広がります。" } },
+        { "type": "scene", "settings": { "time_en": "Night",   "title": "寝る前に、ホットで", "body": "やかんで煮出し、湯気ごとカップに。カフェインを気にする時間帯も、心置きなく一杯。" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

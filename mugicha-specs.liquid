@@ -1,0 +1,55 @@
+{% comment %}
+  麦茶LP — スペック表
+  商品情報のテーブル。行はブロックで自由に増減可能。
+{% endcomment %}
+
+<section class="specs">
+  <div class="container-narrow">
+    <h3>{{ section.settings.heading }}</h3>
+    <table class="spec-table">
+      {%- for block in section.blocks -%}
+        <tr>
+          <th>{{ block.settings.label }}</th>
+          <td>{{ block.settings.value | newline_to_br }}</td>
+        </tr>
+      {%- endfor -%}
+    </table>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 スペック",
+  "tag": "section",
+  "class": "shopify-section-mugicha-specs",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "見出し", "default": "商品情報" }
+  ],
+  "max_blocks": 20,
+  "blocks": [
+    {
+      "type": "row",
+      "name": "行",
+      "settings": [
+        { "type": "text", "id": "label", "label": "項目", "default": "商品名" },
+        { "type": "textarea", "id": "value", "label": "内容（改行OK）", "default": "純手炒り むぎ茶（丸粒 330g）" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 スペック",
+      "blocks": [
+        { "type": "row", "settings": { "label": "商品名",       "value": "純手炒り むぎ茶（丸粒 330g）" } },
+        { "type": "row", "settings": { "label": "原材料",       "value": "大麦（国産・六条大麦）" } },
+        { "type": "row", "settings": { "label": "内容量",       "value": "330g（丸粒袋入り）／ 約22回分" } },
+        { "type": "row", "settings": { "label": "製法",         "value": "直径三尺の平釜による手炒り製法" } },
+        { "type": "row", "settings": { "label": "カフェイン",   "value": "ノンカフェイン" } },
+        { "type": "row", "settings": { "label": "製造元",       "value": "株式会社 上州屋設楽彦吉商店\n山梨県上野原市野田尻1072番地 · 明治12年創業" } },
+        { "type": "row", "settings": { "label": "保存方法",     "value": "直射日光・高温多湿を避け、常温で保存" } },
+        { "type": "row", "settings": { "label": "販売者",       "value": "ながおか商店（近江屋ながおか）／ 山梨県上野原市上野原4691-2" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

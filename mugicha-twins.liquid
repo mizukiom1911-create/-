@@ -1,0 +1,64 @@
+{% comment %}
+  麦茶LP — 上野原の百年つながり
+  2軒の老舗を並べて表示（1879 × 1911）。
+{% endcomment %}
+
+<section class="twins">
+  <div class="container">
+    <h3>{{ section.settings.heading }}</h3>
+    <hr class="line">
+    <div class="twins-inner">
+      {%- assign i = 0 -%}
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'shop' -%}
+          {%- assign i = i | plus: 1 -%}
+          <div class="twin">
+            <div class="year">{{ block.settings.year }}</div>
+            <div class="name">{{ block.settings.name }}</div>
+            <div class="role">{{ block.settings.role }}</div>
+          </div>
+          {%- unless forloop.last -%}
+            <div class="twin-conn">{{ section.settings.connector | default: '×' }}</div>
+          {%- endunless -%}
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+    {%- if section.settings.caption != blank -%}
+      <div class="twins-caption">{{ section.settings.caption }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 百年つながり",
+  "tag": "section",
+  "class": "shopify-section-mugicha-twins",
+  "settings": [
+    { "type": "richtext", "id": "heading", "label": "見出し", "default": "<p>上野原の、<span class=\"kane\">百年つながり</span>。</p>" },
+    { "type": "text", "id": "connector", "label": "コネクター記号", "default": "×" },
+    { "type": "text", "id": "caption", "label": "下部キャプション", "default": "同じ上野原で、百年以上、手仕事を守りつづけてきた二軒が、この一杯をあなたへ。" }
+  ],
+  "max_blocks": 2,
+  "blocks": [
+    {
+      "type": "shop",
+      "name": "商店カード",
+      "settings": [
+        { "type": "text", "id": "year", "label": "年号（斜体金）", "default": "1879" },
+        { "type": "text", "id": "name", "label": "店名", "default": "上州屋設楽彦吉商店" },
+        { "type": "text", "id": "role", "label": "役割・年号説明", "default": "明治12年 · 手炒り麦茶" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 百年つながり",
+      "blocks": [
+        { "type": "shop", "settings": { "year": "1879", "name": "上州屋設楽彦吉商店", "role": "明治12年 · 手炒り麦茶" } },
+        { "type": "shop", "settings": { "year": "1911", "name": "ながおか商店", "role": "明治44年 · 近江屋ながおか" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,140 @@
+{% comment %}
+  ながおか商店 — Header
+  上下2段構成のヘッダー。
+    上段: 左（ユーティリティリンク） / 中央（屋号） / 右（検索・ログイン・カート）
+    下段: グローバルナビゲーション
+
+  ナビメニューはShopifyの「メインメニュー（main-menu）」を参照します。
+  管理画面 → オンラインストア → メニュー → メインメニュー で編集できます。
+{% endcomment %}
+
+<header class="header">
+  <div class="container header-inner">
+
+    <!-- 上段左：ユーティリティ -->
+    <div class="utility">
+      {%- for link in section.settings.utility_menu.links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </div>
+
+    <!-- 上段中央：屋号 -->
+    <div class="brand">
+      <a href="{{ routes.root_url }}" style="display:block;">
+        <div class="brand-name">{{ section.settings.brand_name | default: shop.name }}</div>
+        {% if section.settings.brand_sub != blank %}
+          <div class="brand-sub">{{ section.settings.brand_sub }}</div>
+        {% endif %}
+      </a>
+    </div>
+
+    <!-- 上段右：アクション -->
+    <div class="actions">
+      <a href="{{ routes.search_url }}" class="icon-btn">検索</a>
+      {%- if shop.customer_accounts_enabled -%}
+        {% if customer %}
+          <a href="{{ routes.account_url }}" class="icon-btn">マイページ</a>
+        {% else %}
+          <a href="{{ routes.account_login_url }}" class="icon-btn">ログイン</a>
+        {% endif %}
+      {%- endif -%}
+      <a href="{{ routes.cart_url }}" class="icon-btn">
+        カート
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count" data-cart-count>{{ cart.item_count }}</span>
+        {%- else -%}
+          <span class="cart-count" data-cart-count style="display:none;">0</span>
+        {%- endif -%}
+      </a>
+    </div>
+
+  </div>
+
+  <!-- 下段：グローバルナビ -->
+  {%- if section.settings.main_menu != blank -%}
+    <nav class="nav">
+      <div class="container nav-inner">
+        {%- for link in section.settings.main_menu.links -%}
+          <a href="{{ link.url }}"
+             class="{% if link.active %}active{% endif %}{% if link.title contains '季節' %} season{% endif %}">
+            {%- if link.title contains '季節' -%}◆ {% endif -%}
+            {{- link.title -}}
+          </a>
+        {%- endfor -%}
+      </div>
+    </nav>
+  {%- endif -%}
+</header>
+
+<!-- ブランドリボン（オプション：紺の帯） -->
+{%- if section.settings.show_ribbon -%}
+  <div class="brand-ribbon">
+    {{ section.settings.ribbon_left }}
+    <span class="dot">・</span>
+    {{ section.settings.ribbon_center }}
+    <span class="dot">・</span>
+    {{ section.settings.ribbon_right }}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "ヘッダー（ながおか）",
+  "tag": "header",
+  "class": "shopify-section-header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "brand_name",
+      "label": "屋号（日本語）",
+      "default": "ながおか商店"
+    },
+    {
+      "type": "text",
+      "id": "brand_sub",
+      "label": "屋号サブ（英字）",
+      "default": "SINCE 1911 · UENOHARA"
+    },
+    {
+      "type": "link_list",
+      "id": "utility_menu",
+      "label": "ユーティリティメニュー（上段左）",
+      "default": "footer"
+    },
+    {
+      "type": "link_list",
+      "id": "main_menu",
+      "label": "メインメニュー（下段ナビ）",
+      "default": "main-menu"
+    },
+    {
+      "type": "header",
+      "content": "ブランドリボン（紺の帯）"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_ribbon",
+      "label": "ブランドリボンを表示",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "ribbon_left",
+      "label": "左",
+      "default": "山梨の地酒と、美味しいものを。"
+    },
+    {
+      "type": "text",
+      "id": "ribbon_center",
+      "label": "中央",
+      "default": "山梨・上野原"
+    },
+    {
+      "type": "text",
+      "id": "ribbon_right",
+      "label": "右",
+      "default": "創業1911年"
+    }
+  ]
+}
+{% endschema %}

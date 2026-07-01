@@ -1,0 +1,48 @@
+{% comment %}
+  ながおか商店 — Announcement Bar
+  上部の細い紺色バー。送料・季節キャンペーンなどを表示。
+
+  管理画面から「メッセージ」を編集可能。
+  Shopifyテーマエディタの「セクションを追加」から使えます。
+{% endcomment %}
+
+<div class="announce">
+  {%- for block in section.blocks -%}
+    {% if forloop.first %}<span>◆</span>{% endif %}
+    {{ block.settings.text }}
+    {% unless forloop.last %}<span>◆</span>{% endunless %}
+    {% if forloop.last %}<span>◆</span>{% endif %}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "アナウンスバー",
+  "tag": "aside",
+  "class": "shopify-section-announce",
+  "max_blocks": 3,
+  "blocks": [
+    {
+      "type": "message",
+      "name": "メッセージ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "文言",
+          "default": "8,000円以上で全国送料無料"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "アナウンスバー",
+      "blocks": [
+        { "type": "message", "settings": { "text": "8,000円以上で全国送料無料" } },
+        { "type": "message", "settings": { "text": "母の日ギフト受付開始" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

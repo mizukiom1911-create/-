@@ -1,0 +1,53 @@
+{% comment %}
+  麦茶LP — FAQ
+  Q&A のシンプルなリスト。
+{% endcomment %}
+
+<section class="faq">
+  <div class="container">
+    <h3>{{ section.settings.heading }}</h3>
+    <hr class="line">
+    <div class="faq-list">
+      {%- for block in section.blocks -%}
+        <div class="faq-item">
+          <div class="faq-q">{{ block.settings.q }}</div>
+          <div class="faq-a">{{ block.settings.a }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 FAQ",
+  "tag": "section",
+  "class": "shopify-section-mugicha-faq",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "見出し", "default": "よくあるご質問" }
+  ],
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Q&A",
+      "settings": [
+        { "type": "text", "id": "q", "label": "質問", "default": "カフェインは入っていますか？" },
+        { "type": "textarea", "id": "a", "label": "回答", "default": "入っていません。お子様や妊婦さん、就寝前でも安心してお召し上がりいただけます。" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 FAQ",
+      "blocks": [
+        { "type": "qa", "settings": { "q": "カフェインは入っていますか？", "a": "入っていません。お子様や妊婦さん、就寝前でも安心してお召し上がりいただけます。" } },
+        { "type": "qa", "settings": { "q": "丸粒とティーパック、味に違いはありますか？", "a": "どちらも同じ手炒り製法の麦茶です。丸粒は煮出しで本格的に、ティーパックは手軽に楽しむための形。用途で選んでください。" } },
+        { "type": "qa", "settings": { "q": "初めて購入するなら、どれがおすすめですか？", "a": "まず味を試すなら 丸粒150g または ティーパック5包、ご家庭で本格的に楽しむなら 丸粒330g または ティーパック15包 が人気です。" } },
+        { "type": "qa", "settings": { "q": "贈答用に選ぶなら、どれが良いですか？", "a": "見栄えと内容量のバランスからティーパック15包が贈答に選ばれています。特別な方には丸粒330g、プチギフトにはティーパック5包が便利です。のし・包装のご希望はご注文時にお選びください。" } },
+        { "type": "qa", "settings": { "q": "どれくらい日持ちしますか？", "a": "未開封で製品表記の賞味期限を目安に。開封後は高温多湿を避け、常温保存でお早めにお召し上がりください。" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

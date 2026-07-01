@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ながおか商店 — 山梨の地酒と、美味しいもの</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" href="../../assets/logo/nagaoka-mark.png">
+<style>
+/* ========== base ========== */
+*{box-sizing:border-box;}
+body{margin:0;background:var(--kinari-100);color:var(--fg-primary);}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1280px;margin:0 auto;padding:0 32px;}
+
+/* ========== announcement bar ========== */
+.announce{background:var(--navy-900);color:var(--kinari-100);font-family:var(--font-body);font-size:12px;text-align:center;padding:8px 16px;letter-spacing:0.05em;}
+.announce span{color:var(--kane-400);margin:0 8px;}
+
+/* ========== header ========== */
+.header{background:var(--kinari-50);border-bottom:1px solid var(--kinari-300);}
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 0;gap:24px;}
+.utility{display:flex;gap:20px;font-family:var(--font-body);font-size:13px;color:var(--fg-secondary);}
+.utility a:hover{color:var(--fg-brand);}
+.brand{text-align:center;}
+.brand-name{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--fg-brand);letter-spacing:0.18em;line-height:1;}
+.brand-sub{font-family:var(--font-en-display);font-style:italic;font-size:12px;color:var(--kane-700);letter-spacing:0.25em;margin-top:6px;}
+.actions{display:flex;justify-content:flex-end;gap:20px;align-items:center;}
+.icon-btn{background:transparent;border:0;padding:8px;cursor:pointer;color:var(--fg-brand);display:flex;align-items:center;gap:6px;font-family:var(--font-body);font-size:13px;}
+.icon-btn:hover{color:var(--kane-700);}
+.cart-count{background:var(--shubun);color:var(--kinari-100);font-family:var(--font-en-body);font-size:10px;font-weight:600;padding:1px 6px;border-radius:9999px;margin-left:2px;}
+
+/* ========== nav ========== */
+.nav{border-top:1px solid var(--kinari-300);border-bottom:1px solid var(--kinari-300);background:var(--kinari-50);}
+.nav-inner{display:flex;justify-content:center;gap:36px;padding:14px 0;font-family:var(--font-display);font-size:14px;letter-spacing:0.1em;font-weight:500;}
+.nav-inner a{color:var(--fg-brand);padding:4px 0;border-bottom:1px solid transparent;transition:border 250ms;}
+.nav-inner a:hover, .nav-inner a.active{border-bottom-color:var(--kane-500);}
+.nav-inner a.season{color:var(--shubun);}
+
+/* ========== brand ribbon ========== */
+.brand-ribbon{background:var(--navy-900);color:var(--kinari-200);text-align:center;padding:11px 0;font-family:var(--font-display);font-size:12px;letter-spacing:0.2em;}
+.brand-ribbon .dot{color:var(--kane-500);margin:0 14px;}
+
+/* ========== hero banner (写真内にコピー) ========== */
+.hero{position:relative;background:var(--navy-900);padding:0;}
+.hero-banner{position:relative;display:block;overflow:hidden;aspect-ratio:16/8;background:var(--navy-800);color:inherit;text-decoration:none;}
+.hero-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;transition:transform 8000ms ease-out;}
+.hero-banner:hover img{transform:scale(1.04);}
+.hero-banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(18,35,63,0.85) 0%, rgba(18,35,63,0.60) 42%, rgba(18,35,63,0.15) 90%);pointer-events:none;z-index:1;}
+.hero-frame{position:absolute;inset:32px;border:1px solid rgba(176,139,60,0.35);pointer-events:none;z-index:2;}
+.hero-tag{position:absolute;top:56px;right:56px;z-index:3;font-family:var(--font-en-body);font-size:10px;color:var(--kane-400);letter-spacing:0.3em;text-transform:uppercase;writing-mode:vertical-rl;padding:16px 0;border-top:1px solid rgba(176,139,60,0.5);border-bottom:1px solid rgba(176,139,60,0.5);}
+.hero-inner{position:absolute;inset:0;z-index:3;display:flex;align-items:center;padding:0 8vw;}
+.hero-copy{max-width:540px;color:var(--kinari-100);}
+.hero-copy .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-400);letter-spacing:0.28em;text-transform:uppercase;margin-bottom:26px;display:inline-flex;align-items:center;gap:14px;}
+.hero-copy .eyebrow::before{content:"";width:36px;height:1px;background:var(--kane-500);display:inline-block;}
+.hero-copy h1{font-family:var(--font-display);font-size:52px;font-weight:700;color:var(--kinari-100);line-height:1.4;letter-spacing:0.02em;margin-bottom:24px;text-shadow:0 2px 24px rgba(0,0,0,0.4);}
+.hero-copy h1 .kane{color:var(--kane-400);}
+.hero-copy p{font-family:var(--font-body);font-size:15px;color:var(--kinari-100);line-height:2;max-width:420px;margin-bottom:36px;text-shadow:0 1px 12px rgba(0,0,0,0.5);opacity:0.95;}
+.hero-cta{display:inline-flex;align-items:center;gap:14px;color:var(--kinari-100);font-family:var(--font-display);font-size:14px;font-weight:600;letter-spacing:0.2em;padding-bottom:8px;border-bottom:1px solid var(--kane-500);transition:all 250ms;}
+.hero-banner:hover .hero-cta{color:var(--kane-400);border-color:var(--kane-400);gap:20px;}
+.hero-cta .arrow{font-family:var(--font-num);font-size:16px;color:var(--kane-400);}
+
+/* ========== section ========== */
+.section{padding:80px 0;}
+.section-header{text-align:center;margin-bottom:48px;}
+.section-header .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;}
+.section-header h2{font-family:var(--font-display);font-size:40px;font-weight:700;color:var(--fg-brand);margin-bottom:12px;letter-spacing:-0.005em;}
+.section-header .line{width:60px;height:1px;background:var(--kane-500);margin:16px auto;}
+.section-header p{font-family:var(--font-body);font-size:15px;color:var(--fg-secondary);max-width:520px;margin:0 auto;line-height:1.8;}
+
+/* ========== category grid ========== */
+.cat-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:16px;}
+.cat-cell{aspect-ratio:1/1.2;background:var(--white);border:1px solid var(--kinari-200);padding:16px;display:flex;flex-direction:column;justify-content:space-between;transition:all 250ms;cursor:pointer;}
+.cat-cell:hover{border-color:var(--kane-500);}
+.cat-icon{width:36px;height:36px;color:var(--navy-800);}
+.cat-name{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--fg-brand);}
+.cat-count{font-family:var(--font-en-body);font-size:10px;color:var(--fg-tertiary);letter-spacing:0.15em;margin-top:2px;}
+
+/* ========== product grid ========== */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+.prod{background:var(--white);border:1px solid var(--kinari-200);position:relative;transition:border 250ms;}
+.prod:hover{border-color:var(--navy-400);}
+.prod-img{aspect-ratio:1/1;background:var(--kinari-200);position:relative;overflow:hidden;}
+.prod-img .stripes{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,var(--kinari-200),var(--kinari-200) 10px,var(--kinari-300) 10px,var(--kinari-300) 11px);opacity:0.5;}
+.prod-img::after{content:"product photo";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-en-body);font-size:10px;color:var(--kinari-400);letter-spacing:0.2em;text-transform:uppercase;}
+.prod-stamp{position:absolute;top:12px;left:12px;background:var(--shubun);color:var(--kinari-100);font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.1em;padding:5px 10px;z-index:2;}
+.prod-body{padding:16px 18px 20px;}
+.prod-origin{font-family:var(--font-en-body);font-size:10px;color:var(--kane-700);letter-spacing:0.18em;text-transform:uppercase;margin-bottom:6px;}
+.prod-name{font-family:var(--font-display);font-size:16px;font-weight:600;color:var(--fg-brand);line-height:1.4;margin-bottom:8px;min-height:44px;}
+.prod-maker{font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);margin-bottom:14px;}
+.prod-foot{display:flex;justify-content:space-between;align-items:baseline;}
+.prod-price{font-family:var(--font-num);font-size:22px;font-weight:600;color:var(--fg-brand);}
+.prod-tax{font-family:var(--font-body);font-size:11px;color:var(--fg-secondary);margin-left:4px;}
+.prod-add{font-family:var(--font-display);font-size:12px;color:var(--kane-700);border-bottom:1px solid var(--kane-500);padding-bottom:2px;cursor:pointer;}
+
+/* ========== seasonal banner ========== */
+.season-band{background:var(--navy-800);color:var(--kinari-100);padding:64px 0;position:relative;overflow:hidden;}
+.season-inner{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:center;}
+.season-copy .eyebrow{color:var(--kane-400);font-family:var(--font-en-body);font-size:11px;letter-spacing:0.25em;margin-bottom:16px;text-transform:uppercase;}
+.season-copy h3{font-family:var(--font-display);font-size:44px;font-weight:700;color:var(--kinari-100);line-height:1.25;margin-bottom:18px;}
+.season-copy h3 .kane{color:var(--kane-400);}
+.season-copy p{font-family:var(--font-body);font-size:15px;color:var(--kinari-200);line-height:1.9;max-width:440px;margin-bottom:24px;}
+.season-copy .cta{display:inline-block;color:var(--kane-400);font-family:var(--font-display);font-size:14px;letter-spacing:0.15em;border-bottom:1px solid var(--kane-500);padding-bottom:4px;}
+.season-visual{aspect-ratio:4/3;background:var(--navy-700);border:1px solid var(--kane-700);position:relative;overflow:hidden;}
+.season-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+.season-visual::before{content:"";position:absolute;inset:14px;border:1px solid var(--kane-500);pointer-events:none;z-index:1;}
+
+/* ========== story ========== */
+.story{background:var(--kinari-50);}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:96px 0;}
+.story-visual{aspect-ratio:4/5;background:var(--kinari-200);position:relative;}
+.story-visual .stripes{position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,var(--kinari-200),var(--kinari-200) 12px,var(--kinari-300) 12px,var(--kinari-300) 13px);opacity:0.5;}
+.story-visual::after{content:"店主・店舗の写真";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--font-en-body);font-size:11px;color:var(--kinari-400);letter-spacing:0.2em;}
+.story-copy .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:16px;}
+.story-copy h2{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--fg-brand);margin-bottom:24px;line-height:1.35;}
+.story-copy .line{width:60px;height:1px;background:var(--kane-500);margin:24px 0;}
+.story-copy p{font-family:var(--font-body);font-size:15px;color:var(--fg-primary);line-height:2;margin-bottom:16px;}
+.story-copy .signature{font-family:var(--font-display);font-size:14px;color:var(--fg-secondary);margin-top:24px;}
+
+/* ========== footer ========== */
+.footer{background:var(--navy-900);color:var(--kinari-200);padding:64px 0 24px;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:48px;padding-bottom:48px;border-bottom:1px solid var(--navy-700);}
+.footer-brand h3{font-family:var(--font-display);font-size:22px;color:var(--kinari-100);letter-spacing:0.15em;margin-bottom:8px;font-weight:600;}
+.footer-brand .sub{font-family:var(--font-en-display);font-style:italic;font-size:12px;color:var(--kane-400);letter-spacing:0.2em;margin-bottom:20px;}
+.footer-brand p{font-family:var(--font-body);font-size:13px;line-height:1.9;color:var(--navy-300);}
+.footer-col h5{font-family:var(--font-display);font-size:13px;color:var(--kane-400);letter-spacing:0.15em;font-weight:500;margin-bottom:16px;}
+.footer-col a{display:block;font-family:var(--font-body);font-size:13px;color:var(--navy-300);padding:4px 0;}
+.footer-col a:hover{color:var(--kinari-100);}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;padding-top:24px;font-family:var(--font-en-body);font-size:11px;color:var(--navy-400);letter-spacing:0.1em;}
+
+/* ========== responsive ========== */
+@media(max-width:900px){
+  .season-inner,.story-grid,.footer-grid{grid-template-columns:1fr;gap:40px;padding-top:48px;padding-bottom:48px;}
+  .hero-banner{aspect-ratio:4/5;}
+  .hero-banner::after{background:linear-gradient(180deg, rgba(18,35,63,0.35) 0%, rgba(18,35,63,0.85) 55%, rgba(18,35,63,0.95) 100%);}
+  .hero-inner{padding:0 32px;align-items:flex-end;padding-bottom:56px;}
+  .hero-frame{inset:20px;}
+  .hero-tag{top:32px;right:32px;}
+  .cat-grid{grid-template-columns:repeat(3,1fr);}
+  .prod-grid{grid-template-columns:repeat(2,1fr);}
+  .header-inner{grid-template-columns:auto 1fr auto;}
+  .utility{display:none;}
+  .brand{text-align:left;}
+  .brand-name{font-size:22px;}
+  .hero-copy h1{font-size:34px;line-height:1.4;}
+  .hero-copy p{font-size:14px;}
+  .section{padding:56px 0;}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce">
+  <span>◆</span> 送料無料キャンペーン中：8,000円以上のご注文で全国送料無料 <span>◆</span> 母の日ギフト受付開始
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="utility">
+      <a href="#">奉納・贈答</a>
+      <a href="#">法人様のご注文</a>
+      <a href="#">よみもの</a>
+    </div>
+    <div class="brand">
+      <div class="brand-name">ながおか商店</div>
+      <div class="brand-sub">SINCE 1911 · UENOHARA</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn">検索</button>
+      <button class="icon-btn">ログイン</button>
+      <button class="icon-btn">カート<span class="cart-count">2</span></button>
+    </div>
+  </div>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <a href="#" class="active">すべての商品</a>
+      <a href="#">地酒・日本酒</a>
+      <a href="#">ワイン・焼酎</a>
+      <a href="#">お茶・飲料</a>
+      <a href="#">調味料・食品</a>
+      <a href="#">菓子・スイーツ</a>
+      <a href="#" class="season">◆ 季節のもの</a>
+      <a href="#">ギフト</a>
+    </div>
+  </nav>
+</header>
+
+<!-- Brand ribbon -->
+<div class="brand-ribbon">山梨の地酒と、美味しいものを。<span class="dot">・</span>山梨・上野原<span class="dot">・</span>創業1911年</div>
+
+<!-- Hero — 写真にコピーを乗せたバナー型特集枠（差し替え式） -->
+<section class="hero">
+  <a href="product-mugicha.html" class="hero-banner">
+    <img src="../../assets/photos/mugicha-pouring.jpg" alt="純手炒り むぎ茶を注ぐ様子">
+    <div class="hero-frame"></div>
+    <div class="hero-tag">Featured · 01</div>
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">今月の一品 — 純手炒りむぎ茶</div>
+        <h1>本物の麦茶、<br>飲んだこと<span class="kane">ありますか。</span></h1>
+        <p>香りもコクも、市販のものとは全く違う。<br>常識を覆される、麦茶です。</p>
+        <span class="hero-cta">詳しく見る <span class="arrow">→</span></span>
+      </div>
+    </div>
+  </a>
+</section>
+
+<!-- Category -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">Categories</div>
+      <h2>暮らしの棚から</h2>
+      <div class="line"></div>
+      <p>晩酌の一本、食卓を支える調味料、季節の贈りもの。<br>山梨の地酒と、美味しいものを、あなたの棚へ。</p>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-cell">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 3v3.5L7 9v11a1 1 0 001 1h8a1 1 0 001-1V9l-2-2.5V3M9 3h6M8 13h8"/></svg>
+        </div>
+        <div><div class="cat-name">地酒・日本酒</div><div class="cat-count">36 items</div></div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M8 3h8v5a4 4 0 01-4 4 4 4 0 01-4-4V3zM12 12v9M9 21h6"/></svg>
+        </div>
+        <div><div class="cat-name">ワイン・焼酎</div><div class="cat-count">24 items</div></div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 8h13v8a4 4 0 01-4 4H8a4 4 0 01-4-4V8zM17 10h2a2 2 0 010 4h-2M4 6c0-1 1-3 3-3s3 2 3 3"/></svg>
+        </div>
+        <div><div class="cat-name">お茶・飲料</div><div class="cat-count">18 items</div></div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="4" width="14" height="16" rx="1"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>
+        </div>
+        <div><div class="cat-name">調味料・食品</div><div class="cat-count">42 items</div></div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-4 4-4 8 0 12M12 3c4 4 4 8 0 12M6 15h12l-2 6H8l-2-6z"/></svg>
+        </div>
+        <div><div class="cat-name">菓子・スイーツ</div><div class="cat-count">21 items</div></div>
+      </div>
+      <div class="cat-cell">
+        <div class="cat-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="8" width="16" height="12" rx="1"/><path d="M4 12h16M12 8v12M9 5l3 3 3-3"/></svg>
+        </div>
+        <div><div class="cat-name">ギフト</div><div class="cat-count">15 items</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Seasonal band (麦茶 · flagship) -->
+<section class="season-band">
+  <div class="container season-inner">
+    <div class="season-copy">
+      <div class="eyebrow">Flagship · Pure Hand-Roasted Mugicha</div>
+      <h3>コーヒーくらい黒いのに、<br>飲むと<span class="kane">苦くない</span>。</h3>
+      <p>明治十二年から、直径三尺の平釜と竹の箒で。<br>上野原の隣町・野田尻の老舗が守る、手炒りむぎ茶。<br>ノンカフェイン。牛乳や砂糖と合わせても、負けない深み。</p>
+      <a href="product-mugicha.html" class="cta">純手炒りむぎ茶の詳細を見る　→</a>
+    </div>
+    <div class="season-visual"><img src="../../assets/photos/mugicha/04_pouring_black.jpg" alt="コーヒーくらい黒い純手炒りむぎ茶"></div>
+  </div>
+</section>
+
+<!-- New arrivals -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="eyebrow">New Arrivals</div>
+      <h2>新着の品</h2>
+      <div class="line"></div>
+      <p>今週、棚に並んだ品をご紹介します。</p>
+    </div>
+    <div class="prod-grid">
+      <a href="#" class="prod">
+        <div class="prod-stamp">厳選</div>
+        <div class="prod-img"><div class="stripes"></div></div>
+        <div class="prod-body">
+          <div class="prod-origin">YAMANASHI · SAKE</div>
+          <div class="prod-name">上野原の水で仕込む<br>純米辛口 720ml</div>
+          <div class="prod-maker">近江屋ながおか 醸造元</div>
+          <div class="prod-foot">
+            <div><span class="prod-price">¥1,980</span><span class="prod-tax">税込</span></div>
+            <span class="prod-add">カートへ</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="prod">
+        <div class="prod-img"><div class="stripes"></div></div>
+        <div class="prod-body">
+          <div class="prod-origin">TOKYO · MISO</div>
+          <div class="prod-name">江戸甘味噌<br>500g</div>
+          <div class="prod-maker">日出味噌醸造元</div>
+          <div class="prod-foot">
+            <div><span class="prod-price">¥820</span><span class="prod-tax">税込</span></div>
+            <span class="prod-add">カートへ</span>
+          </div>
+        </div>
+      </a>
+      <a href="product-mugicha.html" class="prod">
+        <div class="prod-stamp">旗艦</div>
+        <div class="prod-img"><div class="stripes"></div></div>
+        <div class="prod-body">
+          <div class="prod-origin">UENOHARA · SINCE 1879</div>
+          <div class="prod-name">純手炒り むぎ茶<br>丸粒 330g</div>
+          <div class="prod-maker">上州屋設楽彦吉商店 · 上野原</div>
+          <div class="prod-foot">
+            <div><span class="prod-price">¥1,710</span><span class="prod-tax">税込</span></div>
+            <span class="prod-add">詳細を見る</span>
+          </div>
+        </div>
+      </a>
+      <a href="#" class="prod">
+        <div class="prod-img"><div class="stripes"></div></div>
+        <div class="prod-body">
+          <div class="prod-origin">SHINSHU · CONDIMENT</div>
+          <div class="prod-name">松代・心の酢<br>純米静置発酵 500ml</div>
+          <div class="prod-maker">松代醸造酢</div>
+          <div class="prod-foot">
+            <div><span class="prod-price">¥1,320</span><span class="prod-tax">税込</span></div>
+            <span class="prod-add">カートへ</span>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Story -->
+<section class="section story">
+  <div class="container story-grid">
+    <div class="story-visual"><div class="stripes"></div></div>
+    <div class="story-copy">
+      <div class="eyebrow">Our Story</div>
+      <h2>百十余年、<br>地元と歩む酒屋の目利き。</h2>
+      <div class="line"></div>
+      <p>ながおか商店は、山梨県上野原市で1911年から続く商店です。<br>近江屋の名で親しまれ、地元の方に日々の一本を届けてきました。</p>
+      <p>いまお届けしているのは、その目利きで選び抜いた、山梨の地酒と地元メーカーの味。<br>「これは間違いない」と、酒屋がひとつずつ確かめた品だけを並べています。</p>
+      <div class="signature">— ながおか商店</div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>ながおか商店</h3>
+        <div class="sub">SINCE 1911 · UENOHARA</div>
+        <p>〒409-0112<br>山梨県上野原市上野原4691-2<br>TEL 0554-63-0140<br>営業 8:30〜19:00 / 日曜定休</p>
+      </div>
+      <div class="footer-col">
+        <h5>お買いもの</h5>
+        <a href="#">地酒・日本酒</a>
+        <a href="#">ワイン・焼酎</a>
+        <a href="#">お茶・飲料</a>
+        <a href="#">調味料・食品</a>
+        <a href="#">季節のギフト</a>
+      </div>
+      <div class="footer-col">
+        <h5>ご案内</h5>
+        <a href="#">配送について</a>
+        <a href="#">奉納・贈答品</a>
+        <a href="#">法人様のご注文</a>
+        <a href="#">よくあるご質問</a>
+      </div>
+      <div class="footer-col">
+        <h5>ながおか商店を知る</h5>
+        <a href="#">わたしたちについて</a>
+        <a href="#">よみもの</a>
+        <a href="#">お便りを受け取る</a>
+        <a href="#">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 NAGAOKA SHOTEN · 近江屋ながおか</span>
+      <span>SPECIAL LICENSE · YAMANASHI</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

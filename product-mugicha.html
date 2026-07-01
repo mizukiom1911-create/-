@@ -1,0 +1,713 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>純手炒り むぎ茶 — 上州屋設楽彦吉商店｜ながおか商店</title>
+<link rel="stylesheet" href="../../colors_and_type.css">
+<link rel="icon" href="../../assets/logo/nagaoka-mark.png">
+<style>
+*{box-sizing:border-box;}
+body{margin:0;background:var(--kinari-100);color:var(--fg-primary);}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1200px;margin:0 auto;padding:0 32px;}
+.container-narrow{max-width:880px;margin:0 auto;padding:0 32px;}
+
+/* ---------- header ---------- */
+.announce{background:var(--navy-900);color:var(--kinari-100);font-family:var(--font-body);font-size:12px;text-align:center;padding:8px 16px;letter-spacing:0.05em;}
+.announce span{color:var(--kane-400);margin:0 8px;}
+.header{background:var(--kinari-50);border-bottom:1px solid var(--kinari-300);}
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:20px 0;gap:24px;}
+.utility{display:flex;gap:20px;font-family:var(--font-body);font-size:13px;color:var(--fg-secondary);}
+.brand{text-align:center;}
+.brand-name{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--fg-brand);letter-spacing:0.18em;line-height:1;}
+.brand-sub{font-family:var(--font-en-display);font-style:italic;font-size:11px;color:var(--kane-700);letter-spacing:0.25em;margin-top:6px;}
+.actions{display:flex;justify-content:flex-end;gap:20px;align-items:center;}
+.icon-btn{background:transparent;border:0;padding:8px;cursor:pointer;color:var(--fg-brand);font-family:var(--font-body);font-size:13px;}
+.icon-btn:hover{color:var(--kane-700);}
+.cart-count{background:var(--shubun);color:var(--kinari-100);font-family:var(--font-en-body);font-size:10px;font-weight:600;padding:1px 6px;border-radius:9999px;margin-left:4px;}
+
+/* ---------- breadcrumb ---------- */
+.crumb{font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);padding:16px 0;letter-spacing:0.05em;}
+.crumb a:hover{color:var(--kane-700);}
+.crumb .sep{margin:0 8px;color:var(--kinari-400);}
+
+/* ---------- product hero ---------- */
+.phero{padding:16px 0 96px;}
+.phero-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start;}
+.phero-visual{position:sticky;top:24px;}
+.phero-main{aspect-ratio:1/1;background:var(--kinari-50);border:1px solid var(--kinari-300);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.phero-main img{width:100%;height:100%;object-fit:cover;display:block;}
+.phero-thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px;}
+.phero-thumb{aspect-ratio:1/1;background:var(--kinari-50);border:1px solid var(--kinari-300);cursor:pointer;position:relative;overflow:hidden;}
+.phero-thumb.active{border-color:var(--kane-500);}
+.phero-thumb img{width:100%;height:100%;object-fit:cover;display:block;}
+
+.phero-copy .stamp-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+.stamp{background:var(--shubun);color:var(--kinari-100);font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:0.15em;padding:5px 12px;}
+.stamp.gold{background:transparent;color:var(--kane-700);border:1px solid var(--kane-500);}
+.stamp.navy{background:var(--navy-800);color:var(--kinari-100);}
+.phero-eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;}
+.phero-title{font-family:var(--font-display);font-size:42px;font-weight:700;color:var(--fg-brand);line-height:1.25;margin-bottom:8px;letter-spacing:-0.005em;}
+.phero-sub{font-family:var(--font-body);font-size:14px;color:var(--fg-secondary);letter-spacing:0.05em;margin-bottom:24px;}
+.phero-line{width:60px;height:1px;background:var(--kane-500);margin:24px 0;}
+
+.phero-pitch{font-family:var(--font-display);font-size:17px;color:var(--fg-primary);line-height:2;margin-bottom:32px;}
+.phero-pitch strong{color:var(--fg-brand);font-weight:600;background:linear-gradient(transparent 65%, var(--kane-200) 65%);padding:0 2px;}
+
+.phero-facts{list-style:none;padding:0;margin:0 0 32px;display:grid;gap:12px;}
+.phero-facts li{font-family:var(--font-body);font-size:14px;color:var(--fg-primary);line-height:1.7;padding-left:20px;position:relative;}
+.phero-facts li::before{content:"—";position:absolute;left:0;color:var(--kane-500);}
+
+/* ---------- variant selector ---------- */
+.variant-block{margin-bottom:20px;}
+.variant-label{font-family:var(--font-display);font-size:13px;color:var(--fg-brand);letter-spacing:0.1em;margin-bottom:10px;}
+.variant-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.vopt{background:var(--white);border:1px solid var(--kinari-300);padding:12px 14px;cursor:pointer;transition:border 200ms;position:relative;}
+.vopt.active{border-color:var(--navy-800);}
+.vopt-name{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--fg-brand);margin-bottom:4px;}
+.vopt-desc{font-family:var(--font-body);font-size:11px;color:var(--fg-secondary);line-height:1.5;}
+.vopt-price{font-family:var(--font-num);font-size:15px;color:var(--fg-brand);font-weight:600;margin-top:6px;}
+
+/* ---------- buy box ---------- */
+.buybox{background:var(--white);border:1px solid var(--kinari-300);padding:24px;margin-top:24px;}
+.price-row{display:flex;align-items:baseline;gap:12px;margin-bottom:20px;flex-wrap:wrap;}
+.price{font-family:var(--font-num);font-size:36px;font-weight:600;color:var(--fg-brand);}
+.tax{font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);}
+.stock{font-family:var(--font-body);font-size:12px;color:var(--success);letter-spacing:0.05em;padding:2px 8px;background:var(--success-bg);border-radius:2px;margin-left:auto;}
+.qty-row{display:flex;align-items:center;gap:16px;margin-bottom:16px;}
+.qty-label{font-family:var(--font-display);font-size:13px;color:var(--fg-brand);letter-spacing:0.1em;}
+.qty-input{display:flex;border:1px solid var(--kinari-300);}
+.qty-input button{background:var(--kinari-50);border:0;width:36px;height:36px;color:var(--fg-brand);font-family:var(--font-num);font-size:16px;cursor:pointer;}
+.qty-input button:hover{background:var(--kinari-200);}
+.qty-input input{width:48px;height:36px;text-align:center;border:0;border-left:1px solid var(--kinari-300);border-right:1px solid var(--kinari-300);font-family:var(--font-num);font-size:16px;color:var(--fg-brand);background:var(--white);}
+.qty-input input:focus{outline:0;}
+.cta-cart{display:block;width:100%;background:var(--navy-800);color:var(--kinari-100);padding:16px;font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:0.2em;border:0;cursor:pointer;transition:background 250ms;}
+.cta-cart:hover{background:var(--navy-700);}
+.cta-buynow{display:block;width:100%;background:var(--kane-500);color:var(--navy-900);padding:16px;font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:0.2em;border:0;cursor:pointer;margin-top:8px;transition:background 250ms;}
+.cta-buynow:hover{background:var(--kane-400);}
+.reassure{margin-top:16px;font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);line-height:1.8;}
+.reassure div{padding-left:16px;position:relative;}
+.reassure div::before{content:"◆";position:absolute;left:0;color:var(--kane-500);font-size:8px;top:6px;}
+
+/* ---------- proof strip ---------- */
+.proof{background:var(--kinari-50);border-top:1px solid var(--kinari-300);border-bottom:1px solid var(--kinari-300);padding:32px 0;}
+.proof-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;text-align:center;}
+.pcol .k{font-family:var(--font-en-body);font-size:10px;letter-spacing:0.22em;text-transform:uppercase;color:var(--kane-700);margin-bottom:6px;}
+.pcol .v{font-family:var(--font-display);font-size:18px;color:var(--fg-brand);font-weight:600;line-height:1.35;}
+.pcol .v .n{font-family:var(--font-en-display);font-style:italic;font-size:26px;color:var(--kane-500);}
+
+/* ---------- benefit blocks ---------- */
+.benefit{background:var(--kinari-100);padding:96px 0;}
+.benefit-head{text-align:center;margin-bottom:64px;}
+.benefit-head .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;}
+.benefit-head h2{font-family:var(--font-display);font-size:36px;font-weight:700;color:var(--fg-brand);line-height:1.35;letter-spacing:-0.005em;}
+.benefit-head .line{width:60px;height:1px;background:var(--kane-500);margin:24px auto;}
+.benefit-head p{font-family:var(--font-body);font-size:15px;color:var(--fg-secondary);max-width:520px;margin:0 auto;line-height:1.9;}
+
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;}
+.b-card{background:var(--white);padding:40px 32px;border:1px solid var(--kinari-300);}
+.b-num{font-family:var(--font-en-display);font-style:italic;font-size:36px;color:var(--kane-500);line-height:1;margin-bottom:20px;}
+.b-title{font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--fg-brand);line-height:1.4;margin-bottom:16px;}
+.b-title .kane{color:var(--kane-700);}
+.b-body{font-family:var(--font-body);font-size:14px;color:var(--fg-primary);line-height:1.9;}
+
+/* ---------- comparison ---------- */
+.compare{padding:96px 0;background:var(--kinari-50);}
+.compare-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--kinari-300);background:var(--white);}
+.compare-col{padding:40px 40px 48px;}
+.compare-col:first-child{border-right:1px solid var(--kinari-300);}
+.compare-tag{font-family:var(--font-en-body);font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:var(--fg-tertiary);margin-bottom:8px;}
+.compare-name{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--fg-secondary);margin-bottom:24px;}
+.compare-col.hero .compare-name{color:var(--fg-brand);}
+.compare-col.hero .compare-tag{color:var(--kane-700);}
+.compare-list{list-style:none;padding:0;margin:0;}
+.compare-list li{font-family:var(--font-body);font-size:14px;line-height:1.9;padding:10px 0;border-bottom:1px dashed var(--kinari-300);color:var(--fg-secondary);}
+.compare-col.hero .compare-list li{color:var(--fg-primary);}
+.compare-list li:last-child{border-bottom:0;}
+
+/* ---------- how to drink ---------- */
+.howto{background:var(--navy-800);color:var(--kinari-100);padding:96px 0;position:relative;overflow:hidden;}
+.howto::before{content:"";position:absolute;inset:0;background-image:url("../../assets/patterns/washi-texture.svg");opacity:0.05;mix-blend-mode:screen;}
+.howto-head{text-align:center;margin-bottom:64px;position:relative;}
+.howto-head .eyebrow{color:var(--kane-400);font-family:var(--font-en-body);font-size:11px;letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;}
+.howto-head h2{font-family:var(--font-display);font-size:40px;font-weight:700;color:var(--kinari-100);line-height:1.3;}
+.howto-head .kane{color:var(--kane-400);}
+.howto-head .line{width:60px;height:1px;background:var(--kane-500);margin:24px auto;}
+.howto-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+.hcard{background:transparent;border:1px solid var(--navy-600);padding:28px 24px;}
+.hcard .time{font-family:var(--font-en-display);font-style:italic;font-size:22px;color:var(--kane-400);margin-bottom:12px;letter-spacing:0.05em;}
+.hcard .htitle{font-family:var(--font-display);font-size:18px;font-weight:600;color:var(--kinari-100);line-height:1.4;margin-bottom:12px;}
+.hcard .hdesc{font-family:var(--font-body);font-size:13px;color:var(--navy-300);line-height:1.9;}
+
+/* ---------- recipe callout ---------- */
+.recipe{padding:80px 0;background:var(--kinari-100);}
+.recipe-inner{background:var(--white);border:1px solid var(--kinari-300);padding:56px 64px;position:relative;}
+.recipe-inner::before{content:"";position:absolute;top:12px;left:12px;right:12px;bottom:12px;border:1px solid var(--kane-500);pointer-events:none;}
+.recipe-head{text-align:center;margin-bottom:32px;position:relative;}
+.recipe-head .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;}
+.recipe-head h3{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--fg-brand);letter-spacing:0;}
+.recipe-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative;}
+.step{text-align:center;}
+.step-n{font-family:var(--font-en-display);font-style:italic;font-size:24px;color:var(--kane-500);line-height:1;margin-bottom:12px;}
+.step-t{font-family:var(--font-display);font-size:15px;color:var(--fg-brand);font-weight:600;margin-bottom:6px;line-height:1.4;}
+.step-d{font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);line-height:1.7;}
+
+/* ---------- maker story ---------- */
+.maker{padding:96px 0;background:var(--kinari-50);}
+.maker-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:center;}
+.maker-visual{aspect-ratio:4/5;background:var(--kinari-200);position:relative;border:1px solid var(--kinari-300);overflow:hidden;}
+.maker-visual img{width:100%;height:100%;object-fit:cover;display:block;}
+.maker-copy .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:16px;}
+.maker-copy h2{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--fg-brand);line-height:1.4;margin-bottom:24px;}
+.maker-copy .line{width:60px;height:1px;background:var(--kane-500);margin:24px 0;}
+.maker-copy p{font-family:var(--font-body);font-size:15px;color:var(--fg-primary);line-height:2;margin-bottom:16px;}
+.maker-copy p .kane{color:var(--kane-700);font-weight:500;}
+.maker-facts{margin-top:32px;padding-top:24px;border-top:1px solid var(--kinari-300);display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.maker-fact .k{font-family:var(--font-en-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--kane-700);margin-bottom:4px;}
+.maker-fact .v{font-family:var(--font-display);font-size:14px;color:var(--fg-brand);font-weight:600;line-height:1.4;}
+
+/* ---------- limited (量を限る誇り) ---------- */
+.limited{padding:0;background:var(--sumi-900);color:var(--kinari-100);position:relative;}
+.limited-inner{display:grid;grid-template-columns:1.1fr 1fr;min-height:520px;}
+.limited-photo{position:relative;overflow:hidden;background:var(--sumi-900);}
+.limited-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+.limited-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,rgba(26,26,26,0.5) 100%);pointer-events:none;}
+.limited-copy{padding:80px 64px;display:flex;flex-direction:column;justify-content:center;position:relative;}
+.limited-copy .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-400);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:20px;}
+.limited-copy h2{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--kinari-100);line-height:1.5;margin-bottom:24px;letter-spacing:0.02em;}
+.limited-copy h2 .kane{color:var(--kane-400);}
+.limited-copy .line{width:60px;height:1px;background:var(--kane-500);margin:0 0 28px;}
+.limited-copy .quote{font-family:var(--font-display);font-size:18px;color:var(--kane-200);line-height:1.9;font-weight:500;padding:20px 24px;border-left:2px solid var(--kane-500);background:rgba(176,139,60,0.06);margin-bottom:24px;}
+.limited-copy p{font-family:var(--font-body);font-size:14px;color:var(--navy-300);line-height:2;}
+.limited-copy p strong{color:var(--kinari-100);font-weight:500;background:linear-gradient(transparent 65%, rgba(176,139,60,0.35) 65%);padding:0 2px;}
+
+/* ---------- twin story ---------- */
+.twins{padding:80px 0;background:var(--kinari-100);text-align:center;}
+.twins h3{font-family:var(--font-display);font-size:26px;font-weight:700;color:var(--fg-brand);margin-bottom:8px;line-height:1.4;}
+.twins h3 .kane{color:var(--kane-700);}
+.twins .line{width:60px;height:1px;background:var(--kane-500);margin:24px auto;}
+.twins-inner{display:grid;grid-template-columns:1fr auto 1fr;gap:24px;align-items:center;max-width:800px;margin:32px auto 0;}
+.twin{padding:24px;border:1px solid var(--kinari-300);background:var(--white);}
+.twin .year{font-family:var(--font-en-display);font-style:italic;font-size:20px;color:var(--kane-500);letter-spacing:0.1em;margin-bottom:6px;}
+.twin .name{font-family:var(--font-display);font-size:16px;color:var(--fg-brand);font-weight:600;margin-bottom:4px;}
+.twin .role{font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);letter-spacing:0.05em;}
+.twin-conn{font-family:var(--font-en-display);font-style:italic;font-size:22px;color:var(--kane-700);letter-spacing:0.2em;}
+.twins-caption{font-family:var(--font-body);font-size:14px;color:var(--fg-secondary);margin-top:24px;letter-spacing:0.03em;}
+
+/* ---------- lineup ---------- */
+.lineup{padding:96px 0;background:var(--kinari-50);}
+.lineup-head{text-align:center;margin-bottom:48px;}
+.lineup-head .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-700);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:12px;}
+.lineup-head h2{font-family:var(--font-display);font-size:32px;font-weight:700;color:var(--fg-brand);line-height:1.4;}
+.lineup-head .line{width:60px;height:1px;background:var(--kane-500);margin:24px auto;}
+.lineup-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.lcard{background:var(--white);border:1px solid var(--kinari-300);padding:24px;transition:border 200ms;cursor:pointer;}
+.lcard:hover{border-color:var(--kane-500);}
+.lcard .tag{font-family:var(--font-en-body);font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--kane-700);margin-bottom:6px;}
+.lcard .lname{font-family:var(--font-display);font-size:17px;color:var(--fg-brand);font-weight:600;margin-bottom:6px;line-height:1.4;}
+.lcard .ldesc{font-family:var(--font-body);font-size:12px;color:var(--fg-secondary);line-height:1.7;margin-bottom:14px;min-height:60px;}
+.lcard .lprice{font-family:var(--font-num);font-size:20px;color:var(--fg-brand);font-weight:600;}
+.lcard .ltax{font-family:var(--font-body);font-size:11px;color:var(--fg-secondary);margin-left:4px;}
+.lcard.featured{border-color:var(--navy-800);position:relative;}
+.lcard.featured::before{content:"おすすめ";position:absolute;top:-1px;right:-1px;background:var(--navy-800);color:var(--kinari-100);font-family:var(--font-display);font-size:10px;letter-spacing:0.15em;padding:4px 10px;font-weight:600;}
+
+/* ---------- faq ---------- */
+.faq{padding:96px 0;background:var(--kinari-100);}
+.faq h3{font-family:var(--font-display);font-size:28px;font-weight:700;color:var(--fg-brand);text-align:center;margin-bottom:8px;}
+.faq .line{width:60px;height:1px;background:var(--kane-500);margin:24px auto 40px;}
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{border-bottom:1px solid var(--kinari-300);padding:20px 0;}
+.faq-q{font-family:var(--font-display);font-size:15px;font-weight:600;color:var(--fg-brand);margin-bottom:8px;padding-left:24px;position:relative;line-height:1.5;}
+.faq-q::before{content:"Q";position:absolute;left:0;top:0;font-family:var(--font-en-display);font-style:italic;color:var(--kane-500);font-size:16px;font-weight:600;}
+.faq-a{font-family:var(--font-body);font-size:14px;color:var(--fg-primary);line-height:1.9;padding-left:24px;position:relative;}
+.faq-a::before{content:"A";position:absolute;left:0;top:2px;font-family:var(--font-en-display);font-style:italic;color:var(--fg-secondary);font-size:16px;font-weight:600;}
+
+/* ---------- specs ---------- */
+.specs{padding:80px 0;background:var(--kinari-50);}
+.specs h3{font-family:var(--font-display);font-size:24px;font-weight:700;color:var(--fg-brand);margin-bottom:24px;letter-spacing:0;}
+.spec-table{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--kinari-300);}
+.spec-table th, .spec-table td{padding:16px 20px;text-align:left;font-family:var(--font-body);font-size:14px;border-bottom:1px solid var(--kinari-300);}
+.spec-table th{width:220px;font-family:var(--font-display);font-weight:500;color:var(--fg-brand);background:var(--kinari-50);letter-spacing:0.05em;}
+.spec-table tr:last-child th, .spec-table tr:last-child td{border-bottom:0;}
+
+/* ---------- final cta ---------- */
+.final{background:var(--navy-900);color:var(--kinari-100);padding:96px 0;text-align:center;position:relative;overflow:hidden;}
+.final::before{content:"";position:absolute;inset:0;background-image:url("../../assets/patterns/washi-texture.svg");opacity:0.06;mix-blend-mode:screen;}
+.final-inner{position:relative;}
+.final .eyebrow{font-family:var(--font-en-body);font-size:11px;color:var(--kane-400);letter-spacing:0.25em;text-transform:uppercase;margin-bottom:16px;}
+.final h2{font-family:var(--font-display);font-size:40px;font-weight:700;color:var(--kinari-100);line-height:1.4;margin-bottom:16px;}
+.final .kane{color:var(--kane-400);}
+.final .line{width:60px;height:1px;background:var(--kane-500);margin:24px auto;}
+.final p{font-family:var(--font-body);font-size:15px;color:var(--navy-300);line-height:1.9;max-width:520px;margin:0 auto 40px;}
+.final .cta{display:inline-block;background:var(--kane-500);color:var(--navy-900);padding:18px 48px;font-family:var(--font-display);font-size:15px;font-weight:600;letter-spacing:0.2em;transition:background 250ms;}
+.final .cta:hover{background:var(--kane-400);}
+.final-price{margin-bottom:32px;}
+.final-price .price{font-family:var(--font-num);font-size:36px;font-weight:600;color:var(--kinari-100);}
+.final-price .tax{font-family:var(--font-body);font-size:13px;color:var(--navy-300);margin-left:8px;}
+
+/* ---------- footer ---------- */
+.footer{background:var(--sumi-900);color:var(--navy-300);padding:32px 0;font-family:var(--font-body);font-size:12px;letter-spacing:0.05em;text-align:center;}
+.footer span{color:var(--kane-400);margin:0 8px;}
+
+/* ---------- responsive ---------- */
+@media(max-width:900px){
+  .phero-grid,.maker-grid,.compare-inner,.twins-inner,.limited-inner{grid-template-columns:1fr;gap:0;}
+  .benefit-grid,.howto-grid,.recipe-steps,.lineup-grid,.proof-inner{grid-template-columns:1fr 1fr;}
+  .maker-facts{grid-template-columns:1fr 1fr;}
+  .header-inner{grid-template-columns:auto 1fr auto;}
+  .utility{display:none;}
+  .brand{text-align:left;}
+  .phero-title{font-size:30px;}
+  .recipe-inner{padding:32px 24px;}
+  .compare-col:first-child{border-right:0;border-bottom:1px solid var(--kinari-300);}
+  .twin-conn{transform:rotate(90deg);}
+  .limited-photo{aspect-ratio:4/3;}
+  .limited-copy{padding:48px 32px;}
+  .limited-copy h2{font-size:26px;}
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement -->
+<div class="announce">
+  <span>◆</span> 8,000円以上で全国送料無料 <span>◆</span> 明治十二年、上野原の隣町の一杯
+</div>
+
+<!-- Header -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="utility">
+      <a href="index.html">トップへ戻る</a>
+      <a href="#">よみもの</a>
+    </div>
+    <div class="brand">
+      <div class="brand-name">ながおか商店</div>
+      <div class="brand-sub">SINCE 1911 · UENOHARA</div>
+    </div>
+    <div class="actions">
+      <button class="icon-btn">検索</button>
+      <button class="icon-btn">カート<span class="cart-count">1</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- Breadcrumb -->
+<div class="container">
+  <div class="crumb">
+    <a href="index.html">トップ</a><span class="sep">›</span>
+    <a href="#">お茶・飲料</a><span class="sep">›</span>
+    <span>純手炒り むぎ茶（上州屋設楽彦吉商店）</span>
+  </div>
+</div>
+
+<!-- Product hero -->
+<section class="phero">
+  <div class="container">
+    <div class="phero-grid">
+
+      <!-- Visual -->
+      <div class="phero-visual">
+        <div class="phero-main">
+          <img src="../../assets/photos/mugicha/04_pouring_black.jpg" alt="真っ黒な純手炒りむぎ茶をグラスに注ぐ">
+        </div>
+        <div class="phero-thumbs">
+          <div class="phero-thumb active"><img src="../../assets/photos/mugicha/04_pouring_black.jpg" alt=""></div>
+          <div class="phero-thumb"><img src="../../assets/photos/mugicha/03_maker_package.jpg" alt=""></div>
+          <div class="phero-thumb"><img src="../../assets/photos/mugicha/01_maker_stirring.jpg" alt=""></div>
+          <div class="phero-thumb"><img src="../../assets/photos/mugicha/02_kiln_smoke.jpg" alt=""></div>
+        </div>
+      </div>
+
+      <!-- Copy -->
+      <div class="phero-copy">
+        <div class="stamp-row">
+          <div class="stamp">明治12年創業</div>
+          <div class="stamp navy">ノンカフェイン</div>
+          <div class="stamp gold">上野原の隣町から</div>
+        </div>
+        <div class="phero-eyebrow">Joushuya Shitara · Pure Hand-Roasted Mugicha</div>
+        <h1 class="phero-title">純手炒り<br>むぎ茶</h1>
+        <div class="phero-sub">上州屋設楽彦吉商店 · 山梨県上野原市野田尻／国産六条大麦・手炒り／330g</div>
+        <div class="phero-line"></div>
+
+        <div class="phero-pitch">
+          <strong>コーヒーくらい黒いのに、飲むと苦くない。</strong><br>
+          香ばしさが鼻を通って、<br>
+          澄んだ深みが追いかけてくる。
+        </div>
+
+        <ul class="phero-facts">
+          <li>直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法</li>
+          <li>国産六条大麦を、2年寝かせてから炒り上げるため出せる深み</li>
+          <li>ノンカフェイン。お子様・妊婦さん・就寝前にも安心</li>
+          <li>本家推奨の楽しみ方は、砂糖・牛乳を加えるアレンジも</li>
+        </ul>
+
+        <!-- Variant selector -->
+        <div class="variant-block">
+          <div class="variant-label">タイプを選ぶ</div>
+          <div class="variant-options">
+            <div class="vopt active">
+              <div class="vopt-name">丸粒 330g</div>
+              <div class="vopt-desc">たっぷり約22回分。煮出しで本格的に。</div>
+              <div class="vopt-price">¥1,710 <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span></div>
+            </div>
+            <div class="vopt">
+              <div class="vopt-name">丸粒 150g</div>
+              <div class="vopt-desc">約10回分。まずは試したい方に。</div>
+              <div class="vopt-price">¥880 <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buy box -->
+        <div class="buybox">
+          <div class="price-row">
+            <span class="price">¥1,710</span>
+            <span class="tax">税込 / 丸粒 330g</span>
+            <span class="stock">◆ 在庫あり</span>
+          </div>
+          <div class="qty-row">
+            <span class="qty-label">数量</span>
+            <div class="qty-input">
+              <button>−</button>
+              <input type="text" value="1">
+              <button>＋</button>
+            </div>
+          </div>
+          <button class="cta-cart">カートに入れる</button>
+          <button class="cta-buynow">今すぐ購入する　→</button>
+          <div class="reassure">
+            <div>8,000円以上のご注文で全国送料無料</div>
+            <div>ご注文から2〜4営業日で発送</div>
+            <div>のし・ギフト包装対応可（ご注文時にお選びください）</div>
+            <div>ノンカフェインですので、時間を選ばずお楽しみいただけます</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Proof strip -->
+<section class="proof">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="pcol"><div class="k">Founded</div><div class="v"><span class="n">1879</span><br>明治十二年</div></div>
+      <div class="pcol"><div class="k">Method</div><div class="v">直径三尺<br>平釜・竹箒</div></div>
+      <div class="pcol"><div class="k">Ingredient</div><div class="v">国産六条大麦<br>二年寝かせ</div></div>
+      <div class="pcol"><div class="k">Caffeine</div><div class="v">ゼロ<br>ノンカフェイン</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Benefit blocks (3 columns) -->
+<section class="benefit">
+  <div class="container">
+    <div class="benefit-head">
+      <div class="eyebrow">Why This Mugicha</div>
+      <h2>この一杯が、<br>あなたの一日にもたらすもの。</h2>
+      <div class="line"></div>
+      <p>大量生産の麦茶では味わえない、三つの体験を持ち帰れます。</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="b-card">
+        <div class="b-num">01</div>
+        <div class="b-title">朝の一杯が、<span class="kane">深く</span>変わる。</div>
+        <div class="b-body">コーヒーみたいに真っ黒。飲めば、苦みではなく、香ばしさと澄んだコクが広がる。ノンカフェインだから、目覚めの一杯にも、就寝前にも。</div>
+      </div>
+      <div class="b-card">
+        <div class="b-num">02</div>
+        <div class="b-title">砂糖や牛乳と、<span class="kane">こなれる</span>味。</div>
+        <div class="b-body">本家が「砂糖・牛乳を加えるのもよい」と勧めるほどの濃さ。ミルクと合わせれば、香ばしいラテのような一杯に。日常のなかで、飲み方を発見できる麦茶です。</div>
+      </div>
+      <div class="b-card">
+        <div class="b-num">03</div>
+        <div class="b-title">煮出す時間が、<span class="kane">合図</span>になる。</div>
+        <div class="b-body">やかんに麦を入れて火にかける。ふわりと立つ湯気と香ばしい香り。5分の煮出しが、忙しい一日を切り替えるスイッチになります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Comparison -->
+<section class="compare">
+  <div class="container-narrow">
+    <div class="benefit-head" style="margin-bottom:40px;">
+      <div class="eyebrow">Comparison</div>
+      <h2>ペットボトルの麦茶と、<br>何が違うのか。</h2>
+      <div class="line"></div>
+    </div>
+    <div class="compare-inner">
+      <div class="compare-col">
+        <div class="compare-tag">General</div>
+        <div class="compare-name">一般的なペットボトル麦茶</div>
+        <ul class="compare-list">
+          <li>色は薄い茶色、透けて見える</li>
+          <li>のどごしは軽いが、香りは控えめ</li>
+          <li>冷やして飲むための味の設計</li>
+          <li>大量生産・機械焙煎・短時間抽出</li>
+          <li>牛乳や砂糖を合わせても味が負ける</li>
+        </ul>
+      </div>
+      <div class="compare-col hero">
+        <div class="compare-tag">This</div>
+        <div class="compare-name">純手炒り むぎ茶（上州屋設楽彦吉商店）</div>
+        <ul class="compare-list">
+          <li>コーヒーのように黒く、グラスの向こうが見えない</li>
+          <li>鼻を通る香ばしさ、追いかけてくる澄んだ深み</li>
+          <li>煮出し・冷やし・ホット、通年で飲める</li>
+          <li>明治12年から、直径三尺の平釜と竹箒による手炒り</li>
+          <li>砂糖・牛乳と合わせても、しっかり主役の味</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- How to drink -->
+<section class="howto">
+  <div class="container">
+    <div class="howto-head">
+      <div class="eyebrow">Ways to Enjoy</div>
+      <h2>一日のなかに、<br>手炒りの一杯を<span class="kane">溶かして</span>いく。</h2>
+      <div class="line"></div>
+    </div>
+    <div class="howto-grid">
+      <div class="hcard">
+        <div class="time">Morning</div>
+        <div class="htitle">起きぬけに、冷やし麦茶</div>
+        <div class="hdesc">前夜に煮出して冷やしておいた一杯を、目覚めの水分補給に。ノンカフェインだから、コーヒーの前でも安心。</div>
+      </div>
+      <div class="hcard">
+        <div class="time">Noon</div>
+        <div class="htitle">食事に、氷を浮かべて</div>
+        <div class="hdesc">大きな氷を入れたグラスにたっぷり注いで。揚げ物・油ものと特に相性のよい香ばしさです。</div>
+      </div>
+      <div class="hcard">
+        <div class="time">Evening</div>
+        <div class="htitle">牛乳と合わせて、麦茶ラテ</div>
+        <div class="hdesc">濃く煮出した麦茶を、温めた牛乳に注ぐ。砂糖を少し。市販のラテにはない、香ばしいコクが広がります。</div>
+      </div>
+      <div class="hcard">
+        <div class="time">Night</div>
+        <div class="htitle">寝る前に、ホットで</div>
+        <div class="hdesc">やかんで煮出し、湯気ごとカップに。カフェインを気にする時間帯も、心置きなく一杯。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recipe / brewing -->
+<section class="recipe">
+  <div class="container-narrow">
+    <div class="recipe-inner">
+      <div class="recipe-head">
+        <div class="eyebrow">Official Brewing Guide</div>
+        <h3>本家が伝える、おいしい淹れ方</h3>
+      </div>
+      <div class="recipe-steps">
+        <div class="step">
+          <div class="step-n">01</div>
+          <div class="step-t">水を沸かす</div>
+          <div class="step-d">やかんに水1.5〜1.8L、しっかり沸騰させます。</div>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <div class="step-t">麦を入れる</div>
+          <div class="step-d">沸騰した湯に、丸粒を大さじ1杯（約15g）投入。</div>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <div class="step-t">3〜5分煮出す</div>
+          <div class="step-d">弱火で、蓋を外して。吹きこぼれに注意。</div>
+        </div>
+        <div class="step">
+          <div class="step-n">04</div>
+          <div class="step-t">5分蒸らす</div>
+          <div class="step-d">火を止めて、そのまま。麦粒を取り除いて完成。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Maker story -->
+<section class="maker">
+  <div class="container">
+    <div class="maker-grid">
+      <div class="maker-visual"><img src="../../assets/photos/mugicha/02_kiln_smoke.jpg" alt="直径三尺の平釜と立ちのぼる煙"></div>
+      <div class="maker-copy">
+        <div class="eyebrow">The Maker</div>
+        <h2>明治12年から、<br>三尺の平釜と、竹の箒で。</h2>
+        <div class="line"></div>
+        <p>上州屋設楽彦吉商店は、<span class="kane">山梨県上野原市野田尻</span>にある、明治12年（1879年）創業の老舗です。ながおか商店と同じ上野原の隣町、車で15分の場所にあります。</p>
+        <p>製造する麦茶は、いまも直径三尺（約90cm）の平釜に大麦を入れ、竹の箒でかき混ぜながら強火で炒り上げる手仕事。麦が炭になる寸前まで深く炒ることで、この色と香りが出せます。</p>
+        <p>収穫年度や天候で変わる大麦の個性に合わせて、仕上げのタイミングや箒のスピードを変える。<span class="kane">機械には出せない味</span>が、この釜のなかで生まれています。</p>
+
+        <div class="maker-facts">
+          <div class="maker-fact"><div class="k">Origin</div><div class="v">山梨県<br>上野原市野田尻</div></div>
+          <div class="maker-fact"><div class="k">Since</div><div class="v">明治12年<br>（1879）</div></div>
+          <div class="maker-fact"><div class="k">Rep</div><div class="v">設楽 徳子<br>代表取締役</div></div>
+          <div class="maker-fact"><div class="k">Craft</div><div class="v">平釜3基<br>手炒り製法</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Limited: 量を限る誇り -->
+<section class="limited">
+  <div class="limited-inner">
+    <div class="limited-photo">
+      <img src="../../assets/photos/mugicha/03_maker_package.jpg" alt="140年以上愛され続けてきた伝統の味を持つ職人">
+    </div>
+    <div class="limited-copy">
+      <div class="eyebrow">Why It's Not Everywhere</div>
+      <h2>どこでも買えない、<br><span class="kane">理由があります。</span></h2>
+      <div class="line"></div>
+      <div class="quote">
+        「量産して品質を落としたくない」<br>
+        —— という想いから、<strong style="color:var(--kane-200);background:none;padding:0;font-weight:500;">生産量・販売先ともに限定しています。</strong>
+      </div>
+      <p>大きな平釜に、竹の箒。<strong>140年以上、機械に置き換えなかった</strong>のは、味を守るための選択でした。だから、この麦茶は全国どこでも並んでいるわけではありません。</p>
+      <p>ながおか商店は、<strong>上野原で許された取り扱い店</strong>のひとつ。同じ町の隣人として、この一本をあなたにお届けできることを誇りに思います。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Twin story: 上野原つながり -->
+<section class="twins">
+  <div class="container">
+    <h3>上野原の、<span class="kane">百年つながり</span>。</h3>
+    <div class="line"></div>
+    <div class="twins-inner">
+      <div class="twin">
+        <div class="year">1879</div>
+        <div class="name">上州屋設楽彦吉商店</div>
+        <div class="role">明治12年 · 手炒り麦茶</div>
+      </div>
+      <div class="twin-conn">×</div>
+      <div class="twin">
+        <div class="year">1911</div>
+        <div class="name">ながおか商店</div>
+        <div class="role">明治44年 · 近江屋ながおか</div>
+      </div>
+    </div>
+    <div class="twins-caption">同じ上野原で、百年以上、手仕事を守りつづけてきた二軒が、この一杯をあなたへ。</div>
+  </div>
+</section>
+
+<!-- Lineup -->
+<section class="lineup">
+  <div class="container">
+    <div class="lineup-head">
+      <div class="eyebrow">Choose Your Size</div>
+      <h2>用途に合わせて、選べる5サイズ。</h2>
+      <div class="line"></div>
+    </div>
+    <div class="lineup-grid">
+      <div class="lcard featured">
+        <div class="tag">Flagship · Loose</div>
+        <div class="lname">丸粒 330g</div>
+        <div class="ldesc">約22回分。毎日の食卓にたっぷり。煮出しで本格的な味わいを。</div>
+        <div><span class="lprice">¥1,710</span><span class="ltax">税込</span></div>
+      </div>
+      <div class="lcard">
+        <div class="tag">Trial · Loose</div>
+        <div class="lname">丸粒 150g</div>
+        <div class="ldesc">約10回分。まずは味を試したい方、少人数のご家庭に。</div>
+        <div><span class="lprice">¥880〜</span><span class="ltax">税込</span></div>
+      </div>
+      <div class="lcard">
+        <div class="tag">Gift · Tea Bag</div>
+        <div class="lname">ティーパック 15包</div>
+        <div class="ldesc">7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。</div>
+        <div><span class="lprice">¥1,710</span><span class="ltax">税込</span></div>
+      </div>
+      <div class="lcard">
+        <div class="tag">Try · Tea Bag</div>
+        <div class="lname">ティーパック 5包</div>
+        <div class="ldesc">7.5g × 5包。初めての方・手土産の添えものに。</div>
+        <div><span class="lprice">¥180〜</span><span class="ltax">税込</span></div>
+      </div>
+      <div class="lcard">
+        <div class="tag">Single · Tea Bag</div>
+        <div class="lname">ティーパック 1包</div>
+        <div class="ldesc">7.5g × 1包。イベント配布・ギフトボックス同梱に。</div>
+        <div><span class="lprice">¥180</span><span class="ltax">税込</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h3>よくあるご質問</h3>
+    <div class="line"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">カフェインは入っていますか？</div>
+        <div class="faq-a">入っていません。お子様や妊婦さん、就寝前でも安心してお召し上がりいただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">丸粒とティーパック、味に違いはありますか？</div>
+        <div class="faq-a">どちらも同じ手炒り製法の麦茶です。丸粒は煮出しで本格的に、ティーパックは手軽に楽しむための形。用途で選んでください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">初めて購入するなら、どれがおすすめですか？</div>
+        <div class="faq-a">まず味を試すなら 丸粒150g または ティーパック5包、ご家庭で本格的に楽しむなら 丸粒330g または ティーパック15包 が人気です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">贈答用に選ぶなら、どれが良いですか？</div>
+        <div class="faq-a">見栄えと内容量のバランスからティーパック15包が贈答に選ばれています。特別な方には丸粒330g、プチギフトにはティーパック5包が便利です。のし・包装のご希望はご注文時にお選びください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どれくらい日持ちしますか？</div>
+        <div class="faq-a">未開封で製品表記の賞味期限を目安に。開封後は高温多湿を避け、常温保存でお早めにお召し上がりください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Specs -->
+<section class="specs">
+  <div class="container-narrow">
+    <h3>商品情報</h3>
+    <table class="spec-table">
+      <tr><th>商品名</th><td>純手炒り むぎ茶（丸粒 330g）</td></tr>
+      <tr><th>原材料</th><td>大麦（国産・六条大麦）</td></tr>
+      <tr><th>内容量</th><td>330g（丸粒袋入り）／ 約22回分</td></tr>
+      <tr><th>製法</th><td>直径三尺の平釜による手炒り製法</td></tr>
+      <tr><th>カフェイン</th><td>ノンカフェイン</td></tr>
+      <tr><th>製造元</th><td>株式会社 上州屋設楽彦吉商店<br>山梨県上野原市野田尻1072番地 · 明治12年創業</td></tr>
+      <tr><th>保存方法</th><td>直射日光・高温多湿を避け、常温で保存</td></tr>
+      <tr><th>販売者</th><td>ながおか商店（近江屋ながおか）／ 山梨県上野原市上野原4691-2</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final">
+  <div class="container final-inner">
+    <div class="eyebrow">Take This Home</div>
+    <h2>いつもの一杯を、<br><span class="kane">明治十二年からの</span>一杯へ。</h2>
+    <div class="line"></div>
+    <p>コーヒーくらい黒いのに、飲むと苦くない。<br>上野原の隣町から、手炒りの深みを、あなたの食卓へ。</p>
+    <div class="final-price">
+      <span class="price">¥1,710</span><span class="tax">税込 / 丸粒 330g</span>
+    </div>
+    <a href="#" class="cta">カートに入れる　→</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <span>◆</span> © 2026 NAGAOKA SHOTEN · 近江屋ながおか · 山梨県上野原市 <span>◆</span>
+</footer>
+
+</body>
+</html>

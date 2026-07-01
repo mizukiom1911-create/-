@@ -1,0 +1,44 @@
+{% comment %}
+  麦茶LP — 「量を限る誇り」
+  黒背景・写真半分・コピー半分。引用ボックスで作り手の言葉を強調。
+{% endcomment %}
+
+<section class="limited">
+  <div class="limited-inner">
+    <div class="limited-photo">
+      {%- if section.settings.image != blank -%}
+        <img src="{{ section.settings.image | image_url: width: 1400 }}"
+             alt="{{ section.settings.image.alt }}">
+      {%- endif -%}
+    </div>
+    <div class="limited-copy">
+      {%- if section.settings.eyebrow_en != blank -%}
+        <span class="eyebrow-en">{{ section.settings.eyebrow_en }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading | replace: '|', '<br>' }}</h2>
+      <hr class="line">
+      {%- if section.settings.quote != blank -%}
+        <div class="quote">{{ section.settings.quote }}</div>
+      {%- endif -%}
+      {{ section.settings.body }}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 量を限る誇り",
+  "tag": "section",
+  "class": "shopify-section-mugicha-limited",
+  "settings": [
+    { "type": "text", "id": "eyebrow_en", "label": "英字リード", "default": "Why It's Not Everywhere" },
+    { "type": "text", "id": "heading", "label": "見出し（|で改行、<span class=\"kane\">〜</span>で金色）", "default": "どこでも買えない、|<span class=\"kane\">理由があります。</span>" },
+    { "type": "image_picker", "id": "image", "label": "写真" },
+    { "type": "richtext", "id": "quote", "label": "引用（作り手の言葉）", "default": "<p>「量産して品質を落としたくない」<br>—— という想いから、<strong style=\"color:var(--kane-200);background:none;padding:0;font-weight:500;\">生産量・販売先ともに限定しています。</strong></p>" },
+    { "type": "richtext", "id": "body", "label": "本文（<strong>で金ハイライト）", "default": "<p>大きな平釜に、竹の箒。<strong>140年以上、機械に置き換えなかった</strong>のは、味を守るための選択でした。だから、この麦茶は全国どこでも並んでいるわけではありません。</p><p>ながおか商店は、<strong>上野原で許された取り扱い店</strong>のひとつ。同じ町の隣人として、この一本をあなたにお届けできることを誇りに思います。</p>" }
+  ],
+  "presets": [
+    { "name": "麦茶 量を限る誇り" }
+  ]
+}
+{% endschema %}

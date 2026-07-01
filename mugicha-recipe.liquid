@@ -1,0 +1,61 @@
+{% comment %}
+  麦茶LP — 淹れ方 4ステップ
+  金枠の中に、公式の淹れ方4ステップ。
+{% endcomment %}
+
+<section class="recipe">
+  <div class="container-narrow">
+    <div class="recipe-inner">
+      <div class="recipe-head">
+        {%- if section.settings.eyebrow_en != blank -%}
+          <span class="eyebrow-en">{{ section.settings.eyebrow_en }}</span>
+        {%- endif -%}
+        <h3>{{ section.settings.heading }}</h3>
+      </div>
+      <div class="recipe-steps">
+        {%- for block in section.blocks -%}
+          <div class="step">
+            <div class="step-n">{{ block.settings.number }}</div>
+            <div class="step-t">{{ block.settings.title }}</div>
+            <div class="step-d">{{ block.settings.body }}</div>
+          </div>
+        {%- endfor -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 淹れ方",
+  "tag": "section",
+  "class": "shopify-section-mugicha-recipe",
+  "settings": [
+    { "type": "text", "id": "eyebrow_en", "label": "英字リード", "default": "Official Brewing Guide" },
+    { "type": "text", "id": "heading", "label": "見出し", "default": "本家が伝える、おいしい淹れ方" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "step",
+      "name": "ステップ",
+      "settings": [
+        { "type": "text", "id": "number", "label": "番号", "default": "01" },
+        { "type": "text", "id": "title", "label": "タイトル", "default": "水を沸かす" },
+        { "type": "textarea", "id": "body", "label": "本文", "default": "やかんに水1.5〜1.8L、しっかり沸騰させます。" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 淹れ方",
+      "blocks": [
+        { "type": "step", "settings": { "number": "01", "title": "水を沸かす",    "body": "やかんに水1.5〜1.8L、しっかり沸騰させます。" } },
+        { "type": "step", "settings": { "number": "02", "title": "麦を入れる",    "body": "沸騰した湯に、丸粒を大さじ1杯（約15g）投入。" } },
+        { "type": "step", "settings": { "number": "03", "title": "3〜5分煮出す",  "body": "弱火で、蓋を外して。吹きこぼれに注意。" } },
+        { "type": "step", "settings": { "number": "04", "title": "5分蒸らす",    "body": "火を止めて、そのまま。麦粒を取り除いて完成。" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

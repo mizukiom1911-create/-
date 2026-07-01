@@ -1,0 +1,69 @@
+{% comment %}
+  麦茶LP — 5サイズラインナップ
+  用途別に選べる5サイズを3列グリッドで表示。
+{% endcomment %}
+
+<section class="lineup">
+  <div class="container">
+    <div class="sec-head">
+      {%- if section.settings.eyebrow_en != blank -%}
+        <span class="eyebrow-en">{{ section.settings.eyebrow_en }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+      <hr class="line">
+    </div>
+    <div class="lineup-grid">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link | default: '#' }}"
+           class="lcard{% if block.settings.featured %} featured{% endif %}">
+          <div class="tag">{{ block.settings.tag_en }}</div>
+          <h3 class="lname">{{ block.settings.name }}</h3>
+          <p class="ldesc">{{ block.settings.body }}</p>
+          <div>
+            <span class="lprice">{{ block.settings.price }}</span>
+            <span class="ltax">税込</span>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 ラインナップ",
+  "tag": "section",
+  "class": "shopify-section-mugicha-lineup",
+  "settings": [
+    { "type": "text", "id": "eyebrow_en", "label": "英字リード", "default": "Choose Your Size" },
+    { "type": "text", "id": "heading", "label": "見出し", "default": "用途に合わせて、選べる5サイズ。" }
+  ],
+  "max_blocks": 8,
+  "blocks": [
+    {
+      "type": "size",
+      "name": "サイズ",
+      "settings": [
+        { "type": "text", "id": "tag_en", "label": "タグ（英字）", "default": "Flagship · Loose" },
+        { "type": "text", "id": "name", "label": "名前", "default": "丸粒 330g" },
+        { "type": "textarea", "id": "body", "label": "説明", "default": "約22回分。毎日の食卓にたっぷり。煮出しで本格的な味わいを。" },
+        { "type": "text", "id": "price", "label": "価格", "default": "¥1,710" },
+        { "type": "url", "id": "link", "label": "リンク先" },
+        { "type": "checkbox", "id": "featured", "label": "「おすすめ」バッジを表示", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 ラインナップ",
+      "blocks": [
+        { "type": "size", "settings": { "tag_en": "Flagship · Loose",  "name": "丸粒 330g",         "body": "約22回分。毎日の食卓にたっぷり。煮出しで本格的な味わいを。", "price": "¥1,710", "featured": true } },
+        { "type": "size", "settings": { "tag_en": "Trial · Loose",     "name": "丸粒 150g",         "body": "約10回分。まずは味を試したい方、少人数のご家庭に。",       "price": "¥880〜" } },
+        { "type": "size", "settings": { "tag_en": "Gift · Tea Bag",    "name": "ティーパック 15包", "body": "7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。",   "price": "¥1,710" } },
+        { "type": "size", "settings": { "tag_en": "Try · Tea Bag",     "name": "ティーパック 5包",  "body": "7.5g × 5包。初めての方・手土産の添えものに。",              "price": "¥180〜" } },
+        { "type": "size", "settings": { "tag_en": "Single · Tea Bag",  "name": "ティーパック 1包",  "body": "7.5g × 1包。イベント配布・ギフトボックス同梱に。",           "price": "¥180" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

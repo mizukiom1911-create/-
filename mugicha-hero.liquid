@@ -1,0 +1,471 @@
+{% comment %}
+  ながおか商店 — 麦茶LP ヒーローセクション
+  左：写真ギャラリー / 右：コピー + バリアント選択 + 数量 + Ajaxカート追加
+
+  管理画面から「対象商品」を選ぶと、その商品のバリアント（丸粒330g / 150g など）
+  が自動でボタンとして表示されます。
+  カート追加は Shopify の /cart/add.js API を使った Ajax 送信。
+{% endcomment %}
+
+{%- assign product = all_products[section.settings.product] -%}
+
+<section class="phero" data-mugicha-hero>
+  <div class="container">
+
+    <!-- Breadcrumb -->
+    <div class="crumb">
+      <a href="{{ routes.root_url }}">トップ</a>
+      <span class="sep">›</span>
+      <a href="/collections/tea">お茶・飲料</a>
+      <span class="sep">›</span>
+      <span>{{ section.settings.title_short | default: '純手炒り むぎ茶' }}</span>
+    </div>
+
+    <div class="phero-grid">
+
+      <!-- ============ 写真ギャラリー ============ -->
+      <div class="phero-visual">
+        <div class="phero-main">
+          {%- assign main_image = section.settings.main_image -%}
+          {%- if main_image != blank -%}
+            <img src="{{ main_image | image_url: width: 1200 }}"
+                 alt="{{ main_image.alt | default: section.settings.title }}"
+                 data-main-image>
+          {%- else -%}
+            <img src="{{ 'placeholder.jpg' | asset_url }}" alt="" data-main-image>
+          {%- endif -%}
+        </div>
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="phero-thumbs">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'thumb' and block.settings.image != blank -%}
+                <button class="phero-thumb {% if forloop.first %}active{% endif %}"
+                        data-thumb
+                        data-src="{{ block.settings.image | image_url: width: 1200 }}"
+                        type="button">
+                  <img src="{{ block.settings.image | image_url: width: 300 }}" alt="">
+                </button>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- ============ コピー + 購入 ============ -->
+      <div class="phero-copy">
+
+        <!-- 朱印スタンプ列 -->
+        <div class="stamp-row">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'stamp' -%}
+              {% render 'badge-shubun',
+                text: block.settings.text,
+                variant: block.settings.variant %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <!-- 英字リード -->
+        {%- if section.settings.eyebrow_en != blank -%}
+          <div class="phero-eyebrow">{{ section.settings.eyebrow_en }}</div>
+        {%- endif -%}
+
+        <!-- タイトル -->
+        <h1 class="phero-title">{{ section.settings.title | replace: '\|', '<br>' | replace: '｜', '<br>' }}</h1>
+
+        <!-- サブタイトル -->
+        {%- if section.settings.subtitle != blank -%}
+          <div class="phero-sub">{{ section.settings.subtitle }}</div>
+        {%- endif -%}
+
+        <hr class="phero-line">
+
+        <!-- ピッチ（コピー本体） -->
+        {%- if section.settings.pitch != blank -%}
+          <div class="phero-pitch">{{ section.settings.pitch }}</div>
+        {%- endif -%}
+
+        <!-- ファクトの箇条書き -->
+        {%- assign has_facts = false -%}
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'fact' -%}{%- assign has_facts = true -%}{%- endif -%}
+        {%- endfor -%}
+        {%- if has_facts -%}
+          <ul class="phero-facts">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'fact' -%}
+                <li>{{ block.settings.text }}</li>
+              {%- endif -%}
+            {%- endfor -%}
+          </ul>
+        {%- endif -%}
+
+        <!-- =========== 購入フォーム（Ajax） =========== -->
+        {%- if product != blank -%}
+          <form data-mugicha-form>
+
+            <!-- バリアント選択 -->
+            {%- if product.variants.size > 1 -%}
+              <div class="variant-block">
+                <div class="variant-label">タイプを選ぶ</div>
+                <div class="variant-options">
+                  {%- for variant in product.variants -%}
+                    <button type="button"
+                            class="vopt {% if forloop.first %}active{% endif %}"
+                            data-variant-id="{{ variant.id }}"
+                            data-variant-price="{{ variant.price | money }}"
+                            data-variant-available="{{ variant.available }}"
+                            {% unless variant.available %}disabled{% endunless %}>
+                      <div class="vopt-name">{{ variant.title }}</div>
+                      {%- assign vdesc = section.settings['variant_desc_' | append: forloop.index] -%}
+                      {%- if vdesc != blank -%}
+                        <div class="vopt-desc">{{ vdesc }}</div>
+                      {%- endif -%}
+                      <div class="vopt-price">
+                        {{ variant.price | money }}
+                        <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span>
+                      </div>
+                    </button>
+                  {%- endfor -%}
+                </div>
+              </div>
+            {%- endif -%}
+
+            <!-- Buy box -->
+            <div class="buybox">
+              <div class="price-row">
+                <span class="price" data-buybox-price>{{ product.selected_or_first_available_variant.price | money }}</span>
+                <span class="tax" data-buybox-tax>税込 / {{ product.selected_or_first_available_variant.title }}</span>
+                <span class="stock {% unless product.available %}out{% endunless %}" data-buybox-stock>
+                  ◆ {% if product.available %}在庫あり{% else %}在庫なし{% endif %}
+                </span>
+              </div>
+
+              <div class="qty-row">
+                <span class="qty-label">数量</span>
+                <div class="qty-input">
+                  <button type="button" data-qty-minus>−</button>
+                  <input type="text" name="quantity" value="1" data-qty-input inputmode="numeric">
+                  <button type="button" data-qty-plus>＋</button>
+                </div>
+              </div>
+
+              <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
+
+              <button type="submit" class="cta-cart" data-cta-cart {% unless product.available %}disabled{% endunless %}>
+                {% if product.available %}カートに入れる{% else %}売り切れ{% endif %}
+              </button>
+              <button type="button" class="cta-buynow" data-cta-buynow {% unless product.available %}disabled{% endunless %}>
+                今すぐ購入する　→
+              </button>
+
+              <div class="reassure">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'reassure' -%}
+                    <div>{{ block.settings.text }}</div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+            </div>
+          </form>
+        {%- else -%}
+          <div class="buybox">
+            <p style="color:var(--danger);font-family:var(--font-body);">
+              ⚠ 対象商品が設定されていません。<br>
+              テーマエディタで「対象商品」を選んでください。
+            </p>
+          </div>
+        {%- endif -%}
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- カート追加時のトースト -->
+<div class="cart-toast" data-cart-toast>
+  <span data-cart-toast-msg>カートに入れました</span>
+  <a href="{{ routes.cart_url }}">カートを見る　→</a>
+</div>
+
+<script>
+(function() {
+  const root = document.querySelector('[data-mugicha-hero]');
+  if (!root) return;
+
+  // ---- サムネイル切替 ----
+  const mainImg = root.querySelector('[data-main-image]');
+  root.querySelectorAll('[data-thumb]').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      root.querySelectorAll('[data-thumb]').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const src = thumb.getAttribute('data-src');
+      if (src && mainImg) mainImg.src = src;
+    });
+  });
+
+  // ---- バリアント選択 ----
+  const form = root.querySelector('[data-mugicha-form]');
+  if (!form) return;
+
+  const variantInput = form.querySelector('[data-variant-input]');
+  const priceEl = form.querySelector('[data-buybox-price]');
+  const taxEl = form.querySelector('[data-buybox-tax]');
+  const stockEl = form.querySelector('[data-buybox-stock]');
+  const cartBtn = form.querySelector('[data-cta-cart]');
+  const buyBtn = form.querySelector('[data-cta-buynow]');
+
+  root.querySelectorAll('[data-variant-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (btn.hasAttribute('disabled')) return;
+      root.querySelectorAll('[data-variant-id]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const id = btn.getAttribute('data-variant-id');
+      const price = btn.getAttribute('data-variant-price');
+      const name = btn.querySelector('.vopt-name')?.textContent?.trim() || '';
+      const available = btn.getAttribute('data-variant-available') === 'true';
+      if (variantInput) variantInput.value = id;
+      if (priceEl && price) priceEl.textContent = price;
+      if (taxEl && name) taxEl.textContent = '税込 / ' + name;
+      if (stockEl) {
+        stockEl.textContent = available ? '◆ 在庫あり' : '◆ 在庫なし';
+        stockEl.classList.toggle('out', !available);
+      }
+      if (cartBtn) {
+        cartBtn.disabled = !available;
+        cartBtn.textContent = available ? 'カートに入れる' : '売り切れ';
+      }
+      if (buyBtn) buyBtn.disabled = !available;
+    });
+  });
+
+  // ---- 数量操作 ----
+  const qtyInput = form.querySelector('[data-qty-input]');
+  form.querySelector('[data-qty-minus]')?.addEventListener('click', () => {
+    const v = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
+    qtyInput.value = v;
+  });
+  form.querySelector('[data-qty-plus]')?.addEventListener('click', () => {
+    const v = (parseInt(qtyInput.value, 10) || 1) + 1;
+    qtyInput.value = v;
+  });
+
+  // ---- カート追加（Ajax） ----
+  const toast = document.querySelector('[data-cart-toast]');
+  const toastMsg = document.querySelector('[data-cart-toast-msg]');
+
+  function showToast(msg) {
+    if (!toast) return;
+    if (toastMsg) toastMsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+
+  async function addToCart(redirectToCheckout) {
+    const id = variantInput?.value;
+    const qty = parseInt(qtyInput?.value, 10) || 1;
+    if (!id) return;
+
+    try {
+      const res = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({ items: [{ id: parseInt(id, 10), quantity: qty }] })
+      });
+      if (!res.ok) throw new Error('カート追加に失敗しました');
+
+      // カウント更新
+      const cartRes = await fetch('/cart.js');
+      const cart = await cartRes.json();
+      document.querySelectorAll('[data-cart-count]').forEach(el => {
+        el.textContent = cart.item_count;
+        el.style.display = cart.item_count > 0 ? '' : 'none';
+      });
+
+      if (redirectToCheckout) {
+        window.location.href = '/checkout';
+      } else {
+        showToast('カートに入れました');
+      }
+    } catch (e) {
+      showToast('エラーが発生しました。もう一度お試しください。');
+      console.error(e);
+    }
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    addToCart(false);
+  });
+  buyBtn?.addEventListener('click', () => addToCart(true));
+})();
+</script>
+
+{% schema %}
+{
+  "name": "麦茶ヒーロー",
+  "tag": "section",
+  "class": "shopify-section-mugicha-hero",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "対象商品",
+      "info": "純手炒り麦茶の商品を選択してください（バリアントが自動でボタンになります）"
+    },
+    {
+      "type": "text",
+      "id": "title_short",
+      "label": "パンくず用の短いタイトル",
+      "default": "純手炒り むぎ茶"
+    },
+    {
+      "type": "header",
+      "content": "写真"
+    },
+    {
+      "type": "image_picker",
+      "id": "main_image",
+      "label": "メイン画像"
+    },
+    {
+      "type": "header",
+      "content": "コピー"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow_en",
+      "label": "英字リード（Eyebrow）",
+      "default": "Joushuya Shitara · Pure Hand-Roasted Mugicha"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "タイトル（｜で改行）",
+      "default": "純手炒り｜むぎ茶"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "サブタイトル",
+      "default": "上州屋設楽彦吉商店 · 山梨県上野原市野田尻／国産六条大麦・手炒り／330g"
+    },
+    {
+      "type": "richtext",
+      "id": "pitch",
+      "label": "ピッチ（コピー本体）",
+      "default": "<p><strong>コーヒーくらい黒いのに、飲むと苦くない。</strong><br>香ばしさが鼻を通って、<br>澄んだ深みが追いかけてくる。</p>"
+    },
+    {
+      "type": "header",
+      "content": "バリアント補足（オプション）"
+    },
+    {
+      "type": "text",
+      "id": "variant_desc_1",
+      "label": "1つ目バリアントの説明",
+      "default": "たっぷり約22回分。煮出しで本格的に。"
+    },
+    {
+      "type": "text",
+      "id": "variant_desc_2",
+      "label": "2つ目バリアントの説明",
+      "default": "約10回分。まずは試したい方に。"
+    },
+    {
+      "type": "text",
+      "id": "variant_desc_3",
+      "label": "3つ目バリアントの説明"
+    },
+    {
+      "type": "text",
+      "id": "variant_desc_4",
+      "label": "4つ目バリアントの説明"
+    },
+    {
+      "type": "text",
+      "id": "variant_desc_5",
+      "label": "5つ目バリアントの説明"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stamp",
+      "name": "朱印スタンプ",
+      "limit": 5,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "文言",
+          "default": "明治12年創業"
+        },
+        {
+          "type": "select",
+          "id": "variant",
+          "label": "スタイル",
+          "options": [
+            { "value": "shubun", "label": "朱色（デフォルト）" },
+            { "value": "navy",   "label": "紺塗り" },
+            { "value": "gold",   "label": "金枠" }
+          ],
+          "default": "shubun"
+        }
+      ]
+    },
+    {
+      "type": "thumb",
+      "name": "サムネイル画像",
+      "limit": 8,
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "画像" }
+      ]
+    },
+    {
+      "type": "fact",
+      "name": "ファクト（箇条書き）",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "文言",
+          "default": "直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法"
+        }
+      ]
+    },
+    {
+      "type": "reassure",
+      "name": "リアシュア（購入不安の解消）",
+      "limit": 6,
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "文言",
+          "default": "8,000円以上のご注文で全国送料無料"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶ヒーロー",
+      "blocks": [
+        { "type": "stamp", "settings": { "text": "明治12年創業", "variant": "shubun" } },
+        { "type": "stamp", "settings": { "text": "ノンカフェイン", "variant": "navy" } },
+        { "type": "stamp", "settings": { "text": "上野原の隣町から", "variant": "gold" } },
+        { "type": "fact", "settings": { "text": "直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法" } },
+        { "type": "fact", "settings": { "text": "国産六条大麦を、2年寝かせてから炒り上げるため出せる深み" } },
+        { "type": "fact", "settings": { "text": "ノンカフェイン。お子様・妊婦さん・就寝前にも安心" } },
+        { "type": "fact", "settings": { "text": "本家推奨の楽しみ方は、砂糖・牛乳を加えるアレンジも" } },
+        { "type": "reassure", "settings": { "text": "8,000円以上のご注文で全国送料無料" } },
+        { "type": "reassure", "settings": { "text": "ご注文から2〜4営業日で発送" } },
+        { "type": "reassure", "settings": { "text": "のし・ギフト包装対応可（ご注文時にお選びください）" } },
+        { "type": "reassure", "settings": { "text": "ノンカフェインですので、時間を選ばずお楽しみいただけます" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

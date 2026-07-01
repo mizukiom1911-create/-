@@ -1,0 +1,549 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Shopify統合プレビュー · 麦茶LP フル版</title>
+<link rel="stylesheet" href="assets/theme.css">
+<link rel="icon" href="../assets/logo/nagaoka-mark.png">
+<style>
+  .preview-banner {
+    background: var(--kane-500);
+    color: var(--navy-900);
+    padding: 8px 16px;
+    text-align: center;
+    font-family: var(--font-body);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+  .preview-banner strong { font-family: var(--font-display); }
+</style>
+</head>
+<body>
+
+<div class="preview-banner">
+  <strong>プレビュー · フル版</strong> · Shopifyに実装した後の見た目（全16セクション） · カート追加はデモ動作
+</div>
+
+<!-- ===== announcement-bar ===== -->
+<div class="announce">
+  <span>◆</span>
+  8,000円以上で全国送料無料
+  <span>◆</span>
+  明治十二年、上野原の隣町の一杯
+  <span>◆</span>
+</div>
+
+<!-- ===== header-nagaoka ===== -->
+<header class="header">
+  <div class="container header-inner">
+    <div class="utility">
+      <a href="/">トップへ戻る</a>
+      <a href="#">よみもの</a>
+    </div>
+    <div class="brand">
+      <a href="/" style="display:block;">
+        <div class="brand-name">ながおか商店</div>
+        <div class="brand-sub">SINCE 1911 · UENOHARA</div>
+      </a>
+    </div>
+    <div class="actions">
+      <a href="#" class="icon-btn">検索</a>
+      <a href="#" class="icon-btn">ログイン</a>
+      <a href="#" class="icon-btn">
+        カート <span class="cart-count" data-cart-count>1</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ===== mugicha-hero ===== -->
+<section class="phero" data-mugicha-hero>
+  <div class="container">
+    <div class="crumb">
+      <a href="/">トップ</a>
+      <span class="sep">›</span>
+      <a href="#">お茶・飲料</a>
+      <span class="sep">›</span>
+      <span>純手炒り むぎ茶（上州屋設楽彦吉商店）</span>
+    </div>
+
+    <div class="phero-grid">
+      <div class="phero-visual">
+        <div class="phero-main">
+          <img src="../assets/photos/mugicha/04_pouring_black.jpg" alt="" data-main-image>
+        </div>
+        <div class="phero-thumbs">
+          <button class="phero-thumb active" data-thumb data-src="../assets/photos/mugicha/04_pouring_black.jpg" type="button">
+            <img src="../assets/photos/mugicha/04_pouring_black.jpg" alt=""></button>
+          <button class="phero-thumb" data-thumb data-src="../assets/photos/mugicha/03_maker_package.jpg" type="button">
+            <img src="../assets/photos/mugicha/03_maker_package.jpg" alt=""></button>
+          <button class="phero-thumb" data-thumb data-src="../assets/photos/mugicha/01_maker_stirring.jpg" type="button">
+            <img src="../assets/photos/mugicha/01_maker_stirring.jpg" alt=""></button>
+          <button class="phero-thumb" data-thumb data-src="../assets/photos/mugicha/02_kiln_smoke.jpg" type="button">
+            <img src="../assets/photos/mugicha/02_kiln_smoke.jpg" alt=""></button>
+        </div>
+      </div>
+
+      <div class="phero-copy">
+        <div class="stamp-row">
+          <span class="stamp">明治12年創業</span>
+          <span class="stamp navy">ノンカフェイン</span>
+          <span class="stamp gold">上野原の隣町から</span>
+        </div>
+        <div class="phero-eyebrow">Joushuya Shitara · Pure Hand-Roasted Mugicha</div>
+        <h1 class="phero-title">純手炒り<br>むぎ茶</h1>
+        <div class="phero-sub">上州屋設楽彦吉商店 · 山梨県上野原市野田尻／国産六条大麦・手炒り／330g</div>
+        <hr class="phero-line">
+        <div class="phero-pitch">
+          <strong>コーヒーくらい黒いのに、飲むと苦くない。</strong><br>
+          香ばしさが鼻を通って、<br>
+          澄んだ深みが追いかけてくる。
+        </div>
+        <ul class="phero-facts">
+          <li>直径三尺の平釜に、竹箒で麦を混ぜて手炒りする、明治12年からの製法</li>
+          <li>国産六条大麦を、2年寝かせてから炒り上げるため出せる深み</li>
+          <li>ノンカフェイン。お子様・妊婦さん・就寝前にも安心</li>
+          <li>本家推奨の楽しみ方は、砂糖・牛乳を加えるアレンジも</li>
+        </ul>
+
+        <form data-mugicha-form>
+          <div class="variant-block">
+            <div class="variant-label">タイプを選ぶ</div>
+            <div class="variant-options">
+              <button type="button" class="vopt active" data-variant-id="demo-330" data-variant-price="¥1,710" data-variant-available="true">
+                <div class="vopt-name">丸粒 330g</div>
+                <div class="vopt-desc">たっぷり約22回分。煮出しで本格的に。</div>
+                <div class="vopt-price">¥1,710 <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span></div>
+              </button>
+              <button type="button" class="vopt" data-variant-id="demo-150" data-variant-price="¥880" data-variant-available="true">
+                <div class="vopt-name">丸粒 150g</div>
+                <div class="vopt-desc">約10回分。まずは試したい方に。</div>
+                <div class="vopt-price">¥880 <span style="font-size:11px;color:var(--fg-secondary);font-weight:400;">税込</span></div>
+              </button>
+            </div>
+          </div>
+          <div class="buybox">
+            <div class="price-row">
+              <span class="price" data-buybox-price>¥1,710</span>
+              <span class="tax" data-buybox-tax>税込 / 丸粒 330g</span>
+              <span class="stock" data-buybox-stock>◆ 在庫あり</span>
+            </div>
+            <div class="qty-row">
+              <span class="qty-label">数量</span>
+              <div class="qty-input">
+                <button type="button" data-qty-minus>−</button>
+                <input type="text" name="quantity" value="1" data-qty-input inputmode="numeric">
+                <button type="button" data-qty-plus>＋</button>
+              </div>
+            </div>
+            <input type="hidden" name="id" value="demo-330" data-variant-input>
+            <button type="submit" class="cta-cart" data-cta-cart>カートに入れる</button>
+            <button type="button" class="cta-buynow" data-cta-buynow>今すぐ購入する　→</button>
+            <div class="reassure">
+              <div>8,000円以上のご注文で全国送料無料</div>
+              <div>ご注文から2〜4営業日で発送</div>
+              <div>のし・ギフト包装対応可（ご注文時にお選びください）</div>
+              <div>ノンカフェインですので、時間を選ばずお楽しみいただけます</div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-proof ===== -->
+<section class="proof">
+  <div class="container">
+    <div class="proof-inner">
+      <div class="pcol"><div class="k">Founded</div><div class="v"><span class="n">1879</span><br>明治十二年</div></div>
+      <div class="pcol"><div class="k">Method</div><div class="v">直径三尺<br>平釜・竹箒</div></div>
+      <div class="pcol"><div class="k">Ingredient</div><div class="v">国産六条大麦<br>二年寝かせ</div></div>
+      <div class="pcol"><div class="k">Caffeine</div><div class="v">ゼロ<br>ノンカフェイン</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-benefit ===== -->
+<section class="benefit">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow-en">Why This Mugicha</span>
+      <h2>この一杯が、<br>あなたの一日にもたらすもの。</h2>
+      <hr class="line">
+      <p>大量生産の麦茶では味わえない、三つの体験を持ち帰れます。</p>
+    </div>
+    <div class="benefit-grid">
+      <div class="b-card">
+        <div class="b-num">01</div>
+        <h3 class="b-title">朝の一杯が、<span class="kane">深く</span>変わる。</h3>
+        <p class="b-body">コーヒーみたいに真っ黒。飲めば、苦みではなく、香ばしさと澄んだコクが広がる。ノンカフェインだから、目覚めの一杯にも、就寝前にも。</p>
+      </div>
+      <div class="b-card">
+        <div class="b-num">02</div>
+        <h3 class="b-title">砂糖や牛乳と、<span class="kane">こなれる</span>味。</h3>
+        <p class="b-body">本家が「砂糖・牛乳を加えるのもよい」と勧めるほどの濃さ。ミルクと合わせれば、香ばしいラテのような一杯に。日常のなかで、飲み方を発見できる麦茶です。</p>
+      </div>
+      <div class="b-card">
+        <div class="b-num">03</div>
+        <h3 class="b-title">煮出す時間が、<span class="kane">合図</span>になる。</h3>
+        <p class="b-body">やかんに麦を入れて火にかける。ふわりと立つ湯気と香ばしい香り。5分の煮出しが、忙しい一日を切り替えるスイッチになります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-compare ===== -->
+<section class="compare">
+  <div class="container-narrow">
+    <div class="sec-head" style="margin-bottom:40px;">
+      <span class="eyebrow-en">Comparison</span>
+      <h2>ペットボトルの麦茶と、<br>何が違うのか。</h2>
+      <hr class="line">
+    </div>
+    <div class="compare-inner">
+      <div class="compare-col">
+        <div class="compare-tag">General</div>
+        <div class="compare-name">一般的なペットボトル麦茶</div>
+        <ul class="compare-list">
+          <li>色は薄い茶色、透けて見える</li>
+          <li>のどごしは軽いが、香りは控えめ</li>
+          <li>冷やして飲むための味の設計</li>
+          <li>大量生産・機械焙煎・短時間抽出</li>
+          <li>牛乳や砂糖を合わせても味が負ける</li>
+        </ul>
+      </div>
+      <div class="compare-col hero">
+        <div class="compare-tag">This</div>
+        <div class="compare-name">純手炒り むぎ茶（上州屋設楽彦吉商店）</div>
+        <ul class="compare-list">
+          <li>コーヒーのように黒く、グラスの向こうが見えない</li>
+          <li>鼻を通る香ばしさ、追いかけてくる澄んだ深み</li>
+          <li>煮出し・冷やし・ホット、通年で飲める</li>
+          <li>明治12年から、直径三尺の平釜と竹箒による手炒り</li>
+          <li>砂糖・牛乳と合わせても、しっかり主役の味</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-howto ===== -->
+<section class="howto">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow-en">Ways to Enjoy</span>
+      <h2>一日のなかに、<br>手炒りの一杯を<span class="kane">溶かして</span>いく。</h2>
+      <hr class="line">
+    </div>
+    <div class="howto-grid">
+      <div class="hcard">
+        <div class="time">Morning</div>
+        <h3 class="htitle">起きぬけに、冷やし麦茶</h3>
+        <p class="hdesc">前夜に煮出して冷やしておいた一杯を、目覚めの水分補給に。ノンカフェインだから、コーヒーの前でも安心。</p>
+      </div>
+      <div class="hcard">
+        <div class="time">Noon</div>
+        <h3 class="htitle">食事に、氷を浮かべて</h3>
+        <p class="hdesc">大きな氷を入れたグラスにたっぷり注いで。揚げ物・油ものと特に相性のよい香ばしさです。</p>
+      </div>
+      <div class="hcard">
+        <div class="time">Evening</div>
+        <h3 class="htitle">牛乳と合わせて、麦茶ラテ</h3>
+        <p class="hdesc">濃く煮出した麦茶を、温めた牛乳に注ぐ。砂糖を少し。市販のラテにはない、香ばしいコクが広がります。</p>
+      </div>
+      <div class="hcard">
+        <div class="time">Night</div>
+        <h3 class="htitle">寝る前に、ホットで</h3>
+        <p class="hdesc">やかんで煮出し、湯気ごとカップに。カフェインを気にする時間帯も、心置きなく一杯。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-recipe ===== -->
+<section class="recipe">
+  <div class="container-narrow">
+    <div class="recipe-inner">
+      <div class="recipe-head">
+        <span class="eyebrow-en">Official Brewing Guide</span>
+        <h3>本家が伝える、おいしい淹れ方</h3>
+      </div>
+      <div class="recipe-steps">
+        <div class="step">
+          <div class="step-n">01</div>
+          <div class="step-t">水を沸かす</div>
+          <div class="step-d">やかんに水1.5〜1.8L、しっかり沸騰させます。</div>
+        </div>
+        <div class="step">
+          <div class="step-n">02</div>
+          <div class="step-t">麦を入れる</div>
+          <div class="step-d">沸騰した湯に、丸粒を大さじ1杯（約15g）投入。</div>
+        </div>
+        <div class="step">
+          <div class="step-n">03</div>
+          <div class="step-t">3〜5分煮出す</div>
+          <div class="step-d">弱火で、蓋を外して。吹きこぼれに注意。</div>
+        </div>
+        <div class="step">
+          <div class="step-n">04</div>
+          <div class="step-t">5分蒸らす</div>
+          <div class="step-d">火を止めて、そのまま。麦粒を取り除いて完成。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-maker ===== -->
+<section class="maker">
+  <div class="container">
+    <div class="maker-grid">
+      <div class="maker-visual"><img src="../assets/photos/mugicha/02_kiln_smoke.jpg" alt=""></div>
+      <div class="maker-copy">
+        <span class="eyebrow-en">The Maker</span>
+        <h2>明治12年から、<br>三尺の平釜と、竹の箒で。</h2>
+        <hr class="line">
+        <p>上州屋設楽彦吉商店は、<span class="kane">山梨県上野原市野田尻</span>にある、明治12年（1879年）創業の老舗です。ながおか商店と同じ上野原の隣町、車で15分の場所にあります。</p>
+        <p>製造する麦茶は、いまも直径三尺（約90cm）の平釜に大麦を入れ、竹の箒でかき混ぜながら強火で炒り上げる手仕事。麦が炭になる寸前まで深く炒ることで、この色と香りが出せます。</p>
+        <p>収穫年度や天候で変わる大麦の個性に合わせて、仕上げのタイミングや箒のスピードを変える。<span class="kane">機械には出せない味</span>が、この釜のなかで生まれています。</p>
+        <div class="maker-facts">
+          <div class="maker-fact"><div class="k">Origin</div><div class="v">山梨県<br>上野原市野田尻</div></div>
+          <div class="maker-fact"><div class="k">Since</div><div class="v">明治12年<br>（1879）</div></div>
+          <div class="maker-fact"><div class="k">Rep</div><div class="v">設楽 徳子<br>代表取締役</div></div>
+          <div class="maker-fact"><div class="k">Craft</div><div class="v">平釜3基<br>手炒り製法</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-limited ===== -->
+<section class="limited">
+  <div class="limited-inner">
+    <div class="limited-photo">
+      <img src="../assets/photos/mugicha/03_maker_package.jpg" alt="">
+    </div>
+    <div class="limited-copy">
+      <span class="eyebrow-en">Why It's Not Everywhere</span>
+      <h2>どこでも買えない、<br><span class="kane">理由があります。</span></h2>
+      <hr class="line">
+      <div class="quote">
+        「量産して品質を落としたくない」<br>
+        —— という想いから、<strong style="color:var(--kane-200);background:none;padding:0;font-weight:500;">生産量・販売先ともに限定しています。</strong>
+      </div>
+      <p>大きな平釜に、竹の箒。<strong>140年以上、機械に置き換えなかった</strong>のは、味を守るための選択でした。だから、この麦茶は全国どこでも並んでいるわけではありません。</p>
+      <p>ながおか商店は、<strong>上野原で許された取り扱い店</strong>のひとつ。同じ町の隣人として、この一本をあなたにお届けできることを誇りに思います。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-twins ===== -->
+<section class="twins">
+  <div class="container">
+    <h3>上野原の、<span class="kane">百年つながり</span>。</h3>
+    <hr class="line">
+    <div class="twins-inner">
+      <div class="twin">
+        <div class="year">1879</div>
+        <div class="name">上州屋設楽彦吉商店</div>
+        <div class="role">明治12年 · 手炒り麦茶</div>
+      </div>
+      <div class="twin-conn">×</div>
+      <div class="twin">
+        <div class="year">1911</div>
+        <div class="name">ながおか商店</div>
+        <div class="role">明治44年 · 近江屋ながおか</div>
+      </div>
+    </div>
+    <div class="twins-caption">同じ上野原で、百年以上、手仕事を守りつづけてきた二軒が、この一杯をあなたへ。</div>
+  </div>
+</section>
+
+<!-- ===== mugicha-lineup ===== -->
+<section class="lineup">
+  <div class="container">
+    <div class="sec-head">
+      <span class="eyebrow-en">Choose Your Size</span>
+      <h2>用途に合わせて、選べる5サイズ。</h2>
+      <hr class="line">
+    </div>
+    <div class="lineup-grid">
+      <a href="#" class="lcard featured">
+        <div class="tag">Flagship · Loose</div>
+        <h3 class="lname">丸粒 330g</h3>
+        <p class="ldesc">約22回分。毎日の食卓にたっぷり。煮出しで本格的な味わいを。</p>
+        <div><span class="lprice">¥1,710</span><span class="ltax">税込</span></div>
+      </a>
+      <a href="#" class="lcard">
+        <div class="tag">Trial · Loose</div>
+        <h3 class="lname">丸粒 150g</h3>
+        <p class="ldesc">約10回分。まずは味を試したい方、少人数のご家庭に。</p>
+        <div><span class="lprice">¥880〜</span><span class="ltax">税込</span></div>
+      </a>
+      <a href="#" class="lcard">
+        <div class="tag">Gift · Tea Bag</div>
+        <h3 class="lname">ティーパック 15包</h3>
+        <p class="ldesc">7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。</p>
+        <div><span class="lprice">¥1,710</span><span class="ltax">税込</span></div>
+      </a>
+      <a href="#" class="lcard">
+        <div class="tag">Try · Tea Bag</div>
+        <h3 class="lname">ティーパック 5包</h3>
+        <p class="ldesc">7.5g × 5包。初めての方・手土産の添えものに。</p>
+        <div><span class="lprice">¥180〜</span><span class="ltax">税込</span></div>
+      </a>
+      <a href="#" class="lcard">
+        <div class="tag">Single · Tea Bag</div>
+        <h3 class="lname">ティーパック 1包</h3>
+        <p class="ldesc">7.5g × 1包。イベント配布・ギフトボックス同梱に。</p>
+        <div><span class="lprice">¥180</span><span class="ltax">税込</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-faq ===== -->
+<section class="faq">
+  <div class="container">
+    <h3>よくあるご質問</h3>
+    <hr class="line">
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">カフェインは入っていますか？</div>
+        <div class="faq-a">入っていません。お子様や妊婦さん、就寝前でも安心してお召し上がりいただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">丸粒とティーパック、味に違いはありますか？</div>
+        <div class="faq-a">どちらも同じ手炒り製法の麦茶です。丸粒は煮出しで本格的に、ティーパックは手軽に楽しむための形。用途で選んでください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">初めて購入するなら、どれがおすすめですか？</div>
+        <div class="faq-a">まず味を試すなら 丸粒150g または ティーパック5包、ご家庭で本格的に楽しむなら 丸粒330g または ティーパック15包 が人気です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">贈答用に選ぶなら、どれが良いですか？</div>
+        <div class="faq-a">見栄えと内容量のバランスからティーパック15包が贈答に選ばれています。特別な方には丸粒330g、プチギフトにはティーパック5包が便利です。のし・包装のご希望はご注文時にお選びください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どれくらい日持ちしますか？</div>
+        <div class="faq-a">未開封で製品表記の賞味期限を目安に。開封後は高温多湿を避け、常温保存でお早めにお召し上がりください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== mugicha-specs ===== -->
+<section class="specs">
+  <div class="container-narrow">
+    <h3>商品情報</h3>
+    <table class="spec-table">
+      <tr><th>商品名</th><td>純手炒り むぎ茶（丸粒 330g）</td></tr>
+      <tr><th>原材料</th><td>大麦（国産・六条大麦）</td></tr>
+      <tr><th>内容量</th><td>330g（丸粒袋入り）／ 約22回分</td></tr>
+      <tr><th>製法</th><td>直径三尺の平釜による手炒り製法</td></tr>
+      <tr><th>カフェイン</th><td>ノンカフェイン</td></tr>
+      <tr><th>製造元</th><td>株式会社 上州屋設楽彦吉商店<br>山梨県上野原市野田尻1072番地 · 明治12年創業</td></tr>
+      <tr><th>保存方法</th><td>直射日光・高温多湿を避け、常温で保存</td></tr>
+      <tr><th>販売者</th><td>ながおか商店（近江屋ながおか）／ 山梨県上野原市上野原4691-2</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ===== mugicha-final-cta ===== -->
+<section class="final" data-final-cta>
+  <div class="container final-inner">
+    <span class="eyebrow-en">Take This Home</span>
+    <h2>いつもの一杯を、<br><span class="kane">明治十二年からの</span>一杯へ。</h2>
+    <hr class="line">
+    <p>コーヒーくらい黒いのに、飲むと苦くない。<br>上野原の隣町から、手炒りの深みを、あなたの食卓へ。</p>
+    <div class="final-price">
+      <span class="price">¥1,710</span><span class="tax">税込 / 丸粒 330g</span>
+    </div>
+    <button type="button" class="cta" data-final-add>カートに入れる　→</button>
+  </div>
+</section>
+
+<!-- ===== footer-nagaoka (simple) ===== -->
+<footer class="footer">
+  <span>◆</span>
+  © 2026 ながおか商店 · 近江屋ながおか · 山梨県上野原市
+  <span>◆</span>
+</footer>
+
+<!-- カートトースト -->
+<div class="cart-toast" data-cart-toast>
+  <span data-cart-toast-msg>カートに入れました</span>
+  <a href="#">カートを見る　→</a>
+</div>
+
+<script>
+(function() {
+  const root = document.querySelector('[data-mugicha-hero]');
+  if (!root) return;
+
+  const mainImg = root.querySelector('[data-main-image]');
+  root.querySelectorAll('[data-thumb]').forEach(thumb => {
+    thumb.addEventListener('click', () => {
+      root.querySelectorAll('[data-thumb]').forEach(t => t.classList.remove('active'));
+      thumb.classList.add('active');
+      const src = thumb.getAttribute('data-src');
+      if (src && mainImg) mainImg.src = src;
+    });
+  });
+
+  const form = root.querySelector('[data-mugicha-form]');
+  if (!form) return;
+
+  const variantInput = form.querySelector('[data-variant-input]');
+  const priceEl = form.querySelector('[data-buybox-price]');
+  const taxEl = form.querySelector('[data-buybox-tax]');
+
+  root.querySelectorAll('[data-variant-id]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      root.querySelectorAll('[data-variant-id]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      if (variantInput) variantInput.value = btn.getAttribute('data-variant-id');
+      if (priceEl) priceEl.textContent = btn.getAttribute('data-variant-price');
+      const name = btn.querySelector('.vopt-name')?.textContent?.trim() || '';
+      if (taxEl && name) taxEl.textContent = '税込 / ' + name;
+    });
+  });
+
+  const qtyInput = form.querySelector('[data-qty-input]');
+  form.querySelector('[data-qty-minus]')?.addEventListener('click', () => {
+    qtyInput.value = Math.max(1, (parseInt(qtyInput.value, 10) || 1) - 1);
+  });
+  form.querySelector('[data-qty-plus]')?.addEventListener('click', () => {
+    qtyInput.value = (parseInt(qtyInput.value, 10) || 1) + 1;
+  });
+
+  const toast = document.querySelector('[data-cart-toast]');
+  function showToast(msg) {
+    if (!toast) return;
+    toast.querySelector('[data-cart-toast-msg]').textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    showToast('カートに入れました（プレビューではデモ動作）');
+    const c = document.querySelector('[data-cart-count]');
+    if (c) c.textContent = (parseInt(c.textContent, 10) || 0) + 1;
+  });
+  form.querySelector('[data-cta-buynow]')?.addEventListener('click', () => {
+    showToast('チェックアウトへ（プレビューではデモ動作）');
+  });
+
+  // Final CTA
+  document.querySelector('[data-final-add]')?.addEventListener('click', () => {
+    showToast('カートに入れました（プレビューではデモ動作）');
+    const c = document.querySelector('[data-cart-count]');
+    if (c) c.textContent = (parseInt(c.textContent, 10) || 0) + 1;
+  });
+})();
+</script>
+
+</body>
+</html>

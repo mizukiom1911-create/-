@@ -1,0 +1,63 @@
+{% comment %}
+  麦茶LP — Benefit 3列
+  「この一杯があなたにもたらすもの」を3つのカードで提示。
+{% endcomment %}
+
+<section class="benefit">
+  <div class="container">
+    <div class="sec-head">
+      {%- if section.settings.eyebrow_en != blank -%}
+        <span class="eyebrow-en">{{ section.settings.eyebrow_en }}</span>
+      {%- endif -%}
+      <h2>{{ section.settings.heading | replace: '|', '<br>' }}</h2>
+      <hr class="line">
+      {%- if section.settings.lead != blank -%}
+        <p>{{ section.settings.lead }}</p>
+      {%- endif -%}
+    </div>
+    <div class="benefit-grid">
+      {%- for block in section.blocks -%}
+        <div class="b-card">
+          <div class="b-num">{{ block.settings.number }}</div>
+          <h3 class="b-title">{{ block.settings.title }}</h3>
+          <p class="b-body">{{ block.settings.body }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "麦茶 Benefit",
+  "tag": "section",
+  "class": "shopify-section-mugicha-benefit",
+  "settings": [
+    { "type": "text", "id": "eyebrow_en", "label": "英字リード", "default": "Why This Mugicha" },
+    { "type": "text", "id": "heading", "label": "見出し（|で改行）", "default": "この一杯が、|あなたの一日にもたらすもの。" },
+    { "type": "text", "id": "lead", "label": "リード文", "default": "大量生産の麦茶では味わえない、三つの体験を持ち帰れます。" }
+  ],
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "card",
+      "name": "ベネフィットカード",
+      "settings": [
+        { "type": "text", "id": "number", "label": "番号（斜体金）", "default": "01" },
+        { "type": "richtext", "id": "title", "label": "タイトル（<span class=\"kane\">〜</span>で金色）", "default": "<p>朝の一杯が、<span class=\"kane\">深く</span>変わる。</p>" },
+        { "type": "textarea", "id": "body", "label": "本文", "default": "コーヒーみたいに真っ黒。飲めば、苦みではなく、香ばしさと澄んだコクが広がる。ノンカフェインだから、目覚めの一杯にも、就寝前にも。" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "麦茶 Benefit",
+      "blocks": [
+        { "type": "card", "settings": { "number": "01", "title": "<p>朝の一杯が、<span class=\"kane\">深く</span>変わる。</p>", "body": "コーヒーみたいに真っ黒。飲めば、苦みではなく、香ばしさと澄んだコクが広がる。ノンカフェインだから、目覚めの一杯にも、就寝前にも。" } },
+        { "type": "card", "settings": { "number": "02", "title": "<p>砂糖や牛乳と、<span class=\"kane\">こなれる</span>味。</p>", "body": "本家が「砂糖・牛乳を加えるのもよい」と勧めるほどの濃さ。ミルクと合わせれば、香ばしいラテのような一杯に。日常のなかで、飲み方を発見できる麦茶です。" } },
+        { "type": "card", "settings": { "number": "03", "title": "<p>煮出す時間が、<span class=\"kane\">合図</span>になる。</p>", "body": "やかんに麦を入れて火にかける。ふわりと立つ湯気と香ばしい香り。5分の煮出しが、忙しい一日を切り替えるスイッチになります。" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
