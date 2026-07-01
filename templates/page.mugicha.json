@@ -1,50 +1,16 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
-  "_comment": "麦茶LP用のカスタムページテンプレート。全13セクションを上から順に配置。管理画面『ページ』でこのテンプレートを割り当てると、下記のセクションが表示されます。順番の入れ替え・非表示はテーマエディタから可能です。",
   "sections": {
-    "announcement": {
-      "type": "announcement-bar",
-      "blocks": {
-        "m1": {
-          "type": "message",
-          "settings": {
-            "text": "8,000円以上で全国送料無料"
-          }
-        },
-        "m2": {
-          "type": "message",
-          "settings": {
-            "text": "明治十二年、上野原の隣町の一杯"
-          }
-        }
-      },
-      "block_order": [
-        "m1",
-        "m2"
-      ]
-    },
-    "header": {
-      "type": "header-nagaoka",
-      "settings": {
-        "brand_name": "ながおか商店",
-        "brand_sub": "SINCE 1911 · UENOHARA",
-        "show_ribbon": false
-      }
-    },
     "mugicha_hero": {
       "type": "mugicha-hero",
-      "settings": {
-        "title_short": "純手炒り むぎ茶（上州屋設楽彦吉商店）",
-        "eyebrow_en": "Joushuya Shitara · Pure Hand-Roasted Mugicha",
-        "title": "純手炒り｜むぎ茶",
-        "subtitle": "上州屋設楽彦吉商店 · 山梨県上野原市野田尻／国産六条大麦・手炒り／330g",
-        "pitch": "<p><strong>コーヒーくらい黒いのに、飲むと苦くない。</strong><br>香ばしさが鼻を通って、<br>澄んだ深みが追いかけてくる。</p>",
-        "variant_desc_1": "たっぷり約22回分。煮出しで本格的に。",
-        "variant_desc_2": "約10回分。まずは試したい方に。",
-        "variant_desc_3": "7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。",
-        "variant_desc_4": "7.5g × 5包。初めての方・手土産の添えものに。",
-        "variant_desc_5": "7.5g × 1包。イベント配布・ギフトボックス同梱に。",
-        "product": "純手炒り-むぎ茶-上州屋設楽彦吉商店"
-      },
       "blocks": {
         "s1": {
           "type": "stamp",
@@ -128,7 +94,20 @@
         "r2",
         "r3",
         "r4"
-      ]
+      ],
+      "settings": {
+        "product": "純手炒り-むぎ茶-上州屋設楽彦吉商店",
+        "title_short": "純手炒り むぎ茶（上州屋設楽彦吉商店）",
+        "eyebrow_en": "Joushuya Shitara · Pure Hand-Roasted Mugicha",
+        "title": "純手炒り｜むぎ茶",
+        "subtitle": "上州屋設楽彦吉商店 · 山梨県上野原市野田尻／国産六条大麦・手炒り／330g",
+        "pitch": "<p><strong>コーヒーくらい黒いのに、飲むと苦くない。</strong><br>香ばしさが鼻を通って、<br>澄んだ深みが追いかけてくる。</p>",
+        "variant_desc_1": "たっぷり約22回分。煮出しで本格的に。",
+        "variant_desc_2": "約10回分。まずは試したい方に。",
+        "variant_desc_3": "7.5g × 15包。お中元・季節のご挨拶に選ばれる贈答サイズ。",
+        "variant_desc_4": "7.5g × 5包。初めての方・手土産の添えものに。",
+        "variant_desc_5": "7.5g × 1包。イベント配布・ギフトボックス同梱に。"
+      }
     },
     "mugicha_proof": {
       "type": "mugicha-proof",
@@ -171,15 +150,11 @@
         "p2",
         "p3",
         "p4"
-      ]
+      ],
+      "settings": {}
     },
     "mugicha_benefit": {
       "type": "mugicha-benefit",
-      "settings": {
-        "eyebrow_en": "Why This Mugicha",
-        "heading": "この一杯が、|あなたの一日にもたらすもの。",
-        "lead": "大量生産の麦茶では味わえない、三つの体験を持ち帰れます。"
-      },
       "blocks": {
         "b1": {
           "type": "card",
@@ -210,18 +185,15 @@
         "b1",
         "b2",
         "b3"
-      ]
+      ],
+      "settings": {
+        "eyebrow_en": "Why This Mugicha",
+        "heading": "この一杯が、|あなたの一日にもたらすもの。",
+        "lead": "大量生産の麦茶では味わえない、三つの体験を持ち帰れます。"
+      }
     },
     "mugicha_compare": {
       "type": "mugicha-compare",
-      "settings": {
-        "eyebrow_en": "Comparison",
-        "heading": "ペットボトルの麦茶と、|何が違うのか。",
-        "left_tag": "General",
-        "left_name": "一般的なペットボトル麦茶",
-        "right_tag": "This",
-        "right_name": "純手炒り むぎ茶（上州屋設楽彦吉商店）"
-      },
       "blocks": {
         "l1": {
           "type": "left_item",
@@ -295,14 +267,18 @@
         "r3",
         "r4",
         "r5"
-      ]
+      ],
+      "settings": {
+        "eyebrow_en": "Comparison",
+        "heading": "ペットボトルの麦茶と、|何が違うのか。",
+        "left_tag": "General",
+        "left_name": "一般的なペットボトル麦茶",
+        "right_tag": "This",
+        "right_name": "純手炒り むぎ茶（上州屋設楽彦吉商店）"
+      }
     },
     "mugicha_howto": {
       "type": "mugicha-howto",
-      "settings": {
-        "eyebrow_en": "Ways to Enjoy",
-        "heading": "一日のなかに、|手炒りの一杯を<span class=\"kane\">溶かして</span>いく。"
-      },
       "blocks": {
         "s1": {
           "type": "scene",
@@ -342,14 +318,14 @@
         "s2",
         "s3",
         "s4"
-      ]
+      ],
+      "settings": {
+        "eyebrow_en": "Ways to Enjoy",
+        "heading": "一日のなかに、|手炒りの一杯を<span class=\"kane\">溶かして</span>いく。"
+      }
     },
     "mugicha_recipe": {
       "type": "mugicha-recipe",
-      "settings": {
-        "eyebrow_en": "Official Brewing Guide",
-        "heading": "本家が伝える、おいしい淹れ方"
-      },
       "blocks": {
         "r1": {
           "type": "step",
@@ -389,15 +365,14 @@
         "r2",
         "r3",
         "r4"
-      ]
+      ],
+      "settings": {
+        "eyebrow_en": "Official Brewing Guide",
+        "heading": "本家が伝える、おいしい淹れ方"
+      }
     },
     "mugicha_maker": {
       "type": "mugicha-maker",
-      "settings": {
-        "eyebrow_en": "The Maker",
-        "heading": "明治12年から、|三尺の平釜と、竹の箒で。",
-        "body": "<p>上州屋設楽彦吉商店は、<span class=\"kane\">山梨県上野原市野田尻</span>にある、明治12年（1879年）創業の老舗です。ながおか商店と同じ上野原の隣町、車で15分の場所にあります。</p><p>製造する麦茶は、いまも直径三尺（約90cm）の平釜に大麦を入れ、竹の箒でかき混ぜながら強火で炒り上げる手仕事。麦が炭になる寸前まで深く炒ることで、この色と香りが出せます。</p><p>収穫年度や天候で変わる大麦の個性に合わせて、仕上げのタイミングや箒のスピードを変える。<span class=\"kane\">機械には出せない味</span>が、この釜のなかで生まれています。</p>"
-      },
       "blocks": {
         "f1": {
           "type": "fact",
@@ -433,7 +408,12 @@
         "f2",
         "f3",
         "f4"
-      ]
+      ],
+      "settings": {
+        "eyebrow_en": "The Maker",
+        "heading": "明治12年から、|三尺の平釜と、竹の箒で。",
+        "body": "<p>上州屋設楽彦吉商店は、<span class=\"kane\">山梨県上野原市野田尻</span>にある、明治12年（1879年）創業の老舗です。ながおか商店と同じ上野原の隣町、車で15分の場所にあります。</p><p>製造する麦茶は、いまも直径三尺（約90cm）の平釜に大麦を入れ、竹の箒でかき混ぜながら強火で炒り上げる手仕事。麦が炭になる寸前まで深く炒ることで、この色と香りが出せます。</p><p>収穫年度や天候で変わる大麦の個性に合わせて、仕上げのタイミングや箒のスピードを変える。<span class=\"kane\">機械には出せない味</span>が、この釜のなかで生まれています。</p>"
+      }
     },
     "mugicha_limited": {
       "type": "mugicha-limited",
@@ -446,11 +426,6 @@
     },
     "mugicha_twins": {
       "type": "mugicha-twins",
-      "settings": {
-        "heading": "<p>上野原の、<span class=\"kane\">百年つながり</span>。</p>",
-        "connector": "×",
-        "caption": "同じ上野原で、百年以上、手仕事を守りつづけてきた二軒が、この一杯をあなたへ。"
-      },
       "blocks": {
         "t1": {
           "type": "shop",
@@ -472,14 +447,15 @@
       "block_order": [
         "t1",
         "t2"
-      ]
+      ],
+      "settings": {
+        "heading": "<p>上野原の、<span class=\"kane\">百年つながり</span>。</p>",
+        "connector": "×",
+        "caption": "同じ上野原で、百年以上、手仕事を守りつづけてきた二軒が、この一杯をあなたへ。"
+      }
     },
     "mugicha_lineup": {
       "type": "mugicha-lineup",
-      "settings": {
-        "eyebrow_en": "Choose Your Size",
-        "heading": "用途に合わせて、選べる5サイズ。"
-      },
       "blocks": {
         "l1": {
           "type": "size",
@@ -534,13 +510,14 @@
         "l3",
         "l4",
         "l5"
-      ]
+      ],
+      "settings": {
+        "eyebrow_en": "Choose Your Size",
+        "heading": "用途に合わせて、選べる5サイズ。"
+      }
     },
     "mugicha_faq": {
       "type": "mugicha-faq",
-      "settings": {
-        "heading": "よくあるご質問"
-      },
       "blocks": {
         "q1": {
           "type": "qa",
@@ -584,13 +561,13 @@
         "q3",
         "q4",
         "q5"
-      ]
+      ],
+      "settings": {
+        "heading": "よくあるご質問"
+      }
     },
     "mugicha_specs": {
       "type": "mugicha-specs",
-      "settings": {
-        "heading": "商品情報"
-      },
       "blocks": {
         "s1": {
           "type": "row",
@@ -658,7 +635,10 @@
         "s6",
         "s7",
         "s8"
-      ]
+      ],
+      "settings": {
+        "heading": "商品情報"
+      }
     },
     "mugicha_final": {
       "type": "mugicha-final-cta",
@@ -668,17 +648,9 @@
         "body": "コーヒーくらい黒いのに、飲むと苦くない。\n上野原の隣町から、手炒りの深みを、あなたの食卓へ。",
         "cta_label": "カートに入れる　→"
       }
-    },
-    "footer": {
-      "type": "footer-nagaoka",
-      "settings": {
-        "style": "simple"
-      }
     }
   },
   "order": [
-    "announcement",
-    "header",
     "mugicha_hero",
     "mugicha_proof",
     "mugicha_benefit",
@@ -691,7 +663,6 @@
     "mugicha_lineup",
     "mugicha_faq",
     "mugicha_specs",
-    "mugicha_final",
-    "footer"
+    "mugicha_final"
   ]
 }
